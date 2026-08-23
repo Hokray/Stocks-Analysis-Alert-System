@@ -20,6 +20,8 @@ from datetime import datetime, timedelta
 import pandas as pd
 import yfinance as yf
 
+from dotenv import load_dotenv
+load_dotenv()
 import config
 import notifier
 
