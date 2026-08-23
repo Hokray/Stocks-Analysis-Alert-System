@@ -42,3 +42,10 @@ HISTORY_PERIOD = "1y"         # how much price history to pull per ticker
 REQUEST_DELAY_SECONDS = 1.0   # pause between tickers to stay under rate limits
 FUNDAMENTALS_CACHE_FILE = "cache/fundamentals.json"
 FUNDAMENTALS_CACHE_DAYS = 7   # cash flow changes quarterly; no need to refetch daily
+
+# ---------------------------------------------------------------------------
+# Alerts
+# ---------------------------------------------------------------------------
+ALERTS_HISTORY_FILE = "alerts_history.json"
+ALERT_COOLDOWN_DAYS = 7    # don't re-alert the same ticker within this window
+SEND_EMAIL = False         # flip to True once you've added credentials
