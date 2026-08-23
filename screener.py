@@ -145,12 +145,30 @@ def extract_ttm_cfo(ticker_obj):
 
 
 def get_market_cap(ticker_obj):
+    """
+    Market cap. yfinance changed this key across versions, so try both,
+    then fall back to shares x price, then to the heavier .info call.
+    """
     try:
-        cap = ticker_obj.fast_info.get("market_cap")
+        fi = dict(ticker_obj.fast_info)
+        for key in ("marketCap", "market_cap"):
+            if fi.get(key):
+                return float(fi[key])
+        # Fallback: compute it ourselves
+        shares = fi.get("shares")
+        price = fi.get("lastPrice")
+        if shares and price:
+            return float(shares) * float(price)
+    except Exception:
+        pass
+
+    try:
+        cap = ticker_obj.info.get("marketCap")
         if cap:
             return float(cap)
     except Exception:
         pass
+
     return None
 
 
