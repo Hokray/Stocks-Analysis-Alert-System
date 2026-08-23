@@ -21,6 +21,7 @@ import pandas as pd
 import yfinance as yf
 
 import config
+import notifier
 
 
 # ---------------------------------------------------------------------------
@@ -303,6 +304,8 @@ def main():
 
     df.to_csv("last_run_results.csv", index=False)
     print("\nFull results written to last_run_results.csv")
+    if config.SEND_EMAIL:
+        notifier.notify(matches.to_dict("records"))
 
 
 if __name__ == "__main__":
