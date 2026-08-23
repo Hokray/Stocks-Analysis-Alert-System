@@ -12,7 +12,7 @@ FUNDAMENTALS_CACHE_FILE = "cache/fundamentals.json"
 
 # Set to a number to only process the first N tickers (for testing).
 # Set to None to run the full universe.
-TEST_LIMIT = 5
+TEST_LIMIT = None
 
 # Only screen these exchanges. Empty list = no exchange filter.
 EXCHANGE_FILTER = []          # e.g. ["NASDAQ"] to go NASDAQ-only

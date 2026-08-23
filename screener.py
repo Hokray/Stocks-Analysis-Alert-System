@@ -275,6 +275,7 @@ def main():
                 "price_change_pct",
                 "volume_ratio",
                 "recent_dollar_vol_musd",
+                "ttm_cfo_musd",
                 "market_cap_busd",
                 "MATCH",
             ]
