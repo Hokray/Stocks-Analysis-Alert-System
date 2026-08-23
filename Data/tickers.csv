@@ -1,0 +1,61 @@
+ticker,company_name,category,exchange,size_band,rationale
+ANET,Arista Networks,Networking and Optics,NYSE,Mega,High-speed Ethernet switching for AI clusters; direct hyperscaler exposure
+AVGO,Broadcom,Networking and Optics,NASDAQ,Mega,Tomahawk/Jericho switch silicon plus custom AI accelerators; core AI networking supplier
+MRVL,Marvell Technology,Networking and Optics,NASDAQ,Large,Optical DSPs and custom silicon and data center interconnect
+ALAB,Astera Labs,Networking and Optics,NASDAQ,Large,PCIe/CXL connectivity silicon; pure-play AI rack interconnect
+CRDO,Credo Technology,Networking and Optics,NASDAQ,Large,Active electrical cables and SerDes for AI clusters; high-beta pure play
+COHR,Coherent Corp,Networking and Optics,NYSE,Large,Optical transceivers and photonics; major 800G/1.6T supplier
+LITE,Lumentum Holdings,Networking and Optics,NASDAQ,Large,Optical components and lasers for data center interconnect
+CIEN,Ciena,Networking and Optics,NYSE,Large,Coherent optical transport; data center interconnect between campuses
+FN,Fabrinet,Networking and Optics,NYSE,Large,Contract manufacturer for optical modules; builds for NVDA and others
+GLW,Corning,Networking and Optics,NYSE,Mega,Optical fiber and cable for data center buildouts
+MU,Micron Technology,Memory and Storage,NASDAQ,Mega,HBM and DRAM; the single most direct memory play on AI demand
+STX,Seagate Technology,Memory and Storage,NASDAQ,Large,Nearline HDDs for AI data lakes; HAMR cycle
+WDC,Western Digital,Memory and Storage,NASDAQ,Large,Nearline HDD supplier post-flash separation
+SNDK,SanDisk,Memory and Storage,NASDAQ,Large,NAND flash pure play after separation from Western Digital
+PSTG,Pure Storage,Memory and Storage,NYSE,Large,All-flash enterprise arrays; hyperscaler design win exposure
+NTAP,NetApp,Memory and Storage,NASDAQ,Large,Enterprise storage and data management for AI pipelines
+PENG,Penguin Solutions,Memory and Storage,NASDAQ,Mid,Memory modules and integrated AI compute systems
+SIMO,Silicon Motion,Memory and Storage,NASDAQ,Mid,NAND flash controllers; leveraged to storage volume cycles
+RMBS,Rambus,Memory and Storage,NASDAQ,Mid,Memory interface chips and IP; DDR5/HBM licensing exposure
+NLST,Netlist,Memory and Storage,NASDAQ,Small,Memory module maker; speculative and litigation-driven so expect noise
+SMCI,Super Micro Computer,Servers and Compute,NASDAQ,Large,AI server racks and liquid-cooled systems; highest-beta server name
+DELL,Dell Technologies,Servers and Compute,NYSE,Mega,AI server backlog with neocloud and hyperscaler customers
+HPE,Hewlett Packard Enterprise,Servers and Compute,NYSE,Large,AI servers plus Juniper networking after acquisition
+CLS,Celestica,Servers and Compute,NYSE,Large,ODM for hyperscaler switches and racks; strong AI mix shift
+NVDA,NVIDIA,Servers and Compute,NASDAQ,Mega,GPU supplier at the center of the entire buildout
+AMD,Advanced Micro Devices,Servers and Compute,NASDAQ,Mega,MI-series accelerators and server CPUs
+IBM,IBM,Servers and Compute,NYSE,Mega,Mainframe and hybrid cloud and enterprise AI infrastructure
+JBL,Jabil,Servers and Compute,NYSE,Large,Contract manufacturing for AI infrastructure hardware
+FLEX,Flex Ltd,Servers and Compute,NASDAQ,Large,Data center power and rack integration; growing cloud segment
+TSSI,TSS Inc,Servers and Compute,NASDAQ,Small,AI rack integration services; small cap with very high volatility
+VRT,Vertiv Holdings,Data Center Cooling,NYSE,Mega,The pure-play leader in data center thermal and critical power
+MOD,Modine Manufacturing,Data Center Cooling,NYSE,Mid,Small-cap pure play; data center segment growing fastest in group
+NVT,nVent Electric,Data Center Cooling,NYSE,Large,Liquid cooling and electrical enclosures; large NVIDIA-linked backlog
+TT,Trane Technologies,Data Center Cooling,NYSE,Mega,Chillers and thermal management; diversified HVAC exposure
+JCI,Johnson Controls,Data Center Cooling,NYSE,Mega,Building and data center cooling systems
+CARR,Carrier Global,Data Center Cooling,NYSE,Mega,HVAC with growing data center thermal segment
+LII,Lennox International,Data Center Cooling,NYSE,Large,Commercial HVAC with emerging data center exposure
+AAON,AAON Inc,Data Center Cooling,NASDAQ,Mid,Custom air handling units; direct data center order growth
+SPXC,SPX Technologies,Data Center Cooling,NYSE,Mid,Cooling towers and thermal products for large facilities
+FIX,Comfort Systems USA,Data Center Cooling,NYSE,Large,Mechanical contractor building data center HVAC; backlog driven
+ETN,Eaton Corporation,Data Center Power Supply,NYSE,Mega,Switchgear busways and UPS; electrical backlog up sharply on data centers
+GEV,GE Vernova,Data Center Power Supply,NYSE,Mega,Gas turbines and grid electrification; record data center orders
+POWL,Powell Industries,Data Center Power Supply,NASDAQ,Mid,Medium-voltage switchgear pure play; concentrated data center orders
+BE,Bloom Energy,Data Center Power Supply,NYSE,Large,On-site fuel cell power for data centers bypassing grid delays
+PWR,Quanta Services,Data Center Power Supply,NYSE,Mega,Electrical infrastructure construction for grid and data centers
+HUBB,Hubbell Inc,Data Center Power Supply,NYSE,Large,Electrical distribution and grid components
+CAT,Caterpillar,Data Center Power Supply,NYSE,Mega,Backup gensets and prime power; power generation segment accelerating
+EMR,Emerson Electric,Data Center Power Supply,NYSE,Mega,Automation and power management for critical facilities
+ATKR,Atkore Inc,Data Center Power Supply,NYSE,Mid,Conduit and cable management for electrical buildouts
+GNRC,Generac Holdings,Data Center Power Supply,NYSE,Mid,Backup generation moving into commercial and data center scale
+CRWV,CoreWeave,Neo Cloud,NASDAQ,Large,The benchmark public neocloud; large contracted backlog and heavy debt
+NBIS,Nebius Group,Neo Cloud,NASDAQ,Large,Vertically integrated AI cloud; customer prepayment funding model
+IREN,IREN Limited,Neo Cloud,NASDAQ,Large,Miner-to-AI pivot with direct NVIDIA cloud contract
+APLD,Applied Digital,Neo Cloud,NASDAQ,Mid,AI data center campuses leased to hyperscalers
+WULF,TeraWulf,Neo Cloud,NASDAQ,Mid,Power-and-campus layer neocloud; converted mining sites
+CIFR,Cipher Mining,Neo Cloud,NASDAQ,Mid,Bitcoin miner converting power capacity to AI hosting
+CORZ,Core Scientific,Neo Cloud,NASDAQ,Mid,Large power footprint repurposed for AI colocation
+HUT,Hut 8 Corp,Neo Cloud,NASDAQ,Mid,Power infrastructure and AI hosting pivot
+GLXY,Galaxy Digital,Neo Cloud,NASDAQ,Mid,Helios campus AI data center conversion alongside crypto business
+BTDR,Bitdeer Technologies,Neo Cloud,NASDAQ,Mid,Mining hardware and AI cloud capacity buildout
