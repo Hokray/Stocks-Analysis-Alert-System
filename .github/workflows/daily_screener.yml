@@ -1,0 +1,67 @@
+name: Daily Stock Screener
+
+on:
+  # Manual trigger - gives you a "Run workflow" button in the Actions tab.
+  # Keep this forever; it's how you test without waiting a day.
+  workflow_dispatch:
+
+  # Automatic schedule. Cron is ALWAYS in UTC.
+  # 21:00 UTC = 5pm ET = one hour after the US market close.
+  # Mon-Fri only; weekend runs would just re-read Friday's numbers.
+  schedule:
+    - cron: '0 21 * * 1-5'
+
+# Needed so the workflow can commit alerts_history.json back to the repo.
+permissions:
+  contents: write
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run the screener
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          SEND_EMAIL: 'true'
+        run: python screener.py
+
+      # The runner is wiped after every run, so the dedup file has to be
+      # committed back or the screener forgets what it already alerted on.
+      - name: Persist alerts history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add alerts_history.json
+          if git diff --staged --quiet; then
+            echo "No new alerts to record."
+          else
+            git commit -m "Update alerts history [skip ci]"
+            git push
+          fi
+
+      # Keeps the last run's full diagnostic table downloadable from the
+      # Actions run page, without committing it to the repo.
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screener-results
+          path: last_run_results.csv
+          retention-days: 30
