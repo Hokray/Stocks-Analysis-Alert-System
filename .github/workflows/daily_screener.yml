@@ -9,7 +9,7 @@ on:
   # 21:00 UTC = 5pm ET = one hour after the US market close.
   # Mon-Fri only; weekend runs would just re-read Friday's numbers.
   schedule:
-    - cron: '0 21 * * 1-5'
+    - cron: '30 12 * * 1-5'
 
 # Needed so the workflow can commit alerts_history.json back to the repo.
 permissions:
