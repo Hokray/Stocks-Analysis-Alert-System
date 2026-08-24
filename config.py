@@ -48,4 +48,4 @@ FUNDAMENTALS_CACHE_DAYS = 7   # cash flow changes quarterly; no need to refetch 
 # ---------------------------------------------------------------------------
 ALERTS_HISTORY_FILE = "alerts_history.json"
 ALERT_COOLDOWN_DAYS = 7    # don't re-alert the same ticker within this window
-SEND_EMAIL = False         # flip to True once you've added credentials
+SEND_EMAIL = True         # flip to True once you've added credentials
