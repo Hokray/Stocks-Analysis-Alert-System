@@ -1,14 +1,9 @@
 {
   "NBIS": {
-    "last_alerted": "2026-08-23T23:55:43.764444",
-    "price": 219.13,
-    "price_change_pct": 19.0,
-    "volume_ratio": 1.54
-  },
-  "P": {
-    "last_alerted": "2026-08-23T23:55:43.764444",
-    "price": 108.55,
-    "price_change_pct": 10.8,
-    "volume_ratio": 1.52
+    "first_seen": "2026-08-24",
+    "last_emailed": "2026-08-24T23:42:30.742935",
+    "qualifying_dates": [
+      "2026-08-24"
+    ]
   }
 }
