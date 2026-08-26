@@ -1,1 +1,572 @@
-# Stocks-Analysis-Alert-System
+# Stocks Analysis Alert System
+
+An automated daily screener that identifies AI-infrastructure stocks where large
+amounts of capital are flowing in while the price is rising, and emails an alert
+when one appears.
+
+Built to answer a specific question: **where is big money concentrating in the AI
+data centre buildout, early enough to be useful?**
+
+---
+
+## Table of contents
+
+- [The idea](#the-idea)
+- [The three metrics](#the-three-metrics)
+- [Why these metrics and not others](#why-these-metrics-and-not-others)
+- [The universe](#the-universe)
+- [How persistence tracking works](#how-persistence-tracking-works)
+- [Project structure](#project-structure)
+- [Setup](#setup)
+- [Configuration reference](#configuration-reference)
+- [How the automation works](#how-the-automation-works)
+- [Reading the output](#reading-the-output)
+- [Maintenance](#maintenance)
+- [Known limitations](#known-limitations)
+- [Roadmap](#roadmap)
+
+---
+
+## The idea
+
+The AI data centre buildout is driving capital into a specific set of industries:
+networking silicon, optical interconnect, memory, servers, cooling, electrical
+power equipment, and the new GPU cloud providers.
+
+Institutional money leaves a footprint before a story becomes obvious. That
+footprint is **an unusual amount of money changing hands, sustained over days,
+while the price climbs**. This project detects that footprint across a curated
+list of companies and emails when it appears.
+
+The framing throughout has been "spotting a wave while it is still rising."
+The screener finds waves forming. It does not tell you when to get off one —
+that is a separate decision it cannot make.
+
+**This is a research tool, not investment advice.** It tells you where to look.
+
+---
+
+## The three metrics
+
+A stock alerts only when **all three** conditions are true on the same day.
+
+### 1. Dollar volume surge — the primary signal
+
+**Question it answers:** is an unusual amount of money arriving?
+
+```
+daily dollar volume = closing price x shares traded
+
+recent   = average daily dollar volume over the last 10 trading days
+baseline = average daily dollar volume over the last 63 trading days (~3 months)
+
+volume_ratio = recent / baseline
+```
+
+**Threshold: >= 1.50** (50% more money than normal)
+
+Reading the ratio:
+
+| Value | Meaning |
+|---|---|
+| 1.00 | Trading exactly its normal amount of money |
+| 0.75 | 25% quieter than usual |
+| 1.54 | 54% more money than usual |
+
+**Why dollars and not shares.** Share count cannot see size. Two million shares
+of a $4 stock is $8M — a few hundred retail traders. Two million shares of a $200
+stock is $400M — that is institutional. Dollar volume converts every company to
+the same unit, which is the only way to compare a $3B cooling company to a $1.7T
+chipmaker.
+
+**Why a 3-month baseline.** Comparing against a single prior week makes the
+result hostage to whatever happened that week. One quiet holiday week as your
+denominator turns an ordinary week into a fake 60% "surge." A 63-day average is
+stable enough that the ratio actually describes the recent period rather than the
+baseline.
+
+**Why 10 days for the recent window.** Long enough that a single news day cannot
+dominate it; short enough to still be current. It also means one big spike day
+cannot trip the alert on its own — the elevation has to be sustained.
+
+### 2. Price momentum — the direction check
+
+**Question it answers:** is that money buying, or selling?
+
+```
+price_change = (close_today - close_10_trading_days_ago) / close_10_trading_days_ago
+```
+
+**Threshold: >= +7%**
+
+Note this uses **two single prices**, not averages. It asks only where the price
+is now versus where it was two weeks ago.
+
+**Why it is needed.** Every trade has a buyer and a seller, so volume alone
+cannot tell you direction — a crash produces enormous volume too. Price
+disambiguates:
+
+| Volume | Price | Interpretation |
+|---|---|---|
+| High | Up | Buying pressure — capital arriving **(what we want)** |
+| High | Down | Selling pressure — capital leaving |
+| Low | Up | Drifting up on nothing — no conviction |
+| Low | Down | Nobody cares |
+
+**Why a rolling window rather than fixed weeks.** A fixed Friday-to-Friday
+comparison has blind spots: a move starting on a Tuesday is invisible until
+Friday, and a move spanning a weekend gets split across two periods and may
+register in neither. A rolling 10-day window asks the same question every single
+day with no calendar gaps.
+
+**A useful property:** as a rally ages, the "10 days ago" reference point moves
+forward *into* the rally, so the measured change shrinks and alerts naturally
+stop. The screener goes quiet on old news by itself.
+
+### 3. TTM cash from operations — the quality gate
+
+**Question it answers:** is there a real business underneath this move?
+
+```
+TTM CFO = sum of the four most recent quarterly "Operating Cash Flow" figures
+```
+
+**Threshold: > 0**
+
+TTM = trailing twelve months. Four quarters smooths out seasonality that would
+distort any single quarter.
+
+Cash from operations is money generated by *running the business* — customers
+paying, minus operating costs. It deliberately excludes borrowing, issuing
+shares, and asset sales, all of which bring cash in without the business working.
+
+**Why cash and not profit.** Profit involves accounting judgment — depreciation
+schedules, revenue recognition timing, what counts as an expense. There is real
+discretion there. Cash either arrived in the bank or it did not.
+
+**This filter does more work than expected.** From a live run:
+
+| Ticker | Price 10d | Volume ratio | TTM CFO | Result |
+|---|---|---|---|---|
+| NLST | +25.8% | **3.39x** | -$26.5M | Blocked |
+| BTDR | +30.8% | 1.12x | -$1,801.6M | Blocked |
+| SMCI | +18.4% | 1.36x | -$6,693.2M | Blocked |
+| GLXY | +21.1% | 0.76x | -$559.4M | Blocked |
+
+Netlist had the **highest volume ratio in the entire universe** — more than
+double the actual match that day — and is a small company burning cash. Exactly
+the pump-on-nothing case this gate exists to catch.
+
+### The combined rule
+
+```
+ALERT if:
+        volume_ratio  >= 1.50
+    AND price_change  >= +7%
+    AND TTM_CFO       >  0
+```
+
+There is a fourth condition in the code — a market cap floor — currently set to
+`0` and therefore inactive. See [Roadmap](#roadmap).
+
+---
+
+## Why these metrics and not others
+
+Alternatives that were considered and rejected for v1:
+
+| Signal | Why not |
+|---|---|
+| **13F institutional filings** | Genuinely shows what funds hold, but filed quarterly with a 45-day lag. By the time it is public the trade is up to 4.5 months old. Useful for confirming a thesis, useless as an alert. |
+| **Options flow** | Fast and informative, but good data is expensive and reading it well is a specialist skill. High noise. |
+| **Short interest** | Reported twice monthly. Many "investors piling in" moves are actually shorts covering, but the lag makes it unusable for daily alerts. |
+| **Relative volume (RVOL)** | Same concept as the dollar volume ratio but daily. Redundant with what we already compute, and noisier. |
+| **Insider (Form 4) buys** | Genuinely high-signal and free from SEC EDGAR, filed within 2 business days. Not rejected — deferred. See [Roadmap](#roadmap). |
+
+---
+
+## The universe
+
+60 companies, 10 in each of six categories, across NASDAQ and NYSE.
+
+| Category | Examples |
+|---|---|
+| Networking and Optics | ANET, AVGO, MRVL, ALAB, CRDO, COHR, LITE, CIEN, FN, GLW |
+| Memory and Storage | MU, STX, WDC, SNDK, P, NTAP, PENG, SIMO, RMBS, NLST |
+| Servers and Compute | SMCI, DELL, HPE, CLS, NVDA, AMD, IBM, JBL, FLEX, TSSI |
+| Data Center Cooling | VRT, MOD, NVT, TT, JCI, CARR, LII, AAON, SPXC, FIX |
+| Data Center Power Supply | ETN, GEV, POWL, BE, PWR, HUBB, CAT, EMR, ATKR, GNRC |
+| Neo Cloud | CRWV, NBIS, IREN, APLD, WULF, CIFR, CORZ, HUT, GLXY, BTDR |
+
+Stored in `data/tickers.csv` with columns:
+`ticker, company_name, category, exchange, size_band, rationale`
+
+### Why both exchanges
+
+Cooling and power supply companies are classified as **industrials**, not
+technology, and industrials list predominantly on NYSE. Restricting to NASDAQ
+would leave only 2 of the 20 names across those two categories — removing Vertiv,
+nVent, Modine, Eaton, GE Vernova and others. Since the picks-and-shovels layer of
+the AI buildout is precisely where capital has been flowing, that restriction
+would have blinded the screener to a large part of the thesis.
+
+Current split: 31 NASDAQ / 29 NYSE.
+
+### Why a curated list rather than the whole market
+
+**Practical:** yfinance is rate limited (roughly 360 requests/hour). Scanning
+~6,000 US listings would take 30+ hours and guarantee an IP block. GitHub Actions
+jobs also cap at 6 hours.
+
+**Strategic, and more important:** a full-market scan would alert on a biotech
+that popped on trial results, or a miner on a copper move. All technically
+"capital arriving," none of it this thesis. The curated list *is* the thesis
+encoded as a filter.
+
+### Ticker maintenance
+
+Symbols are not permanent. Pure Storage rebranded to Everpure and its ticker
+changed from `PSTG` to `P` in April 2026 — the screener returned a 404 until the
+CSV was updated. Expect to revisit the list every few months, especially the Neo
+Cloud category, where most names were bitcoin miners eighteen months ago.
+
+---
+
+## How persistence tracking works
+
+A single day's match can be noise. A stock qualifying **day after day** means
+capital keeps arriving — that is the stronger signal.
+
+Every run records the date for each qualifying ticker in `alerts_history.json`,
+**whether or not an email is sent**. That accumulated record produces a tag on
+each alert:
+
+| Tag | Colour | Meaning |
+|---|---|---|
+| First alert | Blue | Newly qualifying, unproven |
+| Qualified N times in M days | Amber | Building |
+| Qualified N of the last M days | Green | Persistent (>= `PERSISTENT_STREAK_MIN`) |
+
+The green tag is the one that matters. When a ticker first crosses into
+persistent territory, it sends an email **even if it is inside the cooldown
+window** — that crossing is the signal.
+
+A ticker that stops qualifying simply stops appearing. Its absence is the
+information: the wave broke.
+
+**Observed example.** Pure Storage (`P`) matched one day at +10.8% / 1.52x, then
+the next day read -8.2% / 1.47x and dropped out. A one-day-old alert invalidated
+within 24 hours — which is precisely why persistence is tracked rather than
+treating every match as equal.
+
+---
+
+## Project structure
+
+```
+Stocks-Analysis-Alert-System/
+├── .github/
+│   └── workflows/
+│       └── daily_screener.yml   Schedule and automation
+├── data/
+│   └── tickers.csv              The universe (committed, hand-maintained)
+├── cache/                       Fundamentals cache (gitignored, regenerable)
+├── config.py                    All thresholds and settings
+├── screener.py                  Data fetching, metrics, filtering
+├── notifier.py                  Streak tracking and email
+├── alerts_history.json          Persistence state (COMMITTED — see below)
+├── requirements.txt
+├── .env                         Local credentials (gitignored)
+├── .gitignore
+└── README.md
+```
+
+**Why `alerts_history.json` is committed.** The GitHub Actions runner is
+destroyed after every run. Nothing on it survives. If this file were not
+committed back to the repo, the screener would forget every streak and every
+prior alert each day. The workflow's "Persist alerts history" step exists solely
+to commit it.
+
+**Why the flat layout.** Four Python files do not justify a `src/` package —
+that would add import path complexity and relative-path bugs for no benefit.
+Worth revisiting past roughly 8 modules.
+
+---
+
+## Setup
+
+### Requirements
+
+- Python 3.12+
+- A Gmail account to send from (a **dedicated** one, not personal — see below)
+
+### Local install
+
+```bash
+git clone <your-repo-url>
+cd Stocks-Analysis-Alert-System
+
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+source .venv/bin/activate       # macOS / Linux
+
+python -m pip install -r requirements.txt
+```
+
+### Email credentials
+
+Create `.env` at the project root (gitignored):
+
+```
+EMAIL_ADDRESS=your.screener.account@gmail.com
+EMAIL_APP_PASSWORD=abcdefghijklmnop
+EMAIL_TO=recipient.one@gmail.com,recipient.two@gmail.com
+```
+
+`EMAIL_APP_PASSWORD` is a Google **App Password**, not the account password.
+To generate one:
+
+1. Sign in to the sending account
+2. Enable 2-Step Verification at `myaccount.google.com/security`
+   (App Passwords do not appear until 2FA is on)
+3. Go to `myaccount.google.com/apppasswords`, name it, and create
+4. Copy the 16 characters immediately — Google shows them once
+5. Strip the spaces when pasting into `.env`
+
+**Use a dedicated sending account.** An App Password allows sending mail as that
+account with no further authentication. If it leaks, someone can send convincing
+email as you. A throwaway sender contains the blast radius — worst case you
+delete the account.
+
+### First run
+
+```bash
+python screener.py
+```
+
+Set `TEST_LIMIT = 5` in `config.py` first to verify data fetching before running
+the full 60.
+
+---
+
+## Configuration reference
+
+All tunable settings live in `config.py`.
+
+| Setting | Default | What it does |
+|---|---|---|
+| `TICKER_FILE` | `data/tickers.csv` | Universe source |
+| `TEST_LIMIT` | `None` | Process only first N tickers (testing) |
+| `EXCHANGE_FILTER` | `[]` | Empty = both exchanges |
+| `RECENT_WINDOW_DAYS` | `10` | "Recent" period for both price and volume |
+| `BASELINE_WINDOW_DAYS` | `63` | "Normal" period (~3 months) |
+| `VOLUME_SURGE_THRESHOLD` | `1.50` | Dollar volume trigger |
+| `PRICE_CHANGE_THRESHOLD` | `0.07` | Price momentum trigger (+7%) |
+| `REQUIRE_POSITIVE_TTM_CFO` | `True` | Quality gate on/off |
+| `MIN_MARKET_CAP` | `0` | Size floor — currently disabled |
+| `HISTORY_PERIOD` | `1y` | Price history pulled per ticker |
+| `REQUEST_DELAY_SECONDS` | `1.0` | Pause between tickers (rate limiting) |
+| `FUNDAMENTALS_CACHE_DAYS` | `7` | Cash flow cache lifetime |
+| `ALERT_COOLDOWN_DAYS` | `1` | Minimum gap between emails per ticker |
+| `STREAK_WINDOW_DAYS` | `14` | Lookback for counting qualifying days |
+| `PERSISTENT_STREAK_MIN` | `4` | Qualifying days needed for the green tag |
+| `SEND_EMAIL` | env var | Set by the workflow; `false` locally |
+
+### On the threshold values
+
+`1.50` and `7%` are **judgment calls, not derived constants.** The reasoning:
+
+- Normal daily variation sits roughly in the 0.8–1.3 band, so 1.50 is clearly
+  outside routine fluctuation
+- A typical stock drifts a few percent over two weeks, so 7% is meaningfully
+  above drift without being so high that moves are only caught after they finish
+
+Early evidence that 1.50 is roughly right: in a 60-ticker run, 47 names sat below
+1.00, 9 between 1.00 and 1.30, and exactly 2 cleared 1.50 — at 1.52 and 1.54.
+There is a visible gap between the ordinary cluster and the matches.
+
+**These should be tuned against accumulated data, not argued about.** After a few
+weeks, review every name that crossed 1.30 and check what happened next. If
+1.30–1.50 names consistently kept climbing, lower the threshold. If they fizzled,
+it is correct or should rise.
+
+---
+
+## How the automation works
+
+`.github/workflows/daily_screener.yml` defines two triggers:
+
+- `workflow_dispatch` — the manual "Run workflow" button, useful for testing
+- `schedule` — a cron expression, always in **UTC**
+
+```yaml
+schedule:
+  - cron: '37 8 * * 1-5'    # weekdays
+```
+
+Steps on each run:
+
+1. Allocate a fresh Ubuntu runner
+2. Check out the repository
+3. Install Python 3.12
+4. `pip install -r requirements.txt`
+5. Run `screener.py` with secrets injected as environment variables
+6. Commit `alerts_history.json` back to the repo
+7. Upload `last_run_results.csv` as a downloadable artifact
+8. Destroy the runner
+
+### GitHub Secrets
+
+Repository Settings → Secrets and variables → Actions. Three required:
+
+- `EMAIL_ADDRESS`
+- `EMAIL_APP_PASSWORD`
+- `EMAIL_TO`
+
+These are injected at runtime, masked in logs, and never readable after saving.
+
+### On scheduling reliability
+
+**GitHub scheduled workflows are best-effort, not guaranteed.** They are the
+lowest priority on GitHub's infrastructure. Observed delay on this project has
+been around 60 minutes; delays past an hour are common and runs can occasionally
+be skipped entirely.
+
+Two consequences:
+
+1. **Schedule earlier than needed.** The run must complete before the US market
+   opens (9:30am ET), because once trading starts, yfinance returns a *partial*
+   daily bar for the current day, which drags the 10-day volume average down and
+   causes real surges to be understated.
+2. **Avoid round times.** `:00` and `:30` slots are the most contended. Odd
+   minutes land in quieter queues.
+
+### On timing choice
+
+Data from an after-close run and a next-morning-before-open run is **identical** —
+nothing trades in between. The only difference is when the email lands.
+
+The morning slot was chosen so the alert arrives before the market opens, when it
+can still be acted on. An evening slot (`'13 22 * * 1-5'`, ~1 hour after close)
+is arguably more robust, since delay cannot push it into a live session.
+
+---
+
+## Reading the output
+
+### The email
+
+One row per matching stock: ticker, company, category, exchange, current price,
+10-day price change, volume ratio, average daily dollar volume, market cap, TTM
+cash flow, and the persistence tag.
+
+Subject line flags persistent names explicitly.
+
+### last_run_results.csv
+
+**Every ticker screened, including rejects.** This is deliberate.
+
+The `MATCH` column shows pass/fail; the metric columns show why. A rejected row
+is not a recommendation against the stock — it is a record that the screener
+evaluated it.
+
+Two reasons to keep the rejects:
+
+1. **Threshold calibration.** If every name clusters at 1.1–1.3 against a 1.50
+   bar, you would never know the bar was too high — silence looks identical to a
+   quiet market.
+2. **Bug detection.** A silently broken condition suppresses all alerts and looks
+   exactly like normal quiet operation. A market cap column returning empty was
+   caught only because the full table was printed.
+
+### Interpreting a quiet period
+
+**Most days produce zero matches, and that is correct behaviour.** All three
+conditions aligning is genuinely uncommon. A screener that fired daily would be
+worthless. Several consecutive silent days during a sector-wide selloff is the
+system reporting accurately.
+
+---
+
+## Maintenance
+
+**Weekly:** glance at the Actions tab for failed runs. A failed run sends no
+email, which is indistinguishable from "nothing qualified." GitHub emails on
+workflow failure by default.
+
+**Monthly:** review `data/tickers.csv`. Check for ticker changes, delistings, and
+new listings — especially in Neo Cloud.
+
+**Do not run locally once the workflow is live.** Both would write to
+`alerts_history.json`, desynchronising the streak record and causing merge
+conflicts. For testing code changes, set `SEND_EMAIL=false` and restore the file
+afterwards.
+
+**Sixty-day inactivity rule:** GitHub disables scheduled workflows on repos with
+no commits for 60 days. A warning email arrives first; any commit re-enables it.
+The history-commit step usually prevents this from triggering.
+
+---
+
+## Known limitations
+
+**Data source.** yfinance is an unofficial library reading Yahoo Finance's
+internal endpoints, not a supported API. Yahoo can change formats without notice,
+and heavy use triggers rate limiting. Acceptable here because the run is small
+and a missed day costs nothing.
+
+**Field naming drift.** yfinance renames fields across versions. `market_cap`
+became `marketCap` in 1.x, and cash flow row labels have changed more than once.
+`get_market_cap()` and `extract_ttm_cfo()` both check multiple variants for this
+reason.
+
+**Market cap is a live quote.** Unlike the three screening metrics, market cap
+comes from `fast_info`, which reflects real-time price including pre-market
+trading. It therefore varies between runs on identical data. Harmless while the
+market cap filter is disabled; would need fixing before enabling it.
+
+**Semi-annual reporters.** Some foreign listings and ADRs report twice yearly,
+so "last four quarters" does not exist for them. `extract_ttm_cfo()` returns
+`None` and they fail the quality gate — a false negative, not a false positive.
+
+**Lag is inherent.** By the time a flow signal is visible in public price and
+volume data, the institutions causing it are already positioned. This tool
+identifies where capital is concentrating so you know what to research. It does
+not get you in first, and it says nothing about when to exit.
+
+---
+
+## Roadmap
+
+**Monthly discovery scan.** A second workflow screening every US-listed IT and
+electrical-equipment company above $2B (~600 names) against the same three
+conditions, emailing any match **not already in `tickers.csv`**. Keeps the daily
+job fast and on-thesis while preventing tunnel vision. This is the answer to
+"how do we find names we did not think of."
+
+**Market cap floor.** `MIN_MARKET_CAP` exists and is set to `0`. Small caps like
+NLST and TSSI trip the volume metric far more often than anything else. If they
+begin dominating the alerts, set it to `2_000_000_000` — but fix the live-quote
+issue above first.
+
+**Insider buying (Form 4).** Open-market purchases by executives are among the
+highest-signal public events available, free from SEC EDGAR, filed within 2
+business days. A separate pipeline and a genuinely complementary second alert
+stream.
+
+**Close-near-high condition.** Currently the screener knows price rose but not
+*how* it rose. A stock closing near the top of its 10-day range means buyers
+absorbed the available supply; closing near the low after a rise suggests
+distribution into strength.
+
+**Full-market coverage.** If the universe ever needs to be exhaustive, Polygon's
+grouped daily endpoint returns every US ticker's OHLCV for a date in a **single
+request**, which removes the rate-limit constraint entirely.
+
+---
+
+## Disclaimer
+
+This is a research and screening tool. It identifies where trading capital is
+concentrating within a specific sector. It does not constitute investment advice,
+does not predict future prices, and cannot tell you when to exit a position.
