@@ -5,8 +5,9 @@ on:
   # Keep this forever; it's how you test without waiting a day.
   workflow_dispatch:
 
-  # Automatic schedule. Cron is ALWAYS in UTC.
-  # 21:00 UTC = 5pm ET = one hour after the US market close.
+    # 8:37 UTC = 3:37am Panama, hours before the US market opens.
+  # Early enough that GitHub's scheduling delays can't push it into
+  # a live trading session (partial daily bars distort the volume ratio).
   # Mon-Fri only; weekend runs would just re-read Friday's numbers.
   schedule:
     - cron: '37 8 * * 1-5'
