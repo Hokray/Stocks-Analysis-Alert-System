@@ -1,6 +1,6 @@
 # Significance Testing
 
-Follow-up to [BACKTEST_RESULTS.md](BACKTEST_RESULTS.md). That analysis produced
+Follow-up to [results.md](results.md). That analysis produced
 a mean excess return of +2.54pp and a persistence effect that looked promising.
 Neither number came with any measure of uncertainty.
 
