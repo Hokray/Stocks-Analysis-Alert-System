@@ -53,4 +53,4 @@ SEND_EMAIL = True         # flip to True once you've added credentials
 
 #Stock Streak Alert System
 STREAK_WINDOW_DAYS = 14        # look back this far when counting qualifying days
-PERSISTENT_STREAK_MIN = 4      # this many hits = "persistent" (green tag)
+PERSISTENT_STREAK_MIN = 8      # this many hits = "persistent" (green tag)
