@@ -15,6 +15,9 @@ pattern in the dataset and survives several checks that the base signal fails,
 but it is also not statistically confirmed. One config change follows from this;
 real confirmation requires out-of-sample data the live system is now collecting.
 
+**`PERSISTENT_STREAK_MIN` changed from 4 to 8 on 8-27-2026.** All live signals from
+this date forward constitute out-of-sample data for the prediction below.
+
 ---
 
 ## Contents
