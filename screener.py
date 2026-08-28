@@ -24,6 +24,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import config
 import notifier
+import heartbeat_monitor as monitor
 
 
 # ---------------------------------------------------------------------------
@@ -306,9 +307,25 @@ def main():
 
     df.to_csv("last_run_results.csv", index=False)
     print("\nFull results written to last_run_results.csv")
+
+    # Log every run, whether or not anything matched and whether or not
+    # email is enabled. This is what makes a skipped run distinguishable
+    # from a quiet market.
+    monitor.record_run(
+        "ok",
+        tickers_screened=len(results),
+        matches=matches.to_dict("records"),
+        near_misses=monitor.find_near_misses(df),
+    )
     if config.SEND_EMAIL:
         notifier.notify(matches.to_dict("records"))
+    
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        monitor.record_run("error", error=e)
+        monitor.send_failure_alert(e)
+        raise

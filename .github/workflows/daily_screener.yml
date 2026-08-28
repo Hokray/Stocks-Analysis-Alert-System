@@ -44,17 +44,19 @@ jobs:
           SEND_EMAIL: 'true'
         run: python screener.py
 
-      # The runner is wiped after every run, so the dedup file has to be
-      # committed back or the screener forgets what it already alerted on.
-      - name: Persist alerts history
+      # The runner is wiped after every run, so both the dedup file and the
+      # run log have to be committed back or the state is lost. if: always()
+      # means a crashed run still records that it failed.
+      - name: Persist alerts history and run log
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add alerts_history.json
+          git add alerts_history.json run_log.json
           if git diff --staged --quiet; then
-            echo "No new alerts to record."
+            echo "Nothing new to record."
           else
-            git commit -m "Update alerts history [skip ci]"
+            git commit -m "Update alerts history and run log [skip ci]"
             git push
           fi
 
