@@ -1,0 +1,40 @@
+name: Weekly Heartbeat
+
+# Confirms the screener is alive.
+#
+# Without this, an empty inbox is ambiguous: it could mean nothing qualified,
+# that GitHub skipped the scheduled runs, or that the script has been crashing
+# for weeks. This email removes that ambiguity -- if it stops arriving, the
+# automation is broken.
+
+on:
+  workflow_dispatch:
+
+  # 22:00 UTC Friday = 5pm Panama, after the week's final screener run.
+  # Scheduled runs can be many hours late, which does not matter here --
+  # the summary reads the run log, not live market data.
+  schedule:
+    - cron: '0 22 * * 5'
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send weekly summary
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python monitor.py

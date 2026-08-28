@@ -225,6 +225,13 @@ from this point forward produces exactly that — signals on dates that did not
 exist when the backtest was run, and therefore could not have been optimised
 against.
 
+
+**Out-of-sample collection start:** `PERSISTENT_STREAK_MIN` was changed from 4
+to 8 on 2026-08-27. The schedule moved from 08:37 UTC to 21:15 UTC on the same
+date, after GitHub scheduled runs were observed arriving up to 10.5 hours late —
+three early runs read partial intraday bars as a result. Clean out-of-sample
+data begins with the first evening run.
+
 The prediction to test, stated in advance:
 
 > Among live signals, those with 8+ qualifying days in the prior 14 will beat
