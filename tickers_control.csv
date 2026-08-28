@@ -1,0 +1,125 @@
+ticker,company_name,category,exchange,in_original,note
+ANET,Arista Networks,Networking and Optics,NYSE,yes,High-speed Ethernet switching
+AVGO,Broadcom,Networking and Optics,NASDAQ,yes,Switch silicon and custom accelerators
+MRVL,Marvell Technology,Networking and Optics,NASDAQ,yes,Optical DSPs and custom silicon
+ALAB,Astera Labs,Networking and Optics,NASDAQ,yes,PCIe/CXL connectivity silicon
+CRDO,Credo Technology,Networking and Optics,NASDAQ,yes,Active electrical cables and SerDes
+COHR,Coherent Corp,Networking and Optics,NYSE,yes,Optical transceivers and photonics
+LITE,Lumentum Holdings,Networking and Optics,NASDAQ,yes,Optical components and lasers
+CIEN,Ciena,Networking and Optics,NYSE,yes,Coherent optical transport
+FN,Fabrinet,Networking and Optics,NYSE,yes,Contract manufacturer for optical modules
+GLW,Corning,Networking and Optics,NYSE,yes,Optical fiber and cable
+CSCO,Cisco Systems,Networking and Optics,NASDAQ,no,Incumbent networking; slow grower
+EXTR,Extreme Networks,Networking and Optics,NASDAQ,no,Enterprise switching; minimal AI exposure
+UI,Ubiquiti,Networking and Optics,NYSE,no,Prosumer and enterprise wireless
+NTGR,NETGEAR,Networking and Optics,NASDAQ,no,Consumer networking; declining business
+CALX,Calix,Networking and Optics,NYSE,no,Broadband access for telcos
+ADTN,ADTRAN Holdings,Networking and Optics,NASDAQ,no,Telecom access equipment; struggled through period
+COMM,CommScope,Networking and Optics,NASDAQ,no,Cable and connectivity; heavy debt load
+RBBN,Ribbon Communications,Networking and Optics,NASDAQ,no,Telecom software and IP optical; small cap
+HLIT,Harmonic,Networking and Optics,NASDAQ,no,Video delivery and broadband; unrelated to AI
+VIAV,Viavi Solutions,Networking and Optics,NASDAQ,no,Network test and measurement
+AAOI,Applied Optoelectronics,Networking and Optics,NASDAQ,no,Optical transceivers; long-term underperformer
+CLFD,Clearfield,Networking and Optics,NASDAQ,no,Fiber management hardware; small cap
+OCC,Optical Cable Corp,Networking and Optics,NASDAQ,no,Fiber cable maker; micro cap
+POET,POET Technologies,Networking and Optics,NASDAQ,no,Optical interposer; pre-revenue speculative
+DGII,Digi International,Networking and Optics,NASDAQ,no,IoT connectivity; unrelated to data centers
+MU,Micron Technology,Memory and Storage,NASDAQ,yes,HBM and DRAM
+STX,Seagate Technology,Memory and Storage,NASDAQ,yes,Nearline HDDs
+WDC,Western Digital,Memory and Storage,NASDAQ,yes,Nearline HDD supplier
+SNDK,SanDisk,Memory and Storage,NASDAQ,yes,NAND flash pure play
+P,Everpure (formerly Pure Storage),Memory and Storage,NYSE,yes,All-flash enterprise arrays
+NTAP,NetApp,Memory and Storage,NASDAQ,yes,Enterprise storage and data management
+PENG,Penguin Solutions,Memory and Storage,NASDAQ,yes,Memory modules and AI systems
+SIMO,Silicon Motion,Memory and Storage,NASDAQ,yes,NAND flash controllers
+RMBS,Rambus,Memory and Storage,NASDAQ,yes,Memory interface chips and IP
+NLST,Netlist,Memory and Storage,NASDAQ,yes,Memory modules; litigation-driven
+QMCO,Quantum Corporation,Memory and Storage,NASDAQ,no,Tape and secondary storage; distressed micro cap
+MRAM,Everspin Technologies,Memory and Storage,NASDAQ,no,MRAM niche memory; small and flat
+OSS,One Stop Systems,Memory and Storage,NASDAQ,no,Edge compute and storage; micro cap
+DAIO,Data I/O Corporation,Memory and Storage,NASDAQ,no,Device programming systems; micro cap
+SMCI,Super Micro Computer,Servers and Compute,NASDAQ,yes,AI server racks
+DELL,Dell Technologies,Servers and Compute,NYSE,yes,AI server backlog
+HPE,Hewlett Packard Enterprise,Servers and Compute,NYSE,yes,AI servers and networking
+CLS,Celestica,Servers and Compute,NYSE,yes,ODM for hyperscaler hardware
+NVDA,NVIDIA,Servers and Compute,NASDAQ,yes,GPU supplier
+AMD,Advanced Micro Devices,Servers and Compute,NASDAQ,yes,Accelerators and server CPUs
+IBM,IBM,Servers and Compute,NYSE,yes,Mainframe and hybrid cloud
+JBL,Jabil,Servers and Compute,NYSE,yes,Contract manufacturing
+FLEX,Flex Ltd,Servers and Compute,NASDAQ,yes,Data center power and rack integration
+TSSI,TSS Inc,Servers and Compute,NASDAQ,yes,AI rack integration; was micro cap in 2024
+INTC,Intel,Servers and Compute,NASDAQ,no,Server CPUs; major underperformer through period
+SANM,Sanmina,Servers and Compute,NASDAQ,no,Contract manufacturer; diversified end markets
+PLXS,Plexus Corp,Servers and Compute,NASDAQ,no,Contract manufacturer; healthcare and industrial mix
+BHE,Benchmark Electronics,Servers and Compute,NYSE,no,Contract manufacturer; small cap
+TTMI,TTM Technologies,Servers and Compute,NASDAQ,no,Printed circuit boards; aerospace mix
+AVT,Avnet,Servers and Compute,NASDAQ,no,Component distributor; low margin
+ARW,Arrow Electronics,Servers and Compute,NYSE,no,Component distributor; low margin
+SNX,TD SYNNEX,Servers and Compute,NYSE,no,IT distribution; thin margins
+SCSC,ScanSource,Servers and Compute,NASDAQ,no,Technology distributor; small cap
+CNXN,PC Connection,Servers and Compute,NASDAQ,no,IT reseller; flat business
+NSIT,Insight Enterprises,Servers and Compute,NASDAQ,no,IT solutions reseller
+PLUS,ePlus Inc,Servers and Compute,NASDAQ,no,IT reseller and financing
+KD,Kyndryl Holdings,Servers and Compute,NYSE,no,IT infrastructure services spinoff
+VRT,Vertiv Holdings,Data Center Cooling,NYSE,yes,Thermal and critical power leader
+MOD,Modine Manufacturing,Data Center Cooling,NYSE,yes,Data center segment growing
+NVT,nVent Electric,Data Center Cooling,NYSE,yes,Liquid cooling and enclosures
+TT,Trane Technologies,Data Center Cooling,NYSE,yes,Chillers and thermal management
+JCI,Johnson Controls,Data Center Cooling,NYSE,yes,Building and data center cooling
+CARR,Carrier Global,Data Center Cooling,NYSE,yes,HVAC with data center segment
+LII,Lennox International,Data Center Cooling,NYSE,yes,Commercial HVAC
+AAON,AAON Inc,Data Center Cooling,NASDAQ,yes,Custom air handling units
+SPXC,SPX Technologies,Data Center Cooling,NYSE,yes,Cooling towers and thermal products
+FIX,Comfort Systems USA,Data Center Cooling,NYSE,yes,Mechanical contractor
+WTS,Watts Water Technologies,Data Center Cooling,NYSE,no,Water and flow control; residential mix
+AOS,A O Smith,Data Center Cooling,NYSE,no,Water heaters; consumer driven
+MLI,Mueller Industries,Data Center Cooling,NYSE,no,Copper tube and fittings; construction cycle
+THR,Thermon Group,Data Center Cooling,NYSE,no,Process heating; energy end markets
+IEX,IDEX Corporation,Data Center Cooling,NYSE,no,Fluid handling; diversified industrial
+GTLS,Chart Industries,Data Center Cooling,NYSE,no,Cryogenic and industrial gas equipment
+FELE,Franklin Electric,Data Center Cooling,NASDAQ,no,Water pumping systems; agricultural mix
+NPO,Enpro Inc,Data Center Cooling,NYSE,no,Sealing and engineered products
+ESE,ESCO Technologies,Data Center Cooling,NYSE,no,Filtration and test; aerospace mix
+CSWI,CSW Industrials,Data Center Cooling,NASDAQ,no,HVAC components and specialty chemicals
+ETN,Eaton Corporation,Data Center Power Supply,NYSE,yes,Switchgear busways and UPS
+GEV,GE Vernova,Data Center Power Supply,NYSE,yes,Gas turbines and grid electrification
+POWL,Powell Industries,Data Center Power Supply,NASDAQ,yes,Medium-voltage switchgear
+BE,Bloom Energy,Data Center Power Supply,NYSE,yes,On-site fuel cell power
+PWR,Quanta Services,Data Center Power Supply,NYSE,yes,Electrical infrastructure construction
+HUBB,Hubbell Inc,Data Center Power Supply,NYSE,yes,Electrical distribution components
+CAT,Caterpillar,Data Center Power Supply,NYSE,yes,Backup gensets and prime power
+EMR,Emerson Electric,Data Center Power Supply,NYSE,yes,Automation and power management
+ATKR,Atkore Inc,Data Center Power Supply,NYSE,yes,Conduit and cable management
+GNRC,Generac Holdings,Data Center Power Supply,NYSE,yes,Backup generation
+AME,AMETEK,Data Center Power Supply,NYSE,no,Electronic instruments; diversified
+ROK,Rockwell Automation,Data Center Power Supply,NYSE,no,Industrial automation; manufacturing cycle
+LFUS,Littelfuse,Data Center Power Supply,NASDAQ,no,Circuit protection; automotive exposure
+TEL,TE Connectivity,Data Center Power Supply,NYSE,no,Connectors; automotive heavy
+APH,Amphenol,Data Center Power Supply,NYSE,no,Interconnect products; broad end markets
+BDC,Belden Inc,Data Center Power Supply,NYSE,no,Signal transmission cable
+ENS,EnerSys,Data Center Power Supply,NYSE,no,Industrial batteries and backup power
+PLUG,Plug Power,Data Center Power Supply,NASDAQ,no,Hydrogen fuel cells; heavy cash burn
+FCEL,FuelCell Energy,Data Center Power Supply,NASDAQ,no,Fuel cell power; persistent losses
+VST,Vistra Corp,Data Center Power Supply,NYSE,no,Independent power producer
+CEG,Constellation Energy,Data Center Power Supply,NASDAQ,no,Nuclear generation; data center PPAs
+NRG,NRG Energy,Data Center Power Supply,NYSE,no,Power generation and retail energy
+TLN,Talen Energy,Data Center Power Supply,NASDAQ,no,Nuclear and thermal generation
+SMR,NuScale Power,Data Center Power Supply,NYSE,no,Small modular reactors; pre-revenue
+BWXT,BWX Technologies,Data Center Power Supply,NYSE,no,Nuclear components; defense heavy
+CRWV,CoreWeave,Neo Cloud,NASDAQ,yes,Benchmark public neocloud
+NBIS,Nebius Group,Neo Cloud,NASDAQ,yes,Vertically integrated AI cloud
+IREN,IREN Limited,Neo Cloud,NASDAQ,yes,Miner-to-AI pivot
+APLD,Applied Digital,Neo Cloud,NASDAQ,yes,AI data center campuses
+WULF,TeraWulf,Neo Cloud,NASDAQ,yes,Power-and-campus layer neocloud
+CIFR,Cipher Mining,Neo Cloud,NASDAQ,yes,Miner converting to AI hosting
+CORZ,Core Scientific,Neo Cloud,NASDAQ,yes,Large power footprint for AI colocation
+HUT,Hut 8 Corp,Neo Cloud,NASDAQ,yes,Power infrastructure and AI hosting
+GLXY,Galaxy Digital,Neo Cloud,NASDAQ,yes,Helios campus conversion
+BTDR,Bitdeer Technologies,Neo Cloud,NASDAQ,yes,Mining hardware and AI capacity
+MARA,MARA Holdings,Neo Cloud,NASDAQ,no,Largest bitcoin miner; limited AI pivot
+RIOT,Riot Platforms,Neo Cloud,NASDAQ,no,Bitcoin miner with power assets
+CLSK,CleanSpark,Neo Cloud,NASDAQ,no,Bitcoin miner; late AI pivot
+HIVE,HIVE Digital Technologies,Neo Cloud,NASDAQ,no,Miner with small GPU cloud segment
+BITF,Bitfarms,Neo Cloud,NASDAQ,no,Bitcoin miner; slower HPC transition
+CAN,Canaan Inc,Neo Cloud,NASDAQ,no,Mining hardware manufacturer; small cap
+GREE,Greenidge Generation,Neo Cloud,NASDAQ,no,Power plant and mining; distressed micro cap
