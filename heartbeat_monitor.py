@@ -47,9 +47,11 @@ def load_run_log():
 
 
 def save_run_log(entries):
+    """Truncate to the cap and write. Returns what was actually saved."""
     entries = entries[-MAX_LOG_ENTRIES:]
     with open(RUN_LOG_FILE, "w", encoding="utf-8") as f:
         json.dump(entries, f, indent=2)
+    return entries
 
 
 def record_run(status, tickers_screened=0, matches=None,
@@ -73,8 +75,8 @@ def record_run(status, tickers_screened=0, matches=None,
         "error": str(error)[:500] if error else None,
     })
 
-    save_run_log(entries)
-    return entries
+    saved = save_run_log(entries)
+    return saved
 
 
 def find_near_misses(results_df, top_n=3):
@@ -214,9 +216,20 @@ def build_weekly_summary(days_back=7):
             continue
 
     expected = _expected_weekdays(start, today)
-    ok_runs = [e for e in recent if e.get("status") == "ok"]
-    failed = [e for e in recent if e.get("status") == "error"]
-    ran_dates = {e["date"] for e in recent}
+
+    # Count weekday runs only, so this figure and missing_dates agree.
+    # A manual weekend run would otherwise inflate the count while the
+    # weekday it did not cover still shows as missing.
+    def _is_weekday(entry):
+        try:
+            return datetime.fromisoformat(entry["date"]).date().weekday() < 5
+        except (ValueError, KeyError):
+            return False
+
+    weekday_runs = [e for e in recent if _is_weekday(e)]
+    ok_runs = [e for e in weekday_runs if e.get("status") == "ok"]
+    failed = [e for e in weekday_runs if e.get("status") == "error"]
+    ran_dates = {e["date"] for e in weekday_runs}
 
     missing = []
     d = start
@@ -256,7 +269,7 @@ def build_weekly_summary(days_back=7):
         "start": start.isoformat(),
         "end": today.isoformat(),
         "expected_runs": expected,
-        "actual_runs": len(recent),
+        "actual_runs": len(weekday_runs),
         "ok_runs": len(ok_runs),
         "failed_runs": len(failed),
         "missing_dates": missing,
