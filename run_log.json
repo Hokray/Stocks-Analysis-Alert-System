@@ -1,0 +1,28 @@
+[
+  {
+    "timestamp": "2026-08-29T03:10:50",
+    "date": "2026-08-29",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "IBM",
+        "volume_ratio": 0.45,
+        "price_change_pct": 2.9
+      },
+      {
+        "ticker": "ATKR",
+        "volume_ratio": 0.81,
+        "price_change_pct": 0.2
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.05,
+        "price_change_pct": -3.3
+      }
+    ],
+    "error": null
+  }
+]
