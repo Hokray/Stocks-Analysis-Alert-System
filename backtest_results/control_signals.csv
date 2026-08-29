@@ -1,0 +1,907 @@
+universe,ticker,category,in_original,date,volume_ratio,persistence,fwd_pct,base_pct,excess_pct
+control,ANET,Networking and Optics,yes,2025-08-07,1.54,1,2.56,6.61,-4.05
+control,AVGO,Networking and Optics,yes,2023-12-11,1.78,1,5.47,9.11,-3.64
+control,AVGO,Networking and Optics,yes,2023-12-26,1.95,10,8.67,-3.65,12.32
+control,AVGO,Networking and Optics,yes,2024-06-13,1.56,1,2.42,7.57,-5.15
+control,AVGO,Networking and Optics,yes,2024-12-13,1.71,1,1.7,0.89,0.81
+control,AVGO,Networking and Optics,yes,2025-01-06,1.6,6,-1.87,-2.62,0.75
+control,AVGO,Networking and Optics,yes,2025-09-08,1.52,1,-2.77,22.05,-24.83
+control,MRVL,Networking and Optics,yes,2024-01-17,1.51,1,5.51,16.94,-11.44
+control,MRVL,Networking and Optics,yes,2024-03-08,1.6,1,-4.64,0.31,-4.95
+control,MRVL,Networking and Optics,yes,2024-12-04,1.74,1,0.03,1.51,-1.49
+control,MRVL,Networking and Optics,yes,2024-12-24,1.85,6,-13.43,-4.17,-9.25
+control,MRVL,Networking and Optics,yes,2025-06-26,1.55,1,-7.13,9.23,-16.35
+control,MRVL,Networking and Optics,yes,2025-09-30,1.51,1,5.29,10.13,-4.84
+control,MRVL,Networking and Optics,yes,2026-03-09,1.64,1,18.06,3.91,14.15
+control,MRVL,Networking and Optics,yes,2026-04-01,1.54,2,54.84,29.85,24.99
+control,MRVL,Networking and Optics,yes,2026-04-16,1.8,10,36.9,24.75,12.15
+control,MRVL,Networking and Optics,yes,2026-04-30,1.91,10,24.13,18.84,5.29
+control,MRVL,Networking and Optics,yes,2026-05-26,1.5,1,32.86,1.71,31.15
+control,MRVL,Networking and Optics,yes,2026-06-09,3.29,10,-8.85,-2.1,-6.75
+control,MRVL,Networking and Optics,yes,2026-06-25,2.16,5,-30.93,-12.78,-18.15
+control,ALAB,Networking and Optics,yes,2024-09-27,1.53,1,35.78,3.27,32.51
+control,ALAB,Networking and Optics,yes,2024-10-11,1.68,3,48.9,12.46,36.43
+control,ALAB,Networking and Optics,yes,2024-11-05,1.93,2,20.19,18.95,1.23
+control,ALAB,Networking and Optics,yes,2024-11-21,1.64,8,26.94,9.34,17.6
+control,ALAB,Networking and Optics,yes,2024-12-20,1.5,1,-6.39,11.15,-17.54
+control,ALAB,Networking and Optics,yes,2025-07-22,1.51,1,46.32,2.09,44.22
+control,ALAB,Networking and Optics,yes,2025-08-05,1.52,7,30.3,4.64,25.66
+control,ALAB,Networking and Optics,yes,2025-08-19,1.93,10,45.79,17.03,28.76
+control,ALAB,Networking and Optics,yes,2025-09-19,1.8,1,-34.83,7.78,-42.61
+control,ALAB,Networking and Optics,yes,2026-04-22,1.54,1,48.14,10.72,37.42
+control,ALAB,Networking and Optics,yes,2026-05-14,1.52,1,60.58,4.73,55.85
+control,ALAB,Networking and Optics,yes,2026-05-29,1.96,10,32.99,0.88,32.11
+control,ALAB,Networking and Optics,yes,2026-06-12,1.57,7,-1.46,-7.2,5.73
+control,ALAB,Networking and Optics,yes,2026-06-29,1.81,7,-42.93,-15.36,-27.56
+control,CRDO,Networking and Optics,yes,2023-11-28,1.51,1,7.07,22.22,-15.15
+control,CRDO,Networking and Optics,yes,2024-05-30,1.54,1,24.33,2.63,21.7
+control,CRDO,Networking and Optics,yes,2024-06-13,1.63,10,14.34,7.57,6.77
+control,CRDO,Networking and Optics,yes,2024-12-03,2.13,1,0.34,-0.96,1.3
+control,CRDO,Networking and Optics,yes,2024-12-24,1.73,5,-21.93,-4.17,-17.76
+control,CRDO,Networking and Optics,yes,2025-01-21,1.58,1,-11.97,-4.5,-7.47
+control,CRDO,Networking and Optics,yes,2025-06-03,1.51,1,24.26,13.33,10.94
+control,CRDO,Networking and Optics,yes,2025-06-17,1.87,10,23.51,15.18,8.33
+control,CRDO,Networking and Optics,yes,2025-07-02,1.68,10,24.82,6.01,18.81
+control,CRDO,Networking and Optics,yes,2025-09-05,1.5,1,2.17,20.17,-18.0
+control,CRDO,Networking and Optics,yes,2025-09-19,1.62,9,-15.3,7.78,-23.08
+control,CRDO,Networking and Optics,yes,2025-12-04,1.53,1,-22.49,0.13,-22.61
+control,CRDO,Networking and Optics,yes,2026-04-21,1.55,1,-7.82,9.85,-17.66
+control,CRDO,Networking and Optics,yes,2026-06-02,1.65,1,13.14,-6.41,19.55
+control,CRDO,Networking and Optics,yes,2026-06-17,1.8,5,-18.71,-14.05,-4.66
+control,COHR,Networking and Optics,yes,2024-02-06,2.08,1,11.59,13.69,-2.1
+control,COHR,Networking and Optics,yes,2024-06-05,1.54,1,11.7,4.67,7.03
+control,COHR,Networking and Optics,yes,2024-08-20,1.54,1,3.09,1.25,1.85
+control,COHR,Networking and Optics,yes,2024-09-26,1.56,1,4.64,3.44,1.2
+control,COHR,Networking and Optics,yes,2024-11-19,1.54,1,-6.64,18.18,-24.82
+control,COHR,Networking and Optics,yes,2025-02-10,1.52,1,-29.02,-18.22,-10.8
+control,COHR,Networking and Optics,yes,2025-11-07,1.55,1,20.29,-1.01,21.3
+control,COHR,Networking and Optics,yes,2025-12-12,1.55,1,6.55,6.6,-0.05
+control,COHR,Networking and Optics,yes,2026-02-06,1.63,1,10.82,-1.58,12.4
+control,COHR,Networking and Optics,yes,2026-03-02,1.6,1,-26.52,-10.93,-15.59
+control,COHR,Networking and Optics,yes,2026-03-20,1.99,1,37.01,26.57,10.45
+control,LITE,Networking and Optics,yes,2024-02-06,1.51,1,-14.46,13.69,-28.15
+control,LITE,Networking and Optics,yes,2024-08-15,1.85,1,6.74,1.7,5.04
+control,LITE,Networking and Optics,yes,2024-11-08,1.51,1,7.1,8.55,-1.45
+control,LITE,Networking and Optics,yes,2025-02-10,1.56,1,-24.26,-18.22,-6.05
+control,LITE,Networking and Optics,yes,2025-08-13,1.75,1,37.14,10.45,26.69
+control,LITE,Networking and Optics,yes,2025-09-03,1.54,2,27.8,20.42,7.38
+control,LITE,Networking and Optics,yes,2025-09-17,1.92,10,-4.14,15.7,-19.84
+control,LITE,Networking and Optics,yes,2025-11-05,1.73,1,40.86,-4.69,45.55
+control,LITE,Networking and Optics,yes,2025-11-19,1.82,10,25.36,2.42,22.95
+control,LITE,Networking and Optics,yes,2025-12-04,1.75,8,8.91,0.13,8.78
+control,LITE,Networking and Optics,yes,2026-02-05,1.56,1,10.71,2.36,8.35
+control,LITE,Networking and Optics,yes,2026-02-20,1.53,10,5.78,-4.68,10.46
+control,LITE,Networking and Optics,yes,2026-03-19,1.64,1,15.79,19.7,-3.91
+control,LITE,Networking and Optics,yes,2026-04-02,1.71,9,14.88,29.83,-14.95
+control,CIEN,Networking and Optics,yes,2024-09-27,1.52,1,3.74,3.27,0.47
+control,CIEN,Networking and Optics,yes,2024-10-11,1.63,6,5.02,12.46,-7.44
+control,CIEN,Networking and Optics,yes,2024-12-12,1.58,1,-1.23,-2.17,0.94
+control,CIEN,Networking and Optics,yes,2025-09-04,1.62,1,30.57,20.27,10.3
+control,CIEN,Networking and Optics,yes,2025-09-18,1.72,10,23.72,10.07,13.65
+control,CIEN,Networking and Optics,yes,2025-10-02,1.5,6,23.78,6.06,17.72
+control,CIEN,Networking and Optics,yes,2025-12-19,1.54,1,0.67,11.73,-11.05
+control,CIEN,Networking and Optics,yes,2026-02-06,1.95,1,17.4,-1.58,18.98
+control,FN,Networking and Optics,yes,2024-08-27,1.54,1,-7.6,5.28,-12.88
+control,FN,Networking and Optics,yes,2024-09-20,2.23,1,4.95,8.8,-3.85
+control,FN,Networking and Optics,yes,2025-08-28,1.88,1,1.08,9.86,-8.78
+control,FN,Networking and Optics,yes,2026-02-06,1.51,1,4.67,-1.58,6.25
+control,FN,Networking and Optics,yes,2026-05-13,1.54,1,-16.35,5.19,-21.54
+control,GLW,Networking and Optics,yes,2024-01-31,1.55,1,0.09,11.66,-11.56
+control,GLW,Networking and Optics,yes,2024-06-18,1.58,1,11.89,2.91,8.98
+control,GLW,Networking and Optics,yes,2024-07-08,1.73,3,-12.29,-10.93,-1.36
+control,GLW,Networking and Optics,yes,2025-02-10,1.64,1,-14.86,-18.22,3.36
+control,GLW,Networking and Optics,yes,2025-07-31,1.56,1,9.0,6.55,2.45
+control,GLW,Networking and Optics,yes,2025-09-05,1.59,1,17.38,20.17,-2.79
+control,GLW,Networking and Optics,yes,2025-09-19,2.21,10,6.2,7.78,-1.58
+control,GLW,Networking and Optics,yes,2026-01-29,1.55,1,46.27,1.97,44.31
+control,GLW,Networking and Optics,yes,2026-02-12,1.97,10,-1.63,-0.73,-0.89
+control,GLW,Networking and Optics,yes,2026-02-27,2.06,10,-9.02,-5.11,-3.91
+control,GLW,Networking and Optics,yes,2026-05-11,1.53,1,-16.0,3.02,-19.02
+control,GLW,Networking and Optics,yes,2026-06-26,1.56,1,-35.15,-11.08,-24.06
+control,CSCO,Networking and Optics,no,2025-11-19,1.65,1,-1.84,2.42,-4.25
+control,CSCO,Networking and Optics,no,2026-05-14,1.51,1,4.82,4.73,0.09
+control,EXTR,Networking and Optics,no,2024-06-28,1.59,1,3.79,1.73,2.06
+control,EXTR,Networking and Optics,no,2024-11-07,1.58,1,3.8,11.71,-7.91
+control,EXTR,Networking and Optics,no,2025-08-13,1.54,1,10.87,10.45,0.42
+control,EXTR,Networking and Optics,no,2026-04-21,1.56,1,26.08,9.85,16.24
+control,EXTR,Networking and Optics,no,2026-05-05,2.3,5,21.43,18.89,2.54
+control,UI,Networking and Optics,no,2024-05-23,1.5,1,-2.44,3.82,-6.25
+control,UI,Networking and Optics,no,2024-08-30,1.52,1,14.93,7.27,7.66
+control,UI,Networking and Optics,no,2024-11-08,1.62,1,5.32,8.55,-3.23
+control,UI,Networking and Optics,no,2024-11-22,1.79,10,-3.79,2.1,-5.89
+control,UI,Networking and Optics,no,2025-01-24,1.51,1,-25.98,-12.57,-13.42
+control,UI,Networking and Optics,no,2025-05-13,1.55,1,-12.08,8.5,-20.58
+control,UI,Networking and Optics,no,2025-08-22,1.73,1,26.04,19.0,7.04
+control,UI,Networking and Optics,no,2025-09-08,1.95,10,13.79,22.05,-8.27
+control,UI,Networking and Optics,no,2025-09-30,1.56,1,15.39,10.13,5.26
+control,UI,Networking and Optics,no,2026-04-22,1.55,1,-40.28,10.72,-51.0
+control,NTGR,Networking and Optics,no,2024-09-12,2.42,1,-4.65,10.69,-15.34
+control,NTGR,Networking and Optics,no,2024-11-12,1.52,1,4.26,9.19,-4.94
+control,NTGR,Networking and Optics,no,2024-12-20,1.52,1,2.32,11.15,-8.83
+control,NTGR,Networking and Optics,no,2025-02-11,1.56,1,-21.06,-15.24,-5.83
+control,NTGR,Networking and Optics,no,2025-05-08,1.55,1,4.53,16.77,-12.24
+control,NTGR,Networking and Optics,no,2025-10-09,1.67,1,-18.97,0.27,-19.24
+control,NTGR,Networking and Optics,no,2026-03-24,1.51,1,6.09,22.41,-16.32
+control,CALX,Networking and Optics,no,2024-07-29,1.51,1,-5.23,0.72,-5.94
+control,CALX,Networking and Optics,no,2024-11-29,1.83,1,7.25,-1.53,8.78
+control,CALX,Networking and Optics,no,2025-02-11,1.5,1,-22.2,-15.24,-6.97
+control,CALX,Networking and Optics,no,2025-04-24,1.58,1,19.82,18.41,1.41
+control,CALX,Networking and Optics,no,2025-07-24,1.59,1,3.29,-0.42,3.71
+control,CALX,Networking and Optics,no,2025-11-04,1.58,1,-16.97,-3.47,-13.5
+control,CALX,Networking and Optics,no,2026-02-12,1.72,1,-2.79,-0.73,-2.05
+control,ADTN,Networking and Optics,no,2023-12-15,1.52,1,-1.97,-2.92,0.95
+control,ADTN,Networking and Optics,no,2024-11-07,1.58,1,11.66,11.71,-0.05
+control,ADTN,Networking and Optics,no,2024-11-21,2.03,10,0.37,9.34,-8.98
+control,ADTN,Networking and Optics,no,2025-01-10,1.59,1,11.6,2.72,8.88
+control,ADTN,Networking and Optics,no,2025-02-06,1.54,1,-19.93,-14.68,-5.25
+control,ADTN,Networking and Optics,no,2025-06-30,1.61,1,6.02,7.39,-1.37
+control,ADTN,Networking and Optics,no,2026-03-24,1.51,1,35.28,22.41,12.87
+control,ADTN,Networking and Optics,no,2026-04-08,1.73,10,14.42,30.58,-16.16
+control,ADTN,Networking and Optics,no,2026-04-22,2.09,10,-14.63,10.72,-25.35
+control,ADTN,Networking and Optics,no,2026-06-04,1.55,1,-25.36,-7.83,-17.53
+control,RBBN,Networking and Optics,no,2023-12-22,1.57,1,8.62,-3.35,11.97
+control,RBBN,Networking and Optics,no,2024-02-16,1.54,1,-19.66,4.11,-23.77
+control,RBBN,Networking and Optics,no,2024-04-25,1.53,1,-2.16,8.83,-11.0
+control,RBBN,Networking and Optics,no,2024-07-24,1.57,1,-15.17,-0.32,-14.85
+control,RBBN,Networking and Optics,no,2024-10-28,1.55,1,4.61,14.59,-9.98
+control,RBBN,Networking and Optics,no,2024-11-11,1.57,9,-8.92,5.17,-14.09
+control,RBBN,Networking and Optics,no,2025-02-13,2.1,1,-21.0,-13.72,-7.28
+control,RBBN,Networking and Optics,no,2025-06-10,1.5,1,2.26,11.13,-8.86
+control,RBBN,Networking and Optics,no,2026-04-21,1.52,1,-13.07,9.85,-22.92
+control,RBBN,Networking and Optics,no,2026-05-28,1.67,1,-28.57,-0.53,-28.04
+control,HLIT,Networking and Optics,no,2024-02-02,1.8,1,-0.3,12.53,-12.83
+control,HLIT,Networking and Optics,no,2024-07-31,1.66,1,-2.8,-3.61,0.81
+control,HLIT,Networking and Optics,no,2026-05-11,1.67,1,4.52,3.02,1.5
+control,HLIT,Networking and Optics,no,2026-05-26,3.44,5,-13.96,1.71,-15.68
+control,VIAV,Networking and Optics,no,2024-11-06,1.62,1,1.56,10.97,-9.41
+control,VIAV,Networking and Optics,no,2025-01-31,1.88,1,-9.14,-13.49,4.35
+control,VIAV,Networking and Optics,no,2025-08-13,1.52,1,11.15,10.45,0.7
+control,VIAV,Networking and Optics,no,2025-10-30,1.83,1,4.91,-5.95,10.86
+control,VIAV,Networking and Optics,no,2026-01-30,1.6,1,44.52,6.07,38.45
+control,VIAV,Networking and Optics,no,2026-02-13,1.53,10,20.2,-0.44,20.64
+control,VIAV,Networking and Optics,no,2026-03-02,1.85,2,-10.01,-10.93,0.92
+control,VIAV,Networking and Optics,no,2026-03-25,1.59,1,23.83,20.29,3.53
+control,VIAV,Networking and Optics,no,2026-04-30,1.56,1,-7.33,18.84,-26.17
+control,AAOI,Networking and Optics,no,2023-11-27,1.63,1,58.47,20.59,37.89
+control,AAOI,Networking and Optics,no,2023-12-11,2.39,9,16.38,9.11,7.27
+control,AAOI,Networking and Optics,no,2023-12-26,2.05,9,-28.4,-3.65,-24.75
+control,AAOI,Networking and Optics,no,2024-09-04,1.58,1,5.77,12.49,-6.72
+control,AAOI,Networking and Optics,no,2024-10-16,1.53,1,43.7,8.16,35.54
+control,AAOI,Networking and Optics,no,2024-11-08,2.28,1,30.26,8.55,21.71
+control,AAOI,Networking and Optics,no,2024-11-22,2.17,10,-3.34,2.1,-5.44
+control,AAOI,Networking and Optics,no,2025-06-18,1.59,1,44.82,14.04,30.77
+control,AAOI,Networking and Optics,no,2025-07-03,2.11,10,-24.88,1.31,-26.19
+control,AAOI,Networking and Optics,no,2026-02-03,1.51,1,116.2,2.43,113.77
+control,AAOI,Networking and Optics,no,2026-02-27,1.8,1,16.6,-5.11,21.71
+control,AAOI,Networking and Optics,no,2026-03-13,3.43,10,58.24,17.41,40.83
+control,AAOI,Networking and Optics,no,2026-04-06,1.85,1,60.99,29.44,31.55
+control,AAOI,Networking and Optics,no,2026-04-20,1.84,10,5.99,11.42,-5.43
+control,AAOI,Networking and Optics,no,2026-05-12,1.56,1,-6.98,1.89,-8.87
+control,CLFD,Networking and Optics,no,2023-12-12,1.52,1,-1.32,7.68,-9.0
+control,CLFD,Networking and Optics,no,2024-05-09,1.56,1,7.66,5.25,2.41
+control,CLFD,Networking and Optics,no,2025-05-14,1.59,1,4.99,8.49,-3.5
+control,CLFD,Networking and Optics,no,2026-05-07,1.62,1,6.8,6.79,0.01
+control,CLFD,Networking and Optics,no,2026-05-21,3.14,10,-6.47,13.39,-19.86
+control,OCC,Networking and Optics,no,2023-12-15,2.32,1,-11.45,-2.92,-8.53
+control,OCC,Networking and Optics,no,2024-03-11,1.52,1,-11.01,1.87,-12.88
+control,OCC,Networking and Optics,no,2024-12-23,6.25,1,84.64,10.09,74.54
+control,OCC,Networking and Optics,no,2025-07-01,2.22,1,57.33,8.35,48.98
+control,OCC,Networking and Optics,no,2025-07-16,5.96,10,-1.49,6.89,-8.38
+control,OCC,Networking and Optics,no,2025-10-10,1.73,1,-25.0,4.86,-29.86
+control,OCC,Networking and Optics,no,2026-02-09,1.61,1,26.27,-2.92,29.19
+control,OCC,Networking and Optics,no,2026-03-10,1.59,1,21.18,8.53,12.65
+control,OCC,Networking and Optics,no,2026-03-24,1.82,9,33.41,22.41,11.0
+control,OCC,Networking and Optics,no,2026-04-08,1.62,10,5.69,30.58,-24.9
+control,OCC,Networking and Optics,no,2026-04-22,1.99,9,-12.82,10.72,-23.54
+control,OCC,Networking and Optics,no,2026-05-11,1.56,1,84.95,3.02,81.92
+control,OCC,Networking and Optics,no,2026-05-26,1.53,5,38.18,1.71,36.47
+control,OCC,Networking and Optics,no,2026-06-09,4.89,9,-21.89,-2.1,-19.8
+control,POET,Networking and Optics,no,2024-04-23,4.3,1,41.14,10.13,31.01
+control,POET,Networking and Optics,no,2024-05-07,5.09,10,-15.79,8.77,-24.56
+control,POET,Networking and Optics,no,2024-07-01,1.73,1,-0.72,-0.02,-0.7
+control,POET,Networking and Optics,no,2024-07-16,1.91,10,-33.68,-13.99,-19.69
+control,POET,Networking and Optics,no,2024-09-23,1.83,1,-9.09,8.25,-17.34
+control,POET,Networking and Optics,no,2024-12-05,1.61,1,28.07,3.6,24.46
+control,POET,Networking and Optics,no,2024-12-24,1.55,1,-17.71,-4.17,-13.53
+control,POET,Networking and Optics,no,2025-06-25,1.9,1,23.08,11.49,11.59
+control,POET,Networking and Optics,no,2025-07-10,3.17,10,-23.54,3.68,-27.22
+control,POET,Networking and Optics,no,2025-09-30,1.66,1,27.62,10.13,17.49
+control,POET,Networking and Optics,no,2025-10-14,4.62,10,-41.55,-0.58,-40.97
+control,POET,Networking and Optics,no,2026-04-20,1.69,1,65.42,11.42,54.01
+control,POET,Networking and Optics,no,2026-05-11,2.54,2,-22.52,3.02,-25.54
+control,DGII,Networking and Optics,no,2023-12-19,1.52,1,-7.22,-2.53,-4.69
+control,DGII,Networking and Optics,no,2025-11-24,1.57,1,7.65,5.48,2.17
+control,DGII,Networking and Optics,no,2025-12-09,1.56,10,-8.49,-2.2,-6.29
+control,DGII,Networking and Optics,no,2026-05-15,1.54,1,11.23,11.72,-0.49
+control,DGII,Networking and Optics,no,2026-06-30,1.62,1,-12.57,-21.34,8.78
+control,MU,Memory and Storage,yes,2023-12-21,1.55,1,2.54,-2.21,4.75
+control,MU,Memory and Storage,yes,2024-03-21,1.81,1,-2.71,-8.99,6.28
+control,MU,Memory and Storage,yes,2024-04-05,2.13,10,-7.19,-2.41,-4.77
+control,MU,Memory and Storage,yes,2024-10-01,1.53,1,7.97,9.3,-1.34
+control,MU,Memory and Storage,yes,2025-06-26,1.58,1,-11.62,9.23,-20.84
+control,MU,Memory and Storage,yes,2025-09-22,1.52,1,25.68,7.72,17.96
+control,MU,Memory and Storage,yes,2025-10-06,1.81,6,22.91,5.69,17.21
+control,MU,Memory and Storage,yes,2026-01-12,1.53,1,7.92,7.4,0.51
+control,MU,Memory and Storage,yes,2026-01-27,1.69,10,4.57,4.99,-0.42
+control,MU,Memory and Storage,yes,2026-05-08,1.53,1,27.11,7.5,19.61
+control,MU,Memory and Storage,yes,2026-05-26,1.74,9,17.04,1.71,15.32
+control,MU,Memory and Storage,yes,2026-06-11,1.72,8,-5.9,-6.85,0.96
+control,MU,Memory and Storage,yes,2026-06-26,1.68,6,-20.49,-11.08,-9.41
+control,STX,Memory and Storage,yes,2024-01-26,1.5,1,-1.97,11.11,-13.07
+control,STX,Memory and Storage,yes,2025-01-22,1.53,1,-5.12,-6.85,1.73
+control,STX,Memory and Storage,yes,2025-09-23,1.54,1,-5.65,7.62,-13.27
+control,STX,Memory and Storage,yes,2025-11-04,1.5,1,3.31,-3.47,6.78
+control,STX,Memory and Storage,yes,2026-01-29,1.67,1,-8.67,1.97,-10.64
+control,STX,Memory and Storage,yes,2026-04-30,1.51,1,30.6,18.84,11.77
+control,STX,Memory and Storage,yes,2026-05-14,1.87,10,15.69,4.73,10.96
+control,STX,Memory and Storage,yes,2026-06-22,1.59,1,-18.42,-13.38,-5.04
+control,WDC,Memory and Storage,yes,2024-01-25,1.63,1,-7.08,8.84,-15.92
+control,WDC,Memory and Storage,yes,2025-07-31,1.58,1,4.26,6.55,-2.29
+control,WDC,Memory and Storage,yes,2025-09-08,1.53,1,34.29,22.05,12.24
+control,WDC,Memory and Storage,yes,2025-09-22,1.56,10,8.11,7.72,0.39
+control,WDC,Memory and Storage,yes,2025-10-06,1.84,10,26.13,5.69,20.44
+control,WDC,Memory and Storage,yes,2025-11-04,1.56,1,2.24,-3.47,5.71
+control,WDC,Memory and Storage,yes,2026-01-30,1.6,1,7.93,6.07,1.86
+control,WDC,Memory and Storage,yes,2026-02-13,1.7,6,1.69,-0.44,2.14
+control,WDC,Memory and Storage,yes,2026-05-11,1.55,1,0.39,3.02,-2.63
+control,WDC,Memory and Storage,yes,2026-06-17,1.52,1,-32.99,-14.05,-18.94
+control,SNDK,Memory and Storage,yes,2025-06-17,1.55,1,-5.83,15.18,-21.0
+control,SNDK,Memory and Storage,yes,2025-09-05,1.59,1,87.32,20.17,67.16
+control,SNDK,Memory and Storage,yes,2025-09-19,2.96,10,37.13,7.78,29.35
+control,SNDK,Memory and Storage,yes,2025-10-03,3.11,10,55.23,7.3,47.93
+control,SNDK,Memory and Storage,yes,2025-10-17,1.96,10,81.34,-6.43,87.76
+control,SNDK,Memory and Storage,yes,2025-10-31,2.03,10,5.44,-8.47,13.91
+control,SNDK,Memory and Storage,yes,2025-11-14,2.81,10,-20.57,2.45,-23.03
+control,SNDK,Memory and Storage,yes,2025-12-05,1.68,1,53.03,1.78,51.25
+control,SNDK,Memory and Storage,yes,2026-01-12,1.59,1,39.14,7.4,31.74
+control,SNDK,Memory and Storage,yes,2026-01-27,1.96,10,31.35,4.99,26.36
+control,SNDK,Memory and Storage,yes,2026-02-10,2.6,10,21.01,-0.72,21.73
+control,SNDK,Memory and Storage,yes,2026-02-25,1.87,7,7.19,-0.24,7.43
+control,SNDK,Memory and Storage,yes,2026-05-08,1.54,1,5.1,7.5,-2.4
+control,P,Memory and Storage,yes,2024-03-07,1.51,1,-5.9,0.05,-5.95
+control,P,Memory and Storage,yes,2024-06-07,1.92,1,1.45,5.5,-4.06
+control,P,Memory and Storage,yes,2024-12-05,1.57,1,3.18,3.6,-0.42
+control,P,Memory and Storage,yes,2025-08-28,1.9,1,2.31,9.86,-7.55
+control,P,Memory and Storage,yes,2026-06-02,1.83,1,-7.04,-6.41,-0.63
+control,NTAP,Memory and Storage,yes,2023-11-30,1.62,1,-3.53,16.81,-20.34
+control,NTAP,Memory and Storage,yes,2024-03-01,1.53,1,-0.26,2.77,-3.02
+control,NTAP,Memory and Storage,yes,2024-06-03,1.56,1,9.18,6.02,3.16
+control,NTAP,Memory and Storage,yes,2024-11-26,1.69,1,-8.68,4.05,-12.73
+control,NTAP,Memory and Storage,yes,2025-09-08,1.55,1,-0.19,22.05,-22.24
+control,NTAP,Memory and Storage,yes,2026-05-26,1.6,1,11.95,1.71,10.24
+control,NTAP,Memory and Storage,yes,2026-06-09,2.48,10,4.08,-2.1,6.17
+control,PENG,Memory and Storage,yes,2024-01-16,1.62,1,1.17,9.58,-8.41
+control,PENG,Memory and Storage,yes,2024-03-21,1.79,1,-35.67,-8.99,-26.67
+control,PENG,Memory and Storage,yes,2024-07-10,1.75,1,-36.22,-12.43,-23.79
+control,PENG,Memory and Storage,yes,2025-07-08,1.65,1,9.16,5.13,4.02
+control,PENG,Memory and Storage,yes,2025-07-22,2.02,10,-1.47,2.09,-3.57
+control,PENG,Memory and Storage,yes,2026-04-13,1.59,1,78.59,26.3,52.28
+control,PENG,Memory and Storage,yes,2026-04-27,1.76,8,89.16,20.66,68.49
+control,PENG,Memory and Storage,yes,2026-05-11,2.86,10,41.69,3.02,38.66
+control,PENG,Memory and Storage,yes,2026-05-26,2.85,10,17.78,1.71,16.07
+control,PENG,Memory and Storage,yes,2026-06-09,2.13,10,31.93,-2.1,34.03
+control,PENG,Memory and Storage,yes,2026-06-30,1.61,2,-42.51,-21.34,-21.16
+control,SIMO,Memory and Storage,yes,2024-02-08,1.6,1,6.42,10.08,-3.65
+control,SIMO,Memory and Storage,yes,2025-02-18,1.66,1,-7.91,-15.61,7.7
+control,SIMO,Memory and Storage,yes,2025-05-20,1.51,1,9.82,6.52,3.3
+control,SIMO,Memory and Storage,yes,2025-09-24,1.52,1,-0.27,4.54,-4.82
+control,SIMO,Memory and Storage,yes,2025-11-05,1.61,1,-7.3,-4.69,-2.61
+control,SIMO,Memory and Storage,yes,2026-01-07,1.54,1,4.17,1.95,2.22
+control,SIMO,Memory and Storage,yes,2026-02-04,1.83,1,-3.22,3.67,-6.89
+control,SIMO,Memory and Storage,yes,2026-04-29,1.98,1,30.12,23.53,6.59
+control,SIMO,Memory and Storage,yes,2026-05-13,2.63,10,1.66,5.19,-3.53
+control,SIMO,Memory and Storage,yes,2026-06-02,1.94,5,5.21,-6.41,11.62
+control,RMBS,Memory and Storage,yes,2023-12-21,2.37,1,6.2,-2.21,8.41
+control,RMBS,Memory and Storage,yes,2025-02-10,1.64,1,-23.25,-18.22,-5.04
+control,RMBS,Memory and Storage,yes,2025-07-29,1.71,1,2.57,4.42,-1.85
+control,RMBS,Memory and Storage,yes,2025-09-11,1.67,1,11.45,15.46,-4.01
+control,RMBS,Memory and Storage,yes,2025-09-25,2.67,9,0.84,9.66,-8.81
+control,RMBS,Memory and Storage,yes,2026-01-23,1.5,1,-17.38,3.21,-20.59
+control,NLST,Memory and Storage,yes,2024-05-20,1.5,1,-13.86,5.97,-19.83
+control,NLST,Memory and Storage,yes,2024-10-31,1.54,1,-5.71,20.62,-26.33
+control,NLST,Memory and Storage,yes,2025-03-12,1.63,1,-20.97,-7.14,-13.83
+control,NLST,Memory and Storage,yes,2025-04-02,1.57,5,-10.31,0.28,-10.59
+control,NLST,Memory and Storage,yes,2025-06-23,1.56,1,-39.81,12.97,-52.77
+control,NLST,Memory and Storage,yes,2025-10-02,1.54,1,-31.91,6.06,-37.98
+control,NLST,Memory and Storage,yes,2026-01-08,1.57,1,8.33,10.06,-1.72
+control,NLST,Memory and Storage,yes,2026-01-23,2.0,10,-13.28,3.21,-16.49
+control,NLST,Memory and Storage,yes,2026-03-16,1.59,1,-6.06,16.92,-22.98
+control,NLST,Memory and Storage,yes,2026-04-24,1.5,1,28.89,15.02,13.87
+control,NLST,Memory and Storage,yes,2026-05-08,2.6,10,-2.32,7.5,-9.82
+control,QMCO,Memory and Storage,no,2023-12-14,1.59,1,-20.0,-1.38,-18.62
+control,QMCO,Memory and Storage,no,2024-02-14,3.12,1,-7.35,2.24,-9.59
+control,QMCO,Memory and Storage,no,2024-06-17,3.08,1,-47.44,5.8,-53.24
+control,QMCO,Memory and Storage,no,2024-10-25,1.5,1,84.07,14.89,69.18
+control,QMCO,Memory and Storage,no,2024-11-22,6.14,1,415.22,2.1,413.13
+control,QMCO,Memory and Storage,no,2024-12-09,4.83,10,97.8,-1.24,99.04
+control,QMCO,Memory and Storage,no,2024-12-23,3.84,6,-30.76,10.09,-40.86
+control,QMCO,Memory and Storage,no,2025-05-20,1.57,1,-25.27,6.52,-31.79
+control,QMCO,Memory and Storage,no,2025-09-19,3.35,1,-13.38,7.78,-21.16
+control,QMCO,Memory and Storage,no,2025-10-07,2.04,8,-36.4,2.42,-38.82
+control,QMCO,Memory and Storage,no,2026-05-06,1.55,1,57.33,12.91,44.42
+control,QMCO,Memory and Storage,no,2026-05-29,1.62,2,22.04,0.88,21.16
+control,QMCO,Memory and Storage,no,2026-06-12,3.75,10,-26.78,-7.2,-19.59
+control,MRAM,Memory and Storage,no,2024-07-03,2.25,1,-6.22,-2.39,-3.83
+control,MRAM,Memory and Storage,no,2025-06-30,2.75,1,1.27,7.39,-6.12
+control,MRAM,Memory and Storage,no,2025-09-18,1.56,1,33.68,10.07,23.62
+control,MRAM,Memory and Storage,no,2025-10-02,2.29,10,0.1,6.06,-5.97
+control,MRAM,Memory and Storage,no,2026-01-08,1.65,1,-7.85,10.06,-17.91
+control,MRAM,Memory and Storage,no,2026-01-23,3.65,10,-24.03,3.21,-27.24
+control,MRAM,Memory and Storage,no,2026-04-30,3.27,1,44.31,18.84,25.47
+control,MRAM,Memory and Storage,no,2026-05-14,5.41,10,-39.92,4.73,-44.65
+control,OSS,Memory and Storage,no,2024-01-30,1.73,1,63.33,9.39,53.94
+control,OSS,Memory and Storage,no,2024-02-15,1.99,1,43.91,2.62,41.29
+control,OSS,Memory and Storage,no,2024-03-01,4.99,10,-6.73,2.77,-9.49
+control,OSS,Memory and Storage,no,2024-03-15,1.81,7,-26.54,-3.55,-22.99
+control,OSS,Memory and Storage,no,2024-06-21,1.65,1,-9.38,6.36,-15.73
+control,OSS,Memory and Storage,no,2024-08-27,1.98,1,-18.99,5.28,-24.27
+control,OSS,Memory and Storage,no,2024-12-06,1.58,1,34.7,-0.52,35.22
+control,OSS,Memory and Storage,no,2024-12-20,1.81,4,27.42,11.15,16.27
+control,OSS,Memory and Storage,no,2025-01-07,2.33,9,14.4,-0.7,15.11
+control,OSS,Memory and Storage,no,2025-01-23,2.35,7,-0.76,-10.48,9.72
+control,OSS,Memory and Storage,no,2025-02-10,1.77,5,-40.55,-18.22,-22.33
+control,OSS,Memory and Storage,no,2025-06-04,1.78,1,30.72,13.52,17.2
+control,OSS,Memory and Storage,no,2025-06-18,4.11,10,28.82,14.04,14.78
+control,OSS,Memory and Storage,no,2025-07-11,1.74,2,11.86,5.3,6.56
+control,OSS,Memory and Storage,no,2025-07-28,2.26,9,8.27,2.35,5.93
+control,OSS,Memory and Storage,no,2025-08-28,1.6,1,-11.22,9.86,-21.08
+control,OSS,Memory and Storage,no,2025-09-23,1.56,1,-15.36,7.62,-22.98
+control,OSS,Memory and Storage,no,2025-12-10,1.53,1,4.4,-2.1,6.49
+control,OSS,Memory and Storage,no,2026-01-07,1.76,1,2.29,1.95,0.33
+control,OSS,Memory and Storage,no,2026-01-22,4.38,10,-14.29,3.1,-17.38
+control,OSS,Memory and Storage,no,2026-05-06,2.03,1,23.29,12.91,10.38
+control,DAIO,Memory and Storage,no,2024-11-04,1.82,1,2.7,20.43,-17.73
+control,DAIO,Memory and Storage,no,2024-12-10,1.88,1,-2.1,-0.89,-1.21
+control,DAIO,Memory and Storage,no,2025-06-26,1.88,1,9.54,9.23,0.31
+control,DAIO,Memory and Storage,no,2025-07-29,1.84,1,-11.95,4.42,-16.37
+control,DAIO,Memory and Storage,no,2026-04-16,1.95,1,11.49,24.75,-13.26
+control,DAIO,Memory and Storage,no,2026-05-14,1.52,1,38.49,4.73,33.76
+control,DAIO,Memory and Storage,no,2026-05-29,3.78,10,-6.15,0.88,-7.03
+control,SMCI,Servers and Compute,yes,2024-01-19,2.11,1,89.75,13.25,76.5
+control,SMCI,Servers and Compute,yes,2024-02-02,3.16,10,85.35,12.53,72.82
+control,SMCI,Servers and Compute,yes,2024-02-16,3.56,10,24.57,4.11,20.46
+control,SMCI,Servers and Compute,yes,2024-03-04,2.19,7,-6.0,0.27,-6.27
+control,SMCI,Servers and Compute,yes,2024-12-02,1.63,1,-27.43,-1.84,-25.59
+control,SMCI,Servers and Compute,yes,2025-02-14,1.52,1,-12.46,-12.86,0.4
+control,SMCI,Servers and Compute,yes,2026-05-14,1.52,1,-7.78,4.73,-12.51
+control,SMCI,Servers and Compute,yes,2026-06-01,1.51,2,-37.44,1.76,-39.2
+control,SMCI,Servers and Compute,yes,2026-06-25,1.73,1,-4.99,-12.78,7.79
+control,DELL,Servers and Compute,yes,2024-02-29,1.59,1,20.55,6.32,14.23
+control,DELL,Servers and Compute,yes,2024-03-14,3.2,10,10.62,-1.03,11.66
+control,DELL,Servers and Compute,yes,2024-04-09,1.53,1,3.49,-0.36,3.84
+control,DELL,Servers and Compute,yes,2024-05-28,1.5,1,-16.76,1.15,-17.91
+control,DELL,Servers and Compute,yes,2024-06-20,1.6,1,-15.3,3.21,-18.51
+control,DELL,Servers and Compute,yes,2025-10-08,1.69,1,-7.04,3.17,-10.21
+control,DELL,Servers and Compute,yes,2026-03-02,1.55,1,7.24,-10.93,18.17
+control,DELL,Servers and Compute,yes,2026-03-25,1.52,2,15.64,20.29,-4.65
+control,DELL,Servers and Compute,yes,2026-05-28,1.55,1,26.0,-0.53,26.53
+control,DELL,Servers and Compute,yes,2026-06-11,2.64,10,9.11,-6.85,15.96
+control,HPE,Servers and Compute,yes,2024-03-05,1.6,1,1.23,3.04,-1.81
+control,HPE,Servers and Compute,yes,2024-06-05,1.85,1,6.13,4.67,1.46
+control,HPE,Servers and Compute,yes,2024-06-20,1.72,10,-4.66,3.21,-7.86
+control,HPE,Servers and Compute,yes,2024-09-19,1.78,1,11.09,9.32,1.77
+control,HPE,Servers and Compute,yes,2025-07-10,1.56,1,-4.18,3.68,-7.86
+control,HPE,Servers and Compute,yes,2025-09-04,1.56,1,6.26,20.27,-14.01
+control,HPE,Servers and Compute,yes,2025-10-30,1.67,1,-10.41,-5.95,-4.46
+control,HPE,Servers and Compute,yes,2026-05-29,1.77,1,3.48,0.88,2.6
+control,HPE,Servers and Compute,yes,2026-06-12,3.09,10,3.19,-7.2,10.38
+control,CLS,Servers and Compute,yes,2024-01-30,1.72,1,24.36,9.39,14.97
+control,CLS,Servers and Compute,yes,2024-02-13,1.78,10,20.08,7.79,12.29
+control,CLS,Servers and Compute,yes,2024-03-13,1.53,1,2.2,0.22,1.98
+control,CLS,Servers and Compute,yes,2024-10-24,1.67,1,34.59,11.35,23.24
+control,CLS,Servers and Compute,yes,2024-11-07,1.63,10,11.17,11.71,-0.54
+control,CLS,Servers and Compute,yes,2025-01-22,1.57,1,1.42,-6.85,8.27
+control,CLS,Servers and Compute,yes,2025-02-05,2.81,5,-43.19,-15.92,-27.27
+control,CLS,Servers and Compute,yes,2025-07-29,1.68,1,-1.67,4.42,-6.09
+control,CLS,Servers and Compute,yes,2025-11-07,1.56,1,5.79,-1.01,6.81
+control,NVDA,Servers and Compute,yes,2024-02-14,1.51,1,19.01,2.24,16.77
+control,NVDA,Servers and Compute,yes,2024-02-29,1.57,8,14.22,6.32,7.9
+control,NVDA,Servers and Compute,yes,2024-03-14,1.7,9,0.28,-1.03,1.31
+control,AMD,Servers and Compute,yes,2023-12-14,1.53,1,15.03,-1.38,16.41
+control,AMD,Servers and Compute,yes,2024-01-18,1.52,1,8.66,17.22,-8.56
+control,AMD,Servers and Compute,yes,2025-06-23,1.56,1,19.4,12.97,6.43
+control,AMD,Servers and Compute,yes,2025-08-01,1.53,1,-5.28,7.59,-12.87
+control,AMD,Servers and Compute,yes,2025-10-08,1.53,1,8.82,3.17,5.65
+control,AMD,Servers and Compute,yes,2026-04-27,1.56,1,50.58,20.66,29.92
+control,AMD,Servers and Compute,yes,2026-05-11,1.94,10,3.64,3.02,0.62
+control,IBM,Servers and Compute,yes,2024-01-25,1.77,1,-1.58,8.84,-10.42
+control,IBM,Servers and Compute,yes,2024-09-20,1.52,1,6.66,8.8,-2.14
+control,IBM,Servers and Compute,yes,2025-01-31,1.52,1,-1.5,-13.49,11.98
+control,IBM,Servers and Compute,yes,2025-10-27,1.53,1,-2.33,-10.73,8.4
+control,IBM,Servers and Compute,yes,2026-05-27,1.54,1,1.2,2.71,-1.5
+control,JBL,Servers and Compute,yes,2023-12-15,2.19,1,-8.58,-2.92,-5.65
+control,JBL,Servers and Compute,yes,2024-09-26,1.53,1,-1.28,3.44,-4.72
+control,JBL,Servers and Compute,yes,2024-12-23,1.7,1,18.99,10.09,8.89
+control,JBL,Servers and Compute,yes,2025-06-17,1.53,1,12.87,15.18,-2.31
+control,JBL,Servers and Compute,yes,2025-07-02,1.86,10,0.58,6.01,-5.43
+control,FLEX,Servers and Compute,yes,2024-09-20,2.19,1,5.98,8.8,-2.82
+control,FLEX,Servers and Compute,yes,2025-06-27,1.89,1,1.2,9.62,-8.42
+control,FLEX,Servers and Compute,yes,2025-12-08,1.62,1,-9.15,-0.65,-8.5
+control,FLEX,Servers and Compute,yes,2026-05-06,2.04,1,18.39,12.91,5.48
+control,FLEX,Servers and Compute,yes,2026-06-01,1.71,3,9.5,1.76,7.74
+control,FLEX,Servers and Compute,yes,2026-06-25,2.41,1,-26.52,-12.78,-13.74
+control,TSSI,Servers and Compute,yes,2023-11-27,1.7,1,-17.95,20.59,-38.54
+control,TSSI,Servers and Compute,yes,2024-01-09,3.18,1,-16.13,2.32,-18.45
+control,TSSI,Servers and Compute,yes,2024-02-15,2.12,1,71.43,2.62,68.81
+control,TSSI,Servers and Compute,yes,2024-03-01,2.16,10,22.45,2.77,19.68
+control,TSSI,Servers and Compute,yes,2024-03-26,1.57,1,50.91,-3.71,54.62
+control,TSSI,Servers and Compute,yes,2024-04-17,1.69,5,85.51,13.42,72.09
+control,TSSI,Servers and Compute,yes,2024-05-01,2.0,10,195.06,13.4,181.67
+control,TSSI,Servers and Compute,yes,2024-05-15,2.72,7,60.16,6.69,53.46
+control,TSSI,Servers and Compute,yes,2024-05-30,3.81,10,-8.37,2.63,-11.0
+control,TSSI,Servers and Compute,yes,2024-07-11,1.53,1,-20.47,-9.45,-11.02
+control,TSSI,Servers and Compute,yes,2024-08-16,1.73,1,39.47,1.05,38.43
+control,TSSI,Servers and Compute,yes,2024-08-30,3.03,10,48.85,7.27,41.58
+control,TSSI,Servers and Compute,yes,2024-09-25,1.52,1,-13.92,4.55,-18.46
+control,TSSI,Servers and Compute,yes,2024-11-13,1.73,1,-16.87,10.21,-27.08
+control,TSSI,Servers and Compute,yes,2024-12-02,2.55,1,7.72,-1.84,9.56
+control,TSSI,Servers and Compute,yes,2025-01-02,1.6,1,1.9,0.02,1.88
+control,TSSI,Servers and Compute,yes,2025-01-24,1.52,1,-25.63,-12.57,-13.07
+control,TSSI,Servers and Compute,yes,2025-05-16,3.42,1,39.9,6.62,33.28
+control,TSSI,Servers and Compute,yes,2025-06-03,1.83,9,86.92,13.33,73.6
+control,TSSI,Servers and Compute,yes,2025-06-17,2.05,10,-1.15,15.18,-16.32
+control,TSSI,Servers and Compute,yes,2025-07-02,2.19,10,-3.89,6.01,-9.89
+control,TSSI,Servers and Compute,yes,2026-03-11,2.11,1,9.88,8.98,0.91
+control,TSSI,Servers and Compute,yes,2026-03-25,1.61,10,18.44,20.29,-1.85
+control,TSSI,Servers and Compute,yes,2026-04-23,1.55,1,-26.65,14.47,-41.11
+control,INTC,Servers and Compute,no,2024-09-26,1.53,1,-6.61,3.44,-10.05
+control,INTC,Servers and Compute,no,2025-02-14,1.5,1,8.86,-12.86,21.72
+control,INTC,Servers and Compute,no,2025-08-18,1.62,1,6.8,13.37,-6.56
+control,INTC,Servers and Compute,no,2025-09-23,1.55,1,29.93,7.62,22.3
+control,INTC,Servers and Compute,no,2025-10-07,1.84,10,-0.38,2.42,-2.79
+control,INTC,Servers and Compute,no,2026-01-15,1.53,1,-3.17,3.51,-6.67
+control,INTC,Servers and Compute,no,2026-04-24,1.65,1,45.19,15.02,30.17
+control,INTC,Servers and Compute,no,2026-05-08,2.44,10,-11.73,7.5,-19.23
+control,SANM,Servers and Compute,no,2024-01-30,1.84,1,-3.93,9.39,-13.32
+control,SANM,Servers and Compute,no,2024-11-07,1.52,1,-5.84,11.71,-17.55
+control,SANM,Servers and Compute,no,2025-02-10,1.68,1,-15.94,-18.22,2.28
+control,SANM,Servers and Compute,no,2025-07-29,1.99,1,-4.59,4.42,-9.0
+control,SANM,Servers and Compute,no,2025-10-08,1.51,1,31.99,3.17,28.82
+control,SANM,Servers and Compute,no,2025-11-12,1.5,1,4.02,3.93,0.09
+control,SANM,Servers and Compute,no,2026-04-28,1.76,1,21.52,25.17,-3.65
+control,SANM,Servers and Compute,no,2026-05-12,1.75,10,-1.92,1.89,-3.8
+control,SANM,Servers and Compute,no,2026-06-25,1.92,1,-17.8,-12.78,-5.02
+control,PLXS,Servers and Compute,no,2024-07-26,1.52,1,-1.39,0.29,-1.68
+control,PLXS,Servers and Compute,no,2024-11-04,1.63,1,12.92,20.43,-7.51
+control,PLXS,Servers and Compute,no,2026-01-21,1.62,1,8.33,2.69,5.65
+control,PLXS,Servers and Compute,no,2026-02-04,2.24,9,-2.51,3.67,-6.18
+control,BHE,Servers and Compute,no,2023-12-20,1.56,1,-3.34,0.49,-3.83
+control,BHE,Servers and Compute,no,2024-02-01,1.6,1,5.57,12.58,-7.01
+control,BHE,Servers and Compute,no,2024-05-09,1.53,1,1.71,5.25,-3.54
+control,BHE,Servers and Compute,no,2025-03-24,2.11,1,-13.32,-16.24,2.92
+control,BHE,Servers and Compute,no,2026-02-10,1.53,1,-5.96,-0.72,-5.23
+control,BHE,Servers and Compute,no,2026-03-24,1.67,1,11.08,22.41,-11.33
+control,BHE,Servers and Compute,no,2026-04-30,1.55,1,2.94,18.84,-15.9
+control,BHE,Servers and Compute,no,2026-06-25,1.52,1,-16.41,-12.78,-3.63
+control,TTMI,Servers and Compute,no,2024-02-12,1.63,1,-10.18,4.29,-14.47
+control,TTMI,Servers and Compute,no,2024-05-10,1.56,1,0.16,7.15,-6.99
+control,TTMI,Servers and Compute,no,2024-07-17,1.51,1,-15.25,-10.7,-4.55
+control,TTMI,Servers and Compute,no,2024-11-12,1.51,1,0.72,9.19,-8.48
+control,TTMI,Servers and Compute,no,2025-02-11,1.7,1,-16.57,-15.24,-1.33
+control,TTMI,Servers and Compute,no,2025-05-12,1.57,1,25.22,11.57,13.66
+control,TTMI,Servers and Compute,no,2025-06-04,1.51,2,35.99,13.52,22.47
+control,TTMI,Servers and Compute,no,2025-06-18,2.12,10,21.8,14.04,7.76
+control,TTMI,Servers and Compute,no,2025-07-03,2.19,9,-1.54,1.31,-2.86
+control,TTMI,Servers and Compute,no,2025-07-21,2.08,9,-11.9,4.33,-16.24
+control,TTMI,Servers and Compute,no,2025-11-06,1.5,1,8.27,-1.96,10.23
+control,TTMI,Servers and Compute,no,2026-01-15,1.59,1,-9.02,3.51,-12.53
+control,TTMI,Servers and Compute,no,2026-02-03,2.11,6,-2.26,2.43,-4.69
+control,TTMI,Servers and Compute,no,2026-04-30,1.57,1,9.8,18.84,-9.04
+control,TTMI,Servers and Compute,no,2026-05-14,1.54,9,12.91,4.73,8.17
+control,TTMI,Servers and Compute,no,2026-06-02,1.87,4,0.04,-6.41,6.45
+control,AVT,Servers and Compute,no,2026-01-28,1.71,1,10.32,2.42,7.9
+control,AVT,Servers and Compute,no,2026-02-11,2.08,10,-8.69,-3.36,-5.34
+control,AVT,Servers and Compute,no,2026-04-30,1.65,1,5.36,18.84,-13.48
+control,ARW,Servers and Compute,no,2026-02-04,1.57,1,3.72,3.67,0.06
+control,ARW,Servers and Compute,no,2026-02-19,1.98,10,-8.65,-0.0,-8.65
+control,ARW,Servers and Compute,no,2026-05-11,1.76,1,8.31,3.02,5.29
+control,SNX,Servers and Compute,no,2024-03-28,1.73,1,4.2,-4.2,8.4
+control,SNX,Servers and Compute,no,2025-01-22,1.51,1,1.58,-6.85,8.43
+control,SNX,Servers and Compute,no,2025-06-30,1.81,1,9.86,7.39,2.47
+control,SNX,Servers and Compute,no,2025-09-26,1.8,1,-5.53,13.26,-18.79
+control,SNX,Servers and Compute,no,2026-04-01,1.5,1,22.77,29.85,-7.08
+control,SNX,Servers and Compute,no,2026-04-16,1.55,10,12.25,24.75,-12.5
+control,SNX,Servers and Compute,no,2026-06-09,1.51,1,-8.3,-2.1,-6.2
+control,SCSC,Servers and Compute,no,2023-12-08,1.57,1,3.66,7.47,-3.81
+control,SCSC,Servers and Compute,no,2023-12-22,2.44,9,-1.61,-3.35,1.74
+control,SCSC,Servers and Compute,no,2024-09-25,1.56,1,-3.93,4.55,-8.48
+control,SCSC,Servers and Compute,no,2025-08-22,1.64,1,-1.39,19.0,-20.39
+control,CNXN,Servers and Compute,no,2023-12-14,1.59,1,-4.77,-1.38,-3.38
+control,CNXN,Servers and Compute,no,2024-09-20,1.63,1,-2.99,8.8,-11.79
+control,CNXN,Servers and Compute,no,2026-02-09,1.56,1,-8.78,-2.92,-5.86
+control,CNXN,Servers and Compute,no,2026-06-03,1.5,1,2.94,-10.55,13.5
+control,CNXN,Servers and Compute,no,2026-07-07,1.69,1,16.81,2.15,14.66
+control,NSIT,Servers and Compute,no,2023-12-08,1.56,1,3.09,7.47,-4.39
+control,NSIT,Servers and Compute,no,2026-05-08,1.69,1,31.45,7.5,23.94
+control,NSIT,Servers and Compute,no,2026-06-04,1.54,2,-5.99,-7.83,1.84
+control,PLUS,Servers and Compute,no,2023-12-18,1.5,1,-1.27,-3.15,1.89
+control,PLUS,Servers and Compute,no,2024-09-27,1.53,1,-1.24,3.27,-4.51
+control,KD,Servers and Compute,no,2024-05-08,1.56,1,-0.15,7.32,-7.47
+control,KD,Servers and Compute,no,2024-11-07,1.54,1,25.26,11.71,13.55
+control,KD,Servers and Compute,no,2024-11-21,2.0,10,6.22,9.34,-3.13
+control,KD,Servers and Compute,no,2026-02-24,1.69,1,6.09,-0.83,6.92
+control,VRT,Data Center Cooling,yes,2023-12-08,1.51,1,4.33,7.47,-3.15
+control,VRT,Data Center Cooling,yes,2024-02-06,1.6,1,21.77,13.69,8.08
+control,VRT,Data Center Cooling,yes,2024-02-27,1.71,3,24.79,3.86,20.93
+control,VRT,Data Center Cooling,yes,2024-03-18,1.5,2,6.77,-3.46,10.23
+control,VRT,Data Center Cooling,yes,2024-04-26,1.58,1,13.56,10.82,2.74
+control,VRT,Data Center Cooling,yes,2025-08-01,1.56,1,-9.92,7.59,-17.5
+control,VRT,Data Center Cooling,yes,2025-10-23,1.52,1,-12.88,-12.52,-0.35
+control,VRT,Data Center Cooling,yes,2026-02-13,1.53,1,12.88,-0.44,13.33
+control,VRT,Data Center Cooling,yes,2026-03-09,1.56,3,-0.75,3.91,-4.66
+control,MOD,Data Center Cooling,yes,2024-01-31,1.8,1,29.85,11.66,18.19
+control,MOD,Data Center Cooling,yes,2024-02-26,1.51,3,12.85,5.28,7.56
+control,MOD,Data Center Cooling,yes,2024-03-20,1.51,2,-15.39,-6.31,-9.08
+control,MOD,Data Center Cooling,yes,2025-07-31,1.75,1,5.85,6.55,-0.7
+control,MOD,Data Center Cooling,yes,2026-02-03,1.6,1,5.24,2.43,2.81
+control,MOD,Data Center Cooling,yes,2026-02-18,1.53,10,-7.87,-0.33,-7.54
+control,MOD,Data Center Cooling,yes,2026-06-02,1.76,1,-20.33,-6.41,-13.93
+control,NVT,Data Center Cooling,yes,2024-02-07,1.7,1,9.11,13.19,-4.08
+control,NVT,Data Center Cooling,yes,2024-05-09,1.55,1,-6.25,5.25,-11.5
+control,NVT,Data Center Cooling,yes,2025-02-10,1.67,1,-20.06,-18.22,-1.85
+control,NVT,Data Center Cooling,yes,2025-08-04,1.56,1,-1.12,3.97,-5.09
+control,NVT,Data Center Cooling,yes,2025-11-03,1.53,1,-6.23,-8.47,2.24
+control,TT,Data Center Cooling,yes,2024-02-08,1.52,1,5.84,10.08,-4.24
+control,TT,Data Center Cooling,yes,2026-01-30,1.53,1,10.84,6.07,4.77
+control,JCI,Data Center Cooling,yes,2023-12-27,1.63,1,-1.89,-4.21,2.32
+control,JCI,Data Center Cooling,yes,2025-02-06,1.73,1,-9.02,-14.68,5.66
+control,CARR,Data Center Cooling,yes,2024-03-06,1.66,1,-3.24,-0.12,-3.12
+control,CARR,Data Center Cooling,yes,2026-02-05,1.53,1,-7.53,2.36,-9.89
+control,AAON,Data Center Cooling,yes,2023-12-15,1.52,1,-1.56,-2.92,1.36
+control,AAON,Data Center Cooling,yes,2024-06-28,1.75,1,0.25,1.73,-1.48
+control,AAON,Data Center Cooling,yes,2024-11-07,1.5,1,15.31,11.71,3.6
+control,AAON,Data Center Cooling,yes,2024-11-21,1.64,10,-8.38,9.34,-17.72
+control,AAON,Data Center Cooling,yes,2025-08-13,1.78,1,-6.48,10.45,-16.92
+control,AAON,Data Center Cooling,yes,2026-05-07,1.92,1,2.68,6.79,-4.11
+control,SPXC,Data Center Cooling,yes,2023-12-15,1.62,1,2.4,-2.92,5.32
+control,SPXC,Data Center Cooling,yes,2024-02-28,1.85,1,4.31,6.44,-2.13
+control,SPXC,Data Center Cooling,yes,2025-08-05,1.56,1,-10.34,4.64,-14.98
+control,SPXC,Data Center Cooling,yes,2025-11-10,1.61,1,-6.94,-1.65,-5.29
+control,FIX,Data Center Cooling,yes,2023-12-18,2.48,1,0.73,-3.15,3.89
+control,FIX,Data Center Cooling,yes,2024-03-04,1.52,1,-1.85,0.27,-2.13
+control,FIX,Data Center Cooling,yes,2024-11-07,1.68,1,12.22,11.71,0.51
+control,FIX,Data Center Cooling,yes,2025-07-29,1.55,1,2.94,4.42,-1.48
+control,FIX,Data Center Cooling,yes,2025-10-30,1.5,1,1.48,-5.95,7.43
+control,FIX,Data Center Cooling,yes,2025-11-28,1.7,1,-2.69,-1.55,-1.14
+control,FIX,Data Center Cooling,yes,2026-01-02,1.91,1,17.2,9.11,8.09
+control,WTS,Data Center Cooling,no,2025-08-12,1.7,1,2.29,9.32,-7.04
+control,WTS,Data Center Cooling,no,2026-02-13,1.56,1,-8.3,-0.44,-7.85
+control,WTS,Data Center Cooling,no,2026-06-18,1.52,1,-0.98,-16.11,15.13
+control,WTS,Data Center Cooling,no,2026-07-06,2.15,10,-5.15,-5.93,0.78
+control,AOS,Data Center Cooling,no,2026-02-04,1.59,1,-8.1,3.67,-11.77
+control,MLI,Data Center Cooling,no,2023-12-19,1.53,1,-0.88,-2.53,1.65
+control,MLI,Data Center Cooling,no,2024-09-20,1.58,1,-0.45,8.8,-9.25
+control,MLI,Data Center Cooling,no,2025-06-30,2.6,1,10.63,7.39,3.24
+control,IEX,Data Center Cooling,no,2024-09-24,1.53,1,-1.84,5.63,-7.47
+control,IEX,Data Center Cooling,no,2026-02-05,1.81,1,-7.06,2.36,-9.42
+control,FELE,Data Center Cooling,no,2024-09-20,1.58,1,2.19,8.8,-6.61
+control,FELE,Data Center Cooling,no,2025-07-02,1.53,1,1.08,6.01,-4.93
+control,FELE,Data Center Cooling,no,2026-02-06,1.58,1,-11.4,-1.58,-9.82
+control,NPO,Data Center Cooling,no,2023-12-15,1.9,1,-4.74,-2.92,-1.81
+control,NPO,Data Center Cooling,no,2024-11-08,1.59,1,18.97,8.55,10.43
+control,NPO,Data Center Cooling,no,2024-11-26,1.51,6,-6.01,4.05,-10.06
+control,NPO,Data Center Cooling,no,2026-02-11,1.54,1,-11.69,-3.36,-8.33
+control,NPO,Data Center Cooling,no,2026-06-26,1.9,1,-13.25,-11.08,-2.17
+control,ESE,Data Center Cooling,no,2023-12-15,1.58,1,-11.99,-2.92,-9.07
+control,ESE,Data Center Cooling,no,2024-07-17,1.54,1,-1.32,-10.7,9.38
+control,ESE,Data Center Cooling,no,2024-11-14,1.62,1,0.05,13.64,-13.59
+control,ESE,Data Center Cooling,no,2025-02-18,1.5,1,-4.45,-15.61,11.16
+control,ESE,Data Center Cooling,no,2025-07-03,1.62,1,-2.33,1.31,-3.64
+control,ESE,Data Center Cooling,no,2025-09-02,1.52,1,4.92,16.73,-11.81
+control,ESE,Data Center Cooling,no,2026-02-13,1.51,1,-0.8,-0.44,-0.36
+control,ESE,Data Center Cooling,no,2026-04-01,1.78,1,10.54,29.85,-19.31
+control,ESE,Data Center Cooling,no,2026-04-17,1.58,8,-7.95,17.04,-24.99
+control,GEV,Data Center Power Supply,yes,2024-09-24,1.55,1,8.2,5.63,2.57
+control,GEV,Data Center Power Supply,yes,2026-05-05,1.51,1,-12.4,18.89,-31.29
+control,POWL,Data Center Power Supply,yes,2023-12-11,1.93,1,-12.01,9.11,-21.12
+control,POWL,Data Center Power Supply,yes,2024-01-31,1.93,1,56.55,11.66,44.9
+control,POWL,Data Center Power Supply,yes,2024-02-14,2.06,10,6.32,2.24,4.09
+control,POWL,Data Center Power Supply,yes,2024-02-29,1.65,10,-23.18,6.32,-29.5
+control,POWL,Data Center Power Supply,yes,2024-08-01,1.51,1,1.21,1.37,-0.15
+control,POWL,Data Center Power Supply,yes,2024-11-14,1.54,1,-16.07,13.64,-29.71
+control,POWL,Data Center Power Supply,yes,2025-08-13,1.53,1,12.71,10.45,2.26
+control,POWL,Data Center Power Supply,yes,2026-01-23,1.54,1,30.26,3.21,27.05
+control,POWL,Data Center Power Supply,yes,2026-02-06,1.83,5,-10.93,-1.58,-9.36
+control,POWL,Data Center Power Supply,yes,2026-05-06,1.52,1,-6.29,12.91,-19.2
+control,BE,Data Center Power Supply,yes,2024-05-21,1.51,1,-7.4,4.9,-12.3
+control,BE,Data Center Power Supply,yes,2024-11-07,1.54,1,153.8,11.71,142.09
+control,BE,Data Center Power Supply,yes,2024-11-21,3.59,10,0.75,9.34,-8.59
+control,BE,Data Center Power Supply,yes,2024-12-06,1.59,9,-7.46,-0.52,-6.94
+control,BE,Data Center Power Supply,yes,2025-07-09,1.61,1,35.35,3.98,31.37
+control,BE,Data Center Power Supply,yes,2025-07-24,1.81,5,35.6,-0.42,36.02
+control,BE,Data Center Power Supply,yes,2025-08-07,2.32,10,55.08,6.61,48.47
+control,BE,Data Center Power Supply,yes,2025-08-21,1.8,10,89.45,21.29,68.16
+control,BE,Data Center Power Supply,yes,2025-09-05,1.57,10,58.21,20.17,38.04
+control,BE,Data Center Power Supply,yes,2025-09-19,2.07,8,31.28,7.78,23.51
+control,BE,Data Center Power Supply,yes,2025-10-07,1.94,6,49.95,2.42,47.54
+control,BE,Data Center Power Supply,yes,2025-10-21,1.56,10,0.57,-9.24,9.8
+control,BE,Data Center Power Supply,yes,2025-11-04,1.72,6,-20.57,-3.47,-17.1
+control,BE,Data Center Power Supply,yes,2026-05-07,1.53,1,1.92,6.79,-4.87
+control,BE,Data Center Power Supply,yes,2026-06-30,1.7,1,-45.9,-21.34,-24.56
+control,PWR,Data Center Power Supply,yes,2024-11-08,1.62,1,-2.72,8.55,-11.27
+control,PWR,Data Center Power Supply,yes,2026-05-08,1.54,1,-6.87,7.5,-14.37
+control,HUBB,Data Center Power Supply,yes,2024-02-07,1.56,1,11.02,13.19,-2.17
+control,HUBB,Data Center Power Supply,yes,2025-11-05,1.54,1,-6.17,-4.69,-1.48
+control,HUBB,Data Center Power Supply,yes,2026-02-13,1.67,1,-9.58,-0.44,-9.13
+control,CAT,Data Center Power Supply,yes,2026-02-06,1.54,1,-2.94,-1.58,-1.36
+control,CAT,Data Center Power Supply,yes,2026-06-25,1.51,1,-15.76,-12.78,-2.99
+control,EMR,Data Center Power Supply,yes,2024-02-13,1.52,1,5.94,7.79,-1.85
+control,EMR,Data Center Power Supply,yes,2024-05-15,1.6,1,-5.04,6.69,-11.74
+control,EMR,Data Center Power Supply,yes,2024-11-13,1.51,1,1.18,10.21,-9.03
+control,EMR,Data Center Power Supply,yes,2026-02-09,1.72,1,-12.11,-2.92,-9.19
+control,ATKR,Data Center Power Supply,yes,2023-12-20,1.51,1,-1.39,0.49,-1.88
+control,ATKR,Data Center Power Supply,yes,2024-12-04,1.52,1,-10.59,1.51,-12.1
+control,ATKR,Data Center Power Supply,yes,2026-04-17,1.62,1,7.45,17.04,-9.59
+control,ATKR,Data Center Power Supply,yes,2026-05-05,1.61,7,11.79,18.89,-7.09
+control,ATKR,Data Center Power Supply,yes,2026-05-26,1.53,1,-8.8,1.71,-10.52
+control,GNRC,Data Center Power Supply,yes,2024-11-11,1.52,1,-12.18,5.17,-17.35
+control,GNRC,Data Center Power Supply,yes,2025-07-02,1.55,1,29.26,6.01,23.25
+control,GNRC,Data Center Power Supply,yes,2025-07-30,1.61,1,3.31,4.49,-1.18
+control,GNRC,Data Center Power Supply,yes,2025-08-13,1.62,10,-7.39,10.45,-17.84
+control,GNRC,Data Center Power Supply,yes,2026-02-12,1.64,1,-7.05,-0.73,-6.31
+control,ROK,Data Center Power Supply,no,2024-02-14,1.6,1,0.47,2.24,-1.77
+control,ROK,Data Center Power Supply,no,2024-11-13,1.71,1,6.19,10.21,-4.02
+control,LFUS,Data Center Power Supply,no,2025-02-11,1.63,1,-14.32,-15.24,0.91
+control,LFUS,Data Center Power Supply,no,2025-07-31,1.51,1,2.93,6.55,-3.61
+control,LFUS,Data Center Power Supply,no,2026-01-30,1.54,1,11.86,6.07,5.79
+control,LFUS,Data Center Power Supply,no,2026-02-25,1.53,2,-6.52,-0.24,-6.28
+control,LFUS,Data Center Power Supply,no,2026-05-11,1.52,1,-1.95,3.02,-4.97
+control,TEL,Data Center Power Supply,no,2024-01-24,1.63,1,0.41,11.21,-10.79
+control,TEL,Data Center Power Supply,no,2025-07-24,1.58,1,-2.58,-0.42,-2.16
+control,BDC,Data Center Power Supply,no,2024-02-13,1.56,1,4.5,7.79,-3.29
+control,BDC,Data Center Power Supply,no,2024-09-26,1.51,1,0.54,3.44,-2.9
+control,BDC,Data Center Power Supply,no,2026-02-12,1.62,1,-24.08,-0.73,-23.34
+control,ENS,Data Center Power Supply,no,2024-06-04,1.55,1,-4.2,7.03,-11.24
+control,ENS,Data Center Power Supply,no,2025-11-10,1.53,1,9.16,-1.65,10.81
+control,ENS,Data Center Power Supply,no,2026-05-21,1.64,1,-2.39,13.39,-15.77
+control,PLUG,Data Center Power Supply,no,2024-02-01,1.57,1,-17.23,12.58,-29.82
+control,PLUG,Data Center Power Supply,no,2024-05-15,1.56,1,-16.72,6.69,-23.41
+control,PLUG,Data Center Power Supply,no,2024-12-05,1.53,1,28.57,3.6,24.97
+control,PLUG,Data Center Power Supply,no,2025-01-16,1.55,1,-35.77,-1.94,-33.83
+control,PLUG,Data Center Power Supply,no,2025-09-22,1.72,1,28.3,7.72,20.58
+control,PLUG,Data Center Power Supply,no,2025-10-06,3.31,10,-33.41,5.69,-39.11
+control,PLUG,Data Center Power Supply,no,2026-05-12,1.54,1,-19.66,1.89,-21.55
+control,PLUG,Data Center Power Supply,no,2026-05-27,1.51,8,-37.92,2.71,-40.63
+control,FCEL,Data Center Power Supply,no,2023-12-18,1.65,1,-25.49,-3.15,-22.34
+control,FCEL,Data Center Power Supply,no,2024-05-06,2.04,1,6.9,5.2,1.69
+control,FCEL,Data Center Power Supply,no,2024-05-22,1.81,1,-24.72,2.98,-27.69
+control,FCEL,Data Center Power Supply,no,2024-06-10,1.65,6,-38.78,5.93,-44.7
+control,FCEL,Data Center Power Supply,no,2024-11-22,1.86,1,35.02,2.1,32.93
+control,FCEL,Data Center Power Supply,no,2025-05-27,1.74,1,0.35,8.29,-7.94
+control,FCEL,Data Center Power Supply,no,2025-06-10,2.79,10,-14.58,11.13,-25.71
+control,FCEL,Data Center Power Supply,no,2025-09-11,1.56,1,52.94,15.46,37.48
+control,FCEL,Data Center Power Supply,no,2025-09-25,2.73,10,-1.4,9.66,-11.05
+control,FCEL,Data Center Power Supply,no,2025-10-09,2.15,9,-21.86,0.27,-22.13
+control,FCEL,Data Center Power Supply,no,2026-04-21,2.03,1,82.93,9.85,73.08
+control,FCEL,Data Center Power Supply,no,2026-05-05,3.94,10,60.96,18.89,42.07
+control,FCEL,Data Center Power Supply,no,2026-05-19,3.34,9,15.44,14.96,0.48
+control,FCEL,Data Center Power Supply,no,2026-06-03,2.53,8,28.89,-10.55,39.44
+control,FCEL,Data Center Power Supply,no,2026-06-18,1.57,1,-17.47,-16.11,-1.36
+control,FCEL,Data Center Power Supply,no,2026-07-06,2.13,9,-28.22,-5.93,-22.29
+control,VST,Data Center Power Supply,no,2024-02-27,1.54,1,33.63,3.86,29.77
+control,VST,Data Center Power Supply,no,2024-03-12,2.24,10,17.95,-0.73,18.68
+control,VST,Data Center Power Supply,no,2024-03-26,1.83,10,3.79,-3.71,7.5
+control,VST,Data Center Power Supply,no,2024-05-07,2.29,1,12.55,8.77,3.78
+control,VST,Data Center Power Supply,no,2024-09-24,1.61,1,11.25,5.63,5.62
+control,VST,Data Center Power Supply,no,2024-10-08,2.0,10,-4.74,4.52,-9.25
+control,VST,Data Center Power Supply,no,2025-01-21,1.5,1,-8.63,-4.5,-4.13
+control,VST,Data Center Power Supply,no,2025-02-10,1.55,1,-32.09,-18.22,-13.87
+control,CEG,Data Center Power Supply,no,2024-02-28,1.59,1,8.44,6.44,2.0
+control,CEG,Data Center Power Supply,no,2024-03-27,1.51,1,1.69,-5.1,6.78
+control,CEG,Data Center Power Supply,no,2024-09-24,1.56,1,4.94,5.63,-0.69
+control,CEG,Data Center Power Supply,no,2025-01-10,1.52,1,5.45,2.72,2.73
+control,NRG,Data Center Power Supply,no,2024-03-06,1.5,1,15.03,-0.12,15.16
+control,NRG,Data Center Power Supply,no,2024-03-20,1.8,10,5.03,-6.31,11.35
+control,NRG,Data Center Power Supply,no,2025-05-13,1.52,1,-4.88,8.5,-13.37
+control,TLN,Data Center Power Supply,no,2023-12-04,1.6,1,8.31,7.86,0.45
+control,TLN,Data Center Power Supply,no,2024-02-28,1.5,1,22.68,6.44,16.24
+control,TLN,Data Center Power Supply,no,2024-03-13,3.3,10,11.51,0.22,11.29
+control,TLN,Data Center Power Supply,no,2024-03-27,2.18,4,7.11,-5.1,12.21
+control,TLN,Data Center Power Supply,no,2024-05-09,1.57,1,4.39,5.25,-0.85
+control,TLN,Data Center Power Supply,no,2024-05-24,2.32,3,3.95,1.94,2.01
+control,TLN,Data Center Power Supply,no,2024-07-11,1.62,1,-8.72,-9.45,0.74
+control,TLN,Data Center Power Supply,no,2024-08-08,1.51,1,19.74,-2.31,22.05
+control,TLN,Data Center Power Supply,no,2024-09-19,1.55,1,-2.1,9.32,-11.42
+control,TLN,Data Center Power Supply,no,2024-11-14,1.54,1,2.08,13.64,-11.56
+control,TLN,Data Center Power Supply,no,2025-06-13,1.54,1,-3.25,13.47,-16.73
+control,TLN,Data Center Power Supply,no,2025-07-21,1.54,1,21.52,4.33,17.19
+control,TLN,Data Center Power Supply,no,2026-06-23,1.52,1,-8.38,-9.95,1.57
+control,SMR,Data Center Power Supply,no,2024-03-05,1.6,1,43.75,3.04,40.71
+control,SMR,Data Center Power Supply,no,2024-03-19,4.21,10,-25.08,-3.99,-21.09
+control,SMR,Data Center Power Supply,no,2024-04-04,2.1,1,-2.11,-3.2,1.09
+control,SMR,Data Center Power Supply,no,2024-06-27,1.64,1,-9.43,3.1,-12.53
+control,SMR,Data Center Power Supply,no,2024-07-12,2.0,10,-39.57,-11.54,-28.03
+control,SMR,Data Center Power Supply,no,2024-10-02,1.56,1,67.88,6.77,61.11
+control,SMR,Data Center Power Supply,no,2024-10-16,2.32,5,30.99,8.16,22.83
+control,SMR,Data Center Power Supply,no,2024-10-30,3.1,10,34.9,14.14,20.76
+control,SMR,Data Center Power Supply,no,2024-11-13,1.91,5,-13.29,10.21,-23.5
+control,SMR,Data Center Power Supply,no,2024-11-27,1.51,10,-30.47,2.12,-32.59
+control,SMR,Data Center Power Supply,no,2025-01-31,1.54,1,-35.19,-13.49,-21.71
+control,SMR,Data Center Power Supply,no,2025-05-16,1.58,1,75.8,6.62,69.18
+control,SMR,Data Center Power Supply,no,2025-06-02,2.92,10,12.77,14.38,-1.61
+control,SMR,Data Center Power Supply,no,2025-06-16,2.23,9,8.47,11.33,-2.86
+control,SMR,Data Center Power Supply,no,2025-09-23,1.52,1,-7.85,7.62,-15.47
+control,SMR,Data Center Power Supply,no,2025-10-15,1.64,1,-51.41,-2.98,-48.43
+control,SMR,Data Center Power Supply,no,2026-04-23,1.62,1,-10.93,14.47,-25.4
+control,BWXT,Data Center Power Supply,no,2024-02-28,1.52,1,1.38,6.44,-5.06
+control,BWXT,Data Center Power Supply,no,2024-09-25,1.5,1,15.64,4.55,11.09
+control,BWXT,Data Center Power Supply,no,2024-10-09,1.59,10,0.03,11.19,-11.16
+control,BWXT,Data Center Power Supply,no,2024-11-19,1.52,1,-12.74,18.18,-30.93
+control,BWXT,Data Center Power Supply,no,2025-06-05,1.52,1,11.52,13.12,-1.61
+control,BWXT,Data Center Power Supply,no,2025-06-20,1.78,3,-1.38,13.77,-15.15
+control,CRWV,Neo Cloud,yes,2025-06-27,1.57,1,-31.07,9.62,-40.69
+control,CRWV,Neo Cloud,yes,2025-09-19,1.6,1,9.62,7.78,1.84
+control,CRWV,Neo Cloud,yes,2025-10-03,1.55,9,-0.8,7.3,-8.1
+control,CRWV,Neo Cloud,yes,2026-04-15,1.55,1,-6.22,23.48,-29.7
+control,NBIS,Neo Cloud,yes,2025-01-24,1.58,1,-13.12,-12.57,-0.55
+control,NBIS,Neo Cloud,yes,2025-02-10,1.59,1,-37.88,-18.22,-19.67
+control,NBIS,Neo Cloud,yes,2025-05-21,1.55,1,23.25,8.46,14.79
+control,NBIS,Neo Cloud,yes,2025-06-05,1.84,5,3.33,13.12,-9.8
+control,NBIS,Neo Cloud,yes,2025-08-13,1.58,1,26.28,10.45,15.83
+control,NBIS,Neo Cloud,yes,2025-09-09,1.67,1,22.96,17.85,5.11
+control,NBIS,Neo Cloud,yes,2025-09-23,2.1,10,-3.27,7.62,-10.89
+control,NBIS,Neo Cloud,yes,2025-10-07,1.64,10,-6.08,2.42,-8.5
+control,NBIS,Neo Cloud,yes,2026-03-17,1.66,1,43.36,16.3,27.06
+control,NBIS,Neo Cloud,yes,2026-04-20,1.53,1,25.57,11.42,14.16
+control,NBIS,Neo Cloud,yes,2026-05-13,1.5,1,7.22,5.19,2.04
+control,NBIS,Neo Cloud,yes,2026-05-28,1.54,9,6.17,-0.53,6.7
+control,NBIS,Neo Cloud,yes,2026-06-18,1.52,1,-36.3,-16.11,-20.19
+control,IREN,Neo Cloud,yes,2023-11-29,1.56,1,76.45,20.46,55.98
+control,IREN,Neo Cloud,yes,2023-12-13,2.8,10,-11.05,3.46,-14.51
+control,IREN,Neo Cloud,yes,2023-12-28,3.17,8,-47.54,-2.61,-44.93
+control,IREN,Neo Cloud,yes,2024-02-14,1.62,1,-45.06,2.24,-47.3
+control,IREN,Neo Cloud,yes,2024-05-24,1.58,1,65.9,1.94,63.96
+control,IREN,Neo Cloud,yes,2024-06-10,2.09,10,25.12,5.93,19.2
+control,IREN,Neo Cloud,yes,2024-06-25,2.76,10,-21.44,2.17,-23.61
+control,IREN,Neo Cloud,yes,2024-10-25,1.51,1,16.54,14.89,1.65
+control,IREN,Neo Cloud,yes,2024-11-14,1.52,1,26.91,13.64,13.27
+control,IREN,Neo Cloud,yes,2024-12-04,1.6,1,-20.53,1.51,-22.05
+control,IREN,Neo Cloud,yes,2025-05-22,1.56,1,14.87,8.42,6.45
+control,IREN,Neo Cloud,yes,2025-06-16,1.51,1,66.44,11.33,55.11
+control,IREN,Neo Cloud,yes,2025-07-01,2.31,9,5.98,8.35,-2.37
+control,IREN,Neo Cloud,yes,2025-07-16,2.3,10,2.43,6.89,-4.47
+control,IREN,Neo Cloud,yes,2025-08-29,1.55,1,73.45,14.62,58.83
+control,IREN,Neo Cloud,yes,2025-09-15,1.86,10,72.7,12.67,60.03
+control,IREN,Neo Cloud,yes,2025-09-29,2.24,10,41.5,11.71,29.79
+control,IREN,Neo Cloud,yes,2025-10-13,2.37,10,-6.19,2.27,-8.46
+control,IREN,Neo Cloud,yes,2026-05-08,1.65,1,-3.28,7.5,-10.79
+control,IREN,Neo Cloud,yes,2026-06-03,1.54,1,-40.71,-10.55,-30.16
+control,APLD,Neo Cloud,yes,2024-06-14,1.57,1,46.45,12.11,34.34
+control,APLD,Neo Cloud,yes,2024-07-01,2.63,10,-38.77,-0.02,-38.75
+control,APLD,Neo Cloud,yes,2024-09-05,2.42,1,49.72,12.67,37.05
+control,APLD,Neo Cloud,yes,2024-09-20,2.0,9,35.88,8.8,27.08
+control,APLD,Neo Cloud,yes,2024-10-04,1.62,8,-13.29,2.12,-15.41
+control,APLD,Neo Cloud,yes,2024-11-26,1.52,1,-5.54,4.05,-9.59
+control,APLD,Neo Cloud,yes,2025-02-24,1.53,1,-11.42,-4.59,-6.83
+control,APLD,Neo Cloud,yes,2025-05-23,1.51,1,40.22,11.47,28.75
+control,APLD,Neo Cloud,yes,2025-06-09,3.73,10,-26.96,10.35,-37.31
+control,APLD,Neo Cloud,yes,2025-09-23,1.52,1,31.9,7.62,24.28
+control,APLD,Neo Cloud,yes,2025-10-10,1.82,3,-8.86,4.86,-13.72
+control,APLD,Neo Cloud,yes,2026-01-12,1.52,1,-1.94,7.4,-9.34
+control,APLD,Neo Cloud,yes,2026-05-06,1.51,1,-0.2,12.91,-13.11
+control,WULF,Neo Cloud,yes,2023-12-05,1.63,1,41.29,9.18,32.11
+control,WULF,Neo Cloud,yes,2023-12-19,2.44,10,-30.3,-2.53,-27.78
+control,WULF,Neo Cloud,yes,2024-01-04,3.52,10,-18.72,4.17,-22.89
+control,WULF,Neo Cloud,yes,2024-06-07,1.64,1,62.78,5.5,57.28
+control,WULF,Neo Cloud,yes,2024-06-24,2.18,10,30.81,6.94,23.86
+control,WULF,Neo Cloud,yes,2024-07-09,1.96,10,-28.03,-8.78,-19.25
+control,WULF,Neo Cloud,yes,2024-10-24,1.85,1,12.56,11.35,1.21
+control,WULF,Neo Cloud,yes,2024-11-07,1.69,8,-1.1,11.71,-12.81
+control,WULF,Neo Cloud,yes,2025-06-13,1.51,1,21.14,13.47,7.67
+control,WULF,Neo Cloud,yes,2025-07-02,1.6,1,2.38,6.01,-3.62
+control,WULF,Neo Cloud,yes,2025-08-14,1.66,1,23.54,11.83,11.71
+control,WULF,Neo Cloud,yes,2025-08-28,2.02,10,14.72,9.86,4.86
+control,WULF,Neo Cloud,yes,2026-02-12,1.53,1,-7.79,-0.73,-7.06
+control,CIFR,Neo Cloud,yes,2023-12-04,1.81,1,31.44,7.86,23.58
+control,CIFR,Neo Cloud,yes,2023-12-19,2.28,3,-25.35,-2.53,-22.82
+control,CIFR,Neo Cloud,yes,2024-01-04,3.81,10,-36.04,4.17,-40.21
+control,CIFR,Neo Cloud,yes,2024-03-28,1.7,1,-12.62,-4.2,-8.42
+control,CIFR,Neo Cloud,yes,2024-06-18,1.56,1,19.76,2.91,16.85
+control,CIFR,Neo Cloud,yes,2024-07-18,1.6,1,-35.67,-5.67,-30.0
+control,CIFR,Neo Cloud,yes,2024-10-25,1.51,1,24.18,14.89,9.29
+control,CIFR,Neo Cloud,yes,2024-11-08,1.86,5,-10.89,8.55,-19.44
+control,CIFR,Neo Cloud,yes,2025-05-21,1.57,1,8.13,8.46,-0.33
+control,CIFR,Neo Cloud,yes,2025-06-06,1.61,3,54.62,10.34,44.28
+control,CIFR,Neo Cloud,yes,2025-06-27,2.04,5,44.6,9.62,34.98
+control,CIFR,Neo Cloud,yes,2025-07-14,2.71,10,-21.06,4.01,-25.07
+control,CIFR,Neo Cloud,yes,2025-09-09,1.57,1,70.82,17.85,52.97
+control,CIFR,Neo Cloud,yes,2025-09-23,1.89,10,27.74,7.62,20.12
+control,CIFR,Neo Cloud,yes,2025-10-07,2.51,8,42.92,2.42,40.5
+control,CIFR,Neo Cloud,yes,2025-10-21,2.16,10,-19.34,-9.24,-10.1
+control,CIFR,Neo Cloud,yes,2025-11-04,1.71,3,-17.24,-3.47,-13.77
+control,CIFR,Neo Cloud,yes,2026-05-15,1.52,1,28.04,11.72,16.32
+control,CORZ,Neo Cloud,yes,2024-05-28,1.55,1,100.6,1.15,99.46
+control,CORZ,Neo Cloud,yes,2024-06-11,4.2,10,11.48,6.26,5.22
+control,CORZ,Neo Cloud,yes,2024-06-26,3.07,10,-5.43,1.45,-6.88
+control,CORZ,Neo Cloud,yes,2024-07-15,1.59,5,-13.99,-13.61,-0.38
+control,CORZ,Neo Cloud,yes,2024-11-19,1.56,1,-12.26,18.18,-30.45
+control,CORZ,Neo Cloud,yes,2025-06-26,1.63,1,-15.89,9.23,-25.12
+control,CORZ,Neo Cloud,yes,2025-10-16,1.55,1,-22.93,-7.32,-15.61
+control,CORZ,Neo Cloud,yes,2025-10-31,1.5,2,-22.98,-8.47,-14.51
+control,CORZ,Neo Cloud,yes,2026-05-06,1.6,1,13.32,12.91,0.41
+control,HUT,Neo Cloud,yes,2023-12-04,1.54,1,17.32,7.86,9.46
+control,HUT,Neo Cloud,yes,2023-12-18,2.28,2,-41.45,-3.15,-38.3
+control,HUT,Neo Cloud,yes,2024-06-13,1.57,1,73.76,7.57,66.19
+control,HUT,Neo Cloud,yes,2024-06-28,2.89,10,-1.07,1.73,-2.8
+control,HUT,Neo Cloud,yes,2024-07-15,1.86,8,-43.05,-13.61,-29.44
+control,HUT,Neo Cloud,yes,2024-10-25,1.52,1,73.96,14.89,59.07
+control,HUT,Neo Cloud,yes,2024-11-08,1.95,8,38.88,8.55,30.33
+control,HUT,Neo Cloud,yes,2024-11-22,2.64,10,-16.47,2.1,-18.57
+control,HUT,Neo Cloud,yes,2024-12-11,1.71,5,-14.09,-4.0,-10.09
+control,HUT,Neo Cloud,yes,2025-05-16,1.57,1,7.76,6.62,1.14
+control,HUT,Neo Cloud,yes,2025-09-18,1.51,1,30.5,10.07,20.43
+control,HUT,Neo Cloud,yes,2025-10-03,1.53,5,26.33,7.3,19.04
+control,HUT,Neo Cloud,yes,2025-10-17,2.02,6,-23.77,-6.43,-17.34
+control,HUT,Neo Cloud,yes,2025-11-03,1.62,3,-31.49,-8.47,-23.02
+control,HUT,Neo Cloud,yes,2026-05-06,1.56,1,17.28,12.91,4.37
+control,GLXY,Neo Cloud,yes,2026-06-09,1.66,1,-23.19,-2.1,-21.1
+control,BTDR,Neo Cloud,yes,2023-11-28,1.54,1,200.44,22.22,178.22
+control,BTDR,Neo Cloud,yes,2023-12-12,2.28,8,20.84,7.68,13.16
+control,BTDR,Neo Cloud,yes,2023-12-27,3.63,10,-44.4,-4.21,-40.19
+control,BTDR,Neo Cloud,yes,2024-06-13,1.71,1,16.55,7.57,8.98
+control,BTDR,Neo Cloud,yes,2024-07-02,3.28,8,-21.79,3.07,-24.86
+control,BTDR,Neo Cloud,yes,2024-11-06,1.51,1,99.53,10.97,88.56
+control,BTDR,Neo Cloud,yes,2024-11-20,2.81,10,52.57,10.47,42.1
+control,BTDR,Neo Cloud,yes,2024-12-05,2.87,9,37.1,3.6,33.5
+control,BTDR,Neo Cloud,yes,2024-12-24,2.48,7,-34.04,-4.17,-29.87
+control,BTDR,Neo Cloud,yes,2025-05-21,1.56,1,-23.53,8.46,-31.98
+control,BTDR,Neo Cloud,yes,2025-09-22,1.65,1,42.37,7.72,34.65
+control,BTDR,Neo Cloud,yes,2025-10-06,1.62,6,9.38,5.69,3.69
+control,BTDR,Neo Cloud,yes,2025-10-20,2.64,10,-58.43,-9.35,-49.08
+control,BTDR,Neo Cloud,yes,2026-05-26,1.57,1,15.95,1.71,14.24
+control,BTDR,Neo Cloud,yes,2026-06-09,2.35,10,-17.69,-2.1,-15.59
+control,MARA,Neo Cloud,no,2023-11-29,1.54,1,126.69,20.46,106.23
+control,MARA,Neo Cloud,no,2023-12-13,2.03,9,13.25,3.46,9.79
+control,MARA,Neo Cloud,no,2023-12-28,3.04,10,-34.12,-2.61,-31.51
+control,MARA,Neo Cloud,no,2024-11-11,1.58,1,-8.8,5.17,-13.97
+control,MARA,Neo Cloud,no,2024-11-27,2.32,8,-31.5,2.12,-33.62
+control,MARA,Neo Cloud,no,2025-09-29,1.53,1,4.82,11.71,-6.89
+control,RIOT,Neo Cloud,no,2023-12-05,1.55,1,4.76,9.18,-4.42
+control,RIOT,Neo Cloud,no,2023-12-19,1.65,10,-38.31,-2.53,-35.78
+control,RIOT,Neo Cloud,no,2024-10-30,1.54,1,18.03,14.14,3.89
+control,RIOT,Neo Cloud,no,2024-11-13,2.38,6,-2.68,10.21,-12.89
+control,RIOT,Neo Cloud,no,2024-12-16,1.85,1,-5.27,0.01,-5.28
+control,RIOT,Neo Cloud,no,2025-06-09,1.57,1,20.95,10.35,10.6
+control,RIOT,Neo Cloud,no,2025-06-30,1.55,2,20.35,7.39,12.96
+control,RIOT,Neo Cloud,no,2025-07-21,1.56,1,-12.13,4.33,-16.46
+control,RIOT,Neo Cloud,no,2026-05-07,1.5,1,2.28,6.79,-4.51
+control,CLSK,Neo Cloud,no,2023-11-28,1.54,1,110.5,22.22,88.28
+control,CLSK,Neo Cloud,no,2023-12-12,2.9,10,5.53,7.68,-2.15
+control,CLSK,Neo Cloud,no,2023-12-27,2.25,10,-40.36,-4.21,-36.14
+control,CLSK,Neo Cloud,no,2024-02-12,1.6,1,3.03,4.29,-1.26
+control,CLSK,Neo Cloud,no,2024-02-27,2.14,10,11.01,3.86,7.15
+control,CLSK,Neo Cloud,no,2024-10-24,1.55,1,8.4,11.35,-2.94
+control,CLSK,Neo Cloud,no,2024-11-07,1.56,5,10.32,11.71,-1.39
+control,CLSK,Neo Cloud,no,2024-11-22,2.1,9,-32.05,2.1,-34.15
+control,CLSK,Neo Cloud,no,2025-09-23,1.52,1,34.94,7.62,27.32
+control,CLSK,Neo Cloud,no,2025-10-07,1.8,10,-9.69,2.42,-12.11
+control,CLSK,Neo Cloud,no,2026-05-21,1.52,1,10.72,13.39,-2.66
+control,HIVE,Neo Cloud,no,2023-12-04,1.66,1,12.27,7.86,4.42
+control,HIVE,Neo Cloud,no,2023-12-20,2.78,7,-24.76,0.49,-25.25
+control,HIVE,Neo Cloud,no,2024-06-14,1.61,1,38.23,12.11,26.12
+control,HIVE,Neo Cloud,no,2024-07-01,2.29,5,11.18,-0.02,11.2
+control,HIVE,Neo Cloud,no,2024-07-16,1.53,6,-29.88,-13.99,-15.88
+control,HIVE,Neo Cloud,no,2024-10-24,1.55,1,5.82,11.35,-5.53
+control,HIVE,Neo Cloud,no,2024-11-07,1.84,7,-3.76,11.71,-15.47
+control,HIVE,Neo Cloud,no,2024-12-06,1.66,1,-28.05,-0.52,-27.53
+control,HIVE,Neo Cloud,no,2025-05-20,1.57,1,-15.38,6.52,-21.9
+control,HIVE,Neo Cloud,no,2025-06-12,1.59,1,17.95,11.49,6.46
+control,HIVE,Neo Cloud,no,2025-07-01,1.64,1,5.8,8.35,-2.55
+control,HIVE,Neo Cloud,no,2025-07-22,1.77,6,-4.4,2.09,-6.49
+control,HIVE,Neo Cloud,no,2025-09-15,1.64,1,70.71,12.67,58.04
+control,HIVE,Neo Cloud,no,2025-10-01,2.09,6,33.41,8.66,24.75
+control,HIVE,Neo Cloud,no,2025-10-15,2.48,10,-39.79,-2.98,-36.82
+control,HIVE,Neo Cloud,no,2026-04-17,1.65,1,7.17,17.04,-9.87
+control,HIVE,Neo Cloud,no,2026-05-18,2.11,1,17.63,13.4,4.23
+control,HIVE,Neo Cloud,no,2026-06-02,2.95,10,-23.79,-6.41,-17.38
+control,HIVE,Neo Cloud,no,2026-06-23,1.53,1,-31.1,-9.95,-21.16
+control,CAN,Neo Cloud,no,2023-12-14,2.86,1,20.69,-1.38,22.07
+control,CAN,Neo Cloud,no,2023-12-29,4.52,10,-35.5,-0.47,-35.03
+control,CAN,Neo Cloud,no,2024-10-30,1.64,1,33.82,14.14,19.68
+control,CAN,Neo Cloud,no,2024-11-13,2.93,10,82.78,10.21,72.57
+control,CAN,Neo Cloud,no,2024-11-27,2.61,10,22.53,2.12,20.41
+control,CAN,Neo Cloud,no,2024-12-12,2.99,10,-34.78,-2.17,-32.61
+control,CAN,Neo Cloud,no,2025-05-15,1.53,1,-12.48,6.49,-18.97
+control,CAN,Neo Cloud,no,2025-07-14,1.67,1,-24.92,4.01,-28.93
+control,CAN,Neo Cloud,no,2025-10-02,1.64,1,-6.06,6.06,-12.12
+control,CAN,Neo Cloud,no,2025-10-16,2.9,10,-41.92,-7.32,-34.6
