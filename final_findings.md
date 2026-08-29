@@ -25,6 +25,7 @@ The system itself works. The strategy it implements does not.
 - [What was learned](#what-was-learned)
 - [What the tool is now](#what-the-tool-is-now)
 - [Open threads](#open-threads)
+- [Verification](#verification)
 
 ---
 
@@ -293,14 +294,52 @@ absent from both universes — six tickers failed to download in Study 4 alone,
 including Chart Industries, acquired by Baker Hughes in July 2026. Genuine
 failures remain invisible.
 
-**No unit tests exist.** The metric functions are unverified by anything except
-their output looking reasonable.
-
 **A structurally different hypothesis** — insider buying from SEC Form 4
 filings, for instance — would be a new research question rather than a variation
 on a dead one. Retuning the current metrics on data already examined four times
 would be searching for a false positive, and this project has unusually strong
 grounds to know that.
+
+---
+
+## Verification
+
+The logic producing these numbers is covered by **55 unit tests** (`pytest -q`),
+run automatically in CI before every scheduled screener run. A failing test
+stops the job, so a broken change cannot reach the alert emails or corrupt the
+persistence history.
+
+| Area | Tests |
+|---|---|
+| Dollar volume and price momentum | 8 |
+| TTM cash flow extraction | 8 |
+| Streak counting | 7 |
+| Cooldown and history recording | 7 |
+| Run log | 5 |
+| Streak labels, near-misses, market cap | 12 |
+| Weekly summary, weekday counting, config | 8 |
+
+Three are worth naming:
+
+**`test_no_lookahead_in_the_calculation`** truncates future data and asserts
+today's metrics are unchanged. If that ever fails, every backtest result in this
+repository is invalid.
+
+**`test_qualifying_day_is_recorded_even_when_not_emailed`** locks in the design
+decision that makes persistence tracking possible — a day inside the email
+cooldown must still count toward the streak. Easy to break in a refactor, and
+silent when broken.
+
+**`test_runs_and_missing_days_reconcile`** pins the weekday-counting fix in the
+weekly summary, where an earlier version counted weekend runs in the total while
+the weekday they did not cover still appeared as missing.
+
+**Writing the suite found a live bug.** `record_run` returned its untruncated
+in-memory list while `save_run_log` wrote a capped one to disk, so the two
+disagreed once the log passed its 400-entry limit. It would never have crashed
+and never appeared in a log — it would simply have returned a wrong count some
+eighteen months from now, with no trace of where the discrepancy came from.
+That is the category of error tests exist to catch.
 
 ---
 
