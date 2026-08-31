@@ -65,7 +65,15 @@ MOVE_THRESHOLD = 0.10      # what counts as a "move"
 MOVE_WINDOW = 10           # over this many trading days
 WINDOW_BEFORE = 20         # days charted before the move starts
 WINDOW_AFTER = 20          # days charted after
-BASELINE_START = -83       # fixed baseline window, relative to day 0
+# Fixed baseline window, relative to day 0.
+# Originally -83 to -21, which sat 3-4 months before the event. Sector volume
+# grew steadily over 2023-2026, so that distant baseline made EVERY window look
+# elevated -- the random-day control came out at 1.35 instead of 1.0, meaning
+# the measurement was picking up the growth trend rather than the events.
+# A closer window reduces that contamination. Watch the random control: if it
+# is not near 1.0, the absolute numbers cannot be read at face value and every
+# curve must be compared against the control instead.
+BASELINE_START = -40
 BASELINE_END = -21
 EVENT_GAP = 30             # min trading days between events for one ticker
 N_RANDOM_PER_TICKER = 3
@@ -295,19 +303,50 @@ def main():
 
     ub, ua, uaf = summarise(up_curve, "UP-MOVES (10%+ gain)")
     if down_curve is not None:
-        summarise(down_curve, "DOWN-MOVES (10%+ loss) -- control")
+        db, da, daf = summarise(down_curve, "DOWN-MOVES (10%+ loss) -- control")
     if rand_curve is not None:
-        summarise(rand_curve, "RANDOM DAYS -- control, should be flat at 1.0")
+        rb, ra, raf = summarise(rand_curve,
+                                "RANDOM DAYS -- control, should be flat at 1.0")
+
+        drift = abs(rb - 1.0)
+        if drift > 0.10:
+            print(f"""
+  WARNING: the random-day control reads {rb:.2f}x, not 1.0.
+  The baseline is contaminated -- most likely by sector-wide volume growth over
+  the period. Absolute values above are inflated for every curve. Read the
+  net-of-control figures below instead.""")
+
+        print("\n" + "-" * 74)
+        print("  NET OF THE RANDOM-DAY CONTROL (this is the honest comparison)")
+        print("-" * 74)
+        print(f"    {'':<22}{'before':>10}{'start':>10}{'after':>10}")
+        print(f"    {'up-moves':<22}{ub - rb:>+10.2f}{ua - ra:>+10.2f}"
+              f"{uaf - raf:>+10.2f}")
+        if down_curve is not None:
+            print(f"    {'down-moves':<22}{db - rb:>+10.2f}{da - ra:>+10.2f}"
+                  f"{daf - raf:>+10.2f}")
+
+        if down_curve is not None and (db - rb) > (ub - rb):
+            print("""
+    Note: volume before DOWN-moves exceeds volume before UP-moves. Elevated
+    volume precedes large moves in both directions, and historically more so
+    before falls. It signals that something is about to happen, not which way.""")
 
     # ------------------------------------------------------------------
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
 
-    lead = ub - 1.0            # how elevated volume was BEFORE the move
-    lag = uaf - ub             # how much it rose AFTER
+    # Measured against the random-day control, not against 1.0, because the
+    # control shows the baseline itself is not neutral.
+    ctrl_b = rb if rand_curve is not None else 1.0
+    ctrl_a = raf if rand_curve is not None else 1.0
 
-    print(f"\n  Elevation before the move: {lead:+.2f}x")
+    lead = (ub - ctrl_b)              # elevation BEFORE, net of control
+    lag = (uaf - ctrl_a) - lead       # additional rise AFTER, net of control
+
+    print(f"\n  All figures net of the random-day control.")
+    print(f"  Elevation before the move: {lead:+.2f}x")
     print(f"  Additional rise after:     {lag:+.2f}x")
 
     if lag > 0.15 and abs(lead) < 0.10:
