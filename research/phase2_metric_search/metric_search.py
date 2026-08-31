@@ -45,7 +45,7 @@ import yfinance as yf
 
 warnings.filterwarnings("ignore")
 
-RESULTS_DIR = "backtest_results"
+RESULTS_DIR = "results/phase2"
 CACHE_PATH = "cache/universe178_history.pkl"
 UNIVERSE_FILE = "data/tickers_universe.csv"
 
