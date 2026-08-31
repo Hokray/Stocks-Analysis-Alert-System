@@ -22,13 +22,17 @@ CONTROL 2 -- THE PERMUTATION TEST
     random labels yield as many hits as the real ones, the search found nothing
     -- regardless of how convincing any individual metric looks.
 
-    python backtest/metric_search.py
+    python research/phase2_metric_search/metric_search.py
 """
 
 import os
 import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Scripts live in research/<phase>/ but import config.py from the repo root.
+# Walk up until we find it, then run from there so relative paths resolve.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+while not os.path.exists(os.path.join(ROOT, "config.py")):
+    ROOT = os.path.dirname(ROOT)
 sys.path.insert(0, ROOT)
 os.chdir(ROOT)
 
