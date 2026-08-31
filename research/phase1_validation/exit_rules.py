@@ -36,12 +36,17 @@ import sys
 import numpy as np
 import pandas as pd
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Scripts live in research/<phase>/ but import config.py from the repo root.
+# Walk up until we find it, then run from there so relative paths resolve.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+while not os.path.exists(os.path.join(ROOT, "config.py")):
+    ROOT = os.path.dirname(ROOT)
 sys.path.insert(0, ROOT)
 os.chdir(ROOT)
+
 import config
 
-RESULTS_DIR = "backtest_results"
+RESULTS_DIR = "results/phase1"
 SIGNALS_PATH = f"{RESULTS_DIR}/signals_enriched.csv"
 HISTORY_PATH = "cache/backtest_history.pkl"
 

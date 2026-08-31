@@ -23,9 +23,12 @@ Three possible outcomes:
 import os
 import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Scripts live in research/<phase>/ but import config.py from the repo root.
+# Walk up until we find it, then run from there so relative paths resolve.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+while not os.path.exists(os.path.join(ROOT, "config.py")):
+    ROOT = os.path.dirname(ROOT)
 sys.path.insert(0, ROOT)
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 import csv
@@ -41,7 +44,7 @@ warnings.filterwarnings("ignore")
 
 CONTROL_FILE = "data/tickers_control.csv"
 CACHE_PATH = "cache/control_history.pkl"
-RESULTS_DIR = "backtest_results"
+RESULTS_DIR = "results/phase1"
 
 HISTORY_YEARS = 3
 HORIZON = 20
