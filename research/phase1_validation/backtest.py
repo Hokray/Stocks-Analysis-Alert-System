@@ -41,12 +41,21 @@ Run it:
 
 import csv
 import os
+import sys
 import warnings
 from datetime import datetime
 
 import numpy as np
 import pandas as pd
 import yfinance as yf
+
+# Scripts live in research/<phase>/ but import config.py from the repo root.
+# Walk up until we find it, then run from there so relative paths resolve.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+while not os.path.exists(os.path.join(ROOT, "config.py")):
+    ROOT = os.path.dirname(ROOT)
+sys.path.insert(0, ROOT)
+os.chdir(ROOT)
 
 import config
 
@@ -59,7 +68,7 @@ warnings.filterwarnings("ignore")
 
 HISTORY_YEARS = 3
 CACHE_PATH = "cache/backtest_history.pkl"
-RESULTS_DIR = "backtest_results"
+RESULTS_DIR = "results/phase1"
 
 # Forward-looking horizons, in trading days
 HORIZONS = [5, 10, 20, 30]
