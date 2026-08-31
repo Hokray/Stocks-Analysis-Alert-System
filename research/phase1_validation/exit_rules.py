@@ -26,7 +26,7 @@ trade's OWN entry-to-exit window.
 
 Requires cache/backtest_history.pkl and backtest_results/signals_enriched.csv.
 
-    python exit_rules.py
+    python research/phase1_validation/exit_rules.py
 """
 
 import os

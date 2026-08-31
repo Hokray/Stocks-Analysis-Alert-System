@@ -17,7 +17,7 @@ Three possible outcomes:
   edge disappears   the finding was an artefact of universe selection
   edge weakens      the truth sits between, which is the likeliest result
 
-    python backtest/universe_test.py
+    python research/phase1_validation/universe_test.py
 """
 
 import os

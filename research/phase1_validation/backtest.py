@@ -36,7 +36,7 @@ Step 5 is the point. A signal returning +4% means nothing if the whole sector
 returned +6% -- that would make the screener worse than picking at random.
 
 Run it:
-    python backtest.py
+    python research/phase1_validation/backtest.py
 """
 
 import csv

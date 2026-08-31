@@ -14,7 +14,7 @@ Two questions:
 
 Requires backtest_results/signals_enriched.csv (run backtest_analysis.py first).
 
-    python significance_test.py
+    python research/phase1_validation/significance_testing.py
 """
 
 import os
