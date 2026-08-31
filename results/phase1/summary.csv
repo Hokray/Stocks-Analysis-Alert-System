@@ -1,5 +1,0 @@
-horizon,signals,mean_return_pct,median_return_pct,baseline_pct,excess_vs_baseline_pct,hit_rate_pct,beat_baseline_pct,best_pct,worst_pct
-5d,495,1.89,0.36,1.14,0.75,51.7,46.1,50.0,-41.3
-10d,495,4.58,2.59,2.72,1.86,57.8,47.5,129.8,-47.4
-20d,493,8.03,3.18,5.49,2.54,58.4,45.4,200.4,-58.4
-30d,493,10.96,4.74,7.61,3.35,57.6,46.0,246.4,-51.1

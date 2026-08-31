@@ -1,5 +1,0 @@
-persistence_bucket,signals,mean_return_pct,median_return_pct,mean_excess_pct,beat_baseline_pct
-1. brief (1-2 days),306,7.93,2.81,1.83,43.14
-2. building (3-5 days),27,0.44,-4.99,-1.22,44.44
-3. persistent (6-9 days),37,6.21,3.33,3.04,45.95
-4. very persistent (10+ days),123,10.48,5.44,4.99,51.22
