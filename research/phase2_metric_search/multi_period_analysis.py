@@ -14,7 +14,7 @@ passing six in the same direction is not. The permutation control measures
 exactly how much harder, by shuffling the winner labels and re-running the whole
 search.
 
-    python research/phase2_metric_search/multi_period_test.py
+    python research/phase2_metric_search/multi_period_analysis.py
 """
 
 import csv
