@@ -50,5 +50,31 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-01T23:18:25",
+    "date": "2026-09-01",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.7,
+        "price_change_pct": 3.4
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 0.77,
+        "price_change_pct": 2.0
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.1,
+        "price_change_pct": -0.1
+      }
+    ],
+    "error": null
   }
 ]
