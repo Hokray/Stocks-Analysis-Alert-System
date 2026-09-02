@@ -76,5 +76,57 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-02T23:19:12",
+    "date": "2026-09-02",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "DELL",
+        "volume_ratio": 1.28,
+        "price_change_pct": 13.2
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.7,
+        "price_change_pct": 7.3
+      },
+      {
+        "ticker": "LITE",
+        "volume_ratio": 0.8,
+        "price_change_pct": 5.2
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-02T23:19:12",
+    "date": "2026-09-02",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "DELL",
+        "volume_ratio": 1.28,
+        "price_change_pct": 13.2
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.7,
+        "price_change_pct": 7.3
+      },
+      {
+        "ticker": "LITE",
+        "volume_ratio": 0.8,
+        "price_change_pct": 5.2
+      }
+    ],
+    "error": null
   }
 ]
