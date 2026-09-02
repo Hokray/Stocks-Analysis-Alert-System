@@ -25,7 +25,7 @@ load_dotenv()
 import config
 import notifier
 import heartbeat_monitor as monitor
-
+import snapshot
 
 # ---------------------------------------------------------------------------
 # Universe
@@ -317,8 +317,26 @@ def main():
         matches=matches.to_dict("records"),
         near_misses=monitor.find_near_misses(df),
     )
+    
     if config.SEND_EMAIL:
         notifier.notify(matches.to_dict("records"))
+        monitor.record_run(
+        "ok",
+        tickers_screened=len(results),
+        matches=matches.to_dict("records"),
+        near_misses=monitor.find_near_misses(df),
+    )
+
+    if config.SEND_EMAIL:
+        notifier.notify(matches.to_dict("records"))
+
+    # Archive all metrics for all tickers. Slowest step, so it runs last --
+    # a failure here must never delay or block the alert email.
+    try:
+        snapshot.take_snapshot()
+    except Exception as e:
+        print(f"Snapshot failed (non-fatal): {e}")
+    
     
 
 
@@ -329,3 +347,4 @@ if __name__ == "__main__":
         monitor.record_run("error", error=e)
         monitor.send_failure_alert(e)
         raise
+    
