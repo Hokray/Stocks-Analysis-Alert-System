@@ -128,5 +128,61 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-03T23:17:40",
+    "date": "2026-09-03",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.19,
+        "price_change_pct": 6.4
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.75,
+        "price_change_pct": 16.9
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.75,
+        "price_change_pct": 4.5
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-03T23:17:41",
+    "date": "2026-09-03",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.19,
+        "price_change_pct": 6.4
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.75,
+        "price_change_pct": 16.9
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.75,
+        "price_change_pct": 4.5
+      }
+    ],
+    "error": null
   }
 ]
