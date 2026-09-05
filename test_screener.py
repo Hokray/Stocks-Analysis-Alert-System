@@ -535,6 +535,58 @@ class TestWeeklySummary:
         text = monitor.format_weekly_plaintext(s)
         assert "Screener weekly summary" in text
 
+    class TestNearMisses:
+
+    def _results(self):
+        return pd.DataFrame([
+            # ticker, ratio, price change, cfo passed, matched
+            {"ticker": "AAA", "volume_ratio": 1.47, "price_change_pct": 6.8,
+             "pass_cfo": True, "MATCH": False},
+            {"ticker": "BBB", "volume_ratio": 0.55, "price_change_pct": -12.0,
+             "pass_cfo": True, "MATCH": False},
+            {"ticker": "CCC", "volume_ratio": 1.60, "price_change_pct": 9.0,
+             "pass_cfo": True, "MATCH": True},
+            {"ticker": "DDD", "volume_ratio": 1.49, "price_change_pct": 6.9,
+             "pass_cfo": False, "MATCH": False},
+        ])
+
+    def test_closest_non_matching_ticker_is_first(self):
+        near = monitor.find_near_misses(self._results(), top_n=2)
+        assert near[0]["ticker"] == "AAA"
+
+    def test_matches_are_excluded(self):
+        near = monitor.find_near_misses(self._results(), top_n=4)
+        assert "CCC" not in [n["ticker"] for n in near]
+
+    def test_cash_flow_failures_are_excluded(self):
+        """DDD is numerically closest but fails the quality gate."""
+        near = monitor.find_near_misses(self._results(), top_n=4)
+        assert "DDD" not in [n["ticker"] for n in near]
+
+    def test_empty_input_returns_empty_list(self):
+        assert monitor.find_near_misses(pd.DataFrame()) == []
+        assert monitor.find_near_misses(None) == []
+
+    def test_multiple_runs_on_one_day_count_once(self, temp_run_log, tmp_path,
+                                                 monkeypatch):
+        """Manual runs alongside the scheduled one must not inflate the count."""
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE",
+                            str(tmp_path / "none.json"))
+        d = datetime.now().date()
+        while d.weekday() >= 5:
+            d -= timedelta(days=1)
+
+        entries = [{
+            "timestamp": f"{d.isoformat()}T{h:02d}:00:00", "date": d.isoformat(),
+            "status": "ok", "tickers_screened": 60, "match_count": 0,
+            "matches": [], "near_misses": [], "error": None,
+        } for h in (9, 14, 21)]
+        monitor.save_run_log(entries)
+
+        s = monitor.build_weekly_summary()
+        assert s["actual_runs"] == 1
+        assert d.isoformat() not in s["missing_dates"]
+
 
 class TestNearMisses:
 
@@ -568,6 +620,7 @@ class TestNearMisses:
         assert monitor.find_near_misses(pd.DataFrame()) == []
         assert monitor.find_near_misses(None) == []
 
+    
 
 # ===========================================================================
 # Threshold consistency

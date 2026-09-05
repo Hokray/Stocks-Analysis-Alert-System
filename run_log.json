@@ -104,32 +104,6 @@
     "error": null
   },
   {
-    "timestamp": "2026-09-02T23:19:12",
-    "date": "2026-09-02",
-    "status": "ok",
-    "tickers_screened": 60,
-    "match_count": 0,
-    "matches": [],
-    "near_misses": [
-      {
-        "ticker": "DELL",
-        "volume_ratio": 1.28,
-        "price_change_pct": 13.2
-      },
-      {
-        "ticker": "BE",
-        "volume_ratio": 0.7,
-        "price_change_pct": 7.3
-      },
-      {
-        "ticker": "LITE",
-        "volume_ratio": 0.8,
-        "price_change_pct": 5.2
-      }
-    ],
-    "error": null
-  },
-  {
     "timestamp": "2026-09-03T23:17:40",
     "date": "2026-09-03",
     "status": "ok",
@@ -153,62 +127,6 @@
         "ticker": "CLS",
         "volume_ratio": 0.75,
         "price_change_pct": 4.5
-      }
-    ],
-    "error": null
-  },
-  {
-    "timestamp": "2026-09-03T23:17:41",
-    "date": "2026-09-03",
-    "status": "ok",
-    "tickers_screened": 60,
-    "match_count": 1,
-    "matches": [
-      "DELL"
-    ],
-    "near_misses": [
-      {
-        "ticker": "NVDA",
-        "volume_ratio": 1.19,
-        "price_change_pct": 6.4
-      },
-      {
-        "ticker": "BE",
-        "volume_ratio": 0.75,
-        "price_change_pct": 16.9
-      },
-      {
-        "ticker": "CLS",
-        "volume_ratio": 0.75,
-        "price_change_pct": 4.5
-      }
-    ],
-    "error": null
-  },
-  {
-    "timestamp": "2026-09-04T23:04:00",
-    "date": "2026-09-04",
-    "status": "ok",
-    "tickers_screened": 60,
-    "match_count": 1,
-    "matches": [
-      "DELL"
-    ],
-    "near_misses": [
-      {
-        "ticker": "NVDA",
-        "volume_ratio": 1.24,
-        "price_change_pct": 10.5
-      },
-      {
-        "ticker": "IREN",
-        "volume_ratio": 0.91,
-        "price_change_pct": 12.2
-      },
-      {
-        "ticker": "SNDK",
-        "volume_ratio": 0.82,
-        "price_change_pct": 16.5
       }
     ],
     "error": null

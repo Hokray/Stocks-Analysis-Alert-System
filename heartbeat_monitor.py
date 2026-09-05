@@ -238,11 +238,13 @@ def build_weekly_summary(days_back=7):
             missing.append(d.isoformat())
         d += timedelta(days=1)
 
-    # Matches over the window
-    match_counts = {}
+    # Count DAYS a ticker qualified, not log entries. A day with two runs --
+    # a delayed scheduled one plus a retry, say -- must count once.
+    match_days = {}
     for e in ok_runs:
         for t in e.get("matches", []):
-            match_counts[t] = match_counts.get(t, 0) + 1
+            match_days.setdefault(t, set()).add(e["date"])
+    match_counts = {t: len(days) for t, days in match_days.items()}
 
     # Current persistence, read from the live alert history
     persistent = []
@@ -269,7 +271,7 @@ def build_weekly_summary(days_back=7):
         "start": start.isoformat(),
         "end": today.isoformat(),
         "expected_runs": expected,
-        "actual_runs": len(weekday_runs),
+        "actual_runs": len(ran_dates),
         "ok_runs": len(ok_runs),
         "failed_runs": len(failed),
         "missing_dates": missing,
