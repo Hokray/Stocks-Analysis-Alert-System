@@ -320,15 +320,6 @@ def main():
     
     if config.SEND_EMAIL:
         notifier.notify(matches.to_dict("records"))
-        monitor.record_run(
-        "ok",
-        tickers_screened=len(results),
-        matches=matches.to_dict("records"),
-        near_misses=monitor.find_near_misses(df),
-    )
-
-    if config.SEND_EMAIL:
-        notifier.notify(matches.to_dict("records"))
 
     # Archive all metrics for all tickers. Slowest step, so it runs last --
     # a failure here must never delay or block the alert email.
