@@ -186,5 +186,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-08T23:24:05",
+    "date": "2026-09-08",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVT",
+        "volume_ratio": 1.28,
+        "price_change_pct": 7.3
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.24,
+        "price_change_pct": 6.0
+      },
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.46,
+        "price_change_pct": 4.8
+      }
+    ],
+    "error": null
   }
 ]
