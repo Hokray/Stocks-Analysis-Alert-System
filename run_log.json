@@ -214,5 +214,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-09T23:14:23",
+    "date": "2026-09-09",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.56,
+        "price_change_pct": 6.6
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.22,
+        "price_change_pct": 6.7
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.98,
+        "price_change_pct": 14.6
+      }
+    ],
+    "error": null
   }
 ]
