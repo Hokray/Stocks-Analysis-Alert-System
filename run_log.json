@@ -242,5 +242,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-10T23:09:53",
+    "date": "2026-09-10",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.98,
+        "price_change_pct": 7.7
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.93,
+        "price_change_pct": 18.7
+      },
+      {
+        "ticker": "SNDK",
+        "volume_ratio": 0.84,
+        "price_change_pct": 14.0
+      }
+    ],
+    "error": null
   }
 ]
