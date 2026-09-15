@@ -327,5 +327,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-15T23:32:42",
+    "date": "2026-09-15",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "DELL",
+      "HPE"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.01,
+        "price_change_pct": 21.4
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.96,
+        "price_change_pct": 8.3
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.86,
+        "price_change_pct": 12.9
+      }
+    ],
+    "error": null
   }
 ]
