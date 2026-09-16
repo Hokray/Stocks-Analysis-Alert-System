@@ -356,5 +356,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-16T23:40:21",
+    "date": "2026-09-16",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "DELL",
+      "HPE"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.05,
+        "price_change_pct": 24.3
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.98,
+        "price_change_pct": 16.6
+      },
+      {
+        "ticker": "COHR",
+        "volume_ratio": 0.91,
+        "price_change_pct": 7.9
+      }
+    ],
+    "error": null
   }
 ]
