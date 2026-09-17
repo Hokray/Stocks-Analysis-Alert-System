@@ -385,5 +385,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-17T23:34:09",
+    "date": "2026-09-17",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "HPE",
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "GNRC",
+        "volume_ratio": 1.2,
+        "price_change_pct": 13.2
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.11,
+        "price_change_pct": 8.4
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.1,
+        "price_change_pct": 19.2
+      }
+    ],
+    "error": null
   }
 ]
