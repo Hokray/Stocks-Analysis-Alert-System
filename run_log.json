@@ -414,5 +414,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-18T23:18:31",
+    "date": "2026-09-18",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.48,
+        "price_change_pct": 17.1
+      },
+      {
+        "ticker": "GNRC",
+        "volume_ratio": 1.36,
+        "price_change_pct": 10.7
+      },
+      {
+        "ticker": "COHR",
+        "volume_ratio": 1.06,
+        "price_change_pct": 12.6
+      }
+    ],
+    "error": null
   }
 ]
