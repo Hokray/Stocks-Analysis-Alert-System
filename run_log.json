@@ -468,5 +468,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-22T23:37:12",
+    "date": "2026-09-22",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AMD",
+        "volume_ratio": 1.09,
+        "price_change_pct": 19.7
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.04,
+        "price_change_pct": 9.0
+      },
+      {
+        "ticker": "RMBS",
+        "volume_ratio": 1.04,
+        "price_change_pct": 20.1
+      }
+    ],
+    "error": null
   }
 ]
