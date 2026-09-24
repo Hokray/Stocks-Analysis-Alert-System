@@ -525,5 +525,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-24T23:53:44",
+    "date": "2026-09-24",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AMD",
+        "volume_ratio": 1.14,
+        "price_change_pct": 21.9
+      },
+      {
+        "ticker": "ETN",
+        "volume_ratio": 1.08,
+        "price_change_pct": 7.5
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.03,
+        "price_change_pct": 7.1
+      }
+    ],
+    "error": null
   }
 ]
