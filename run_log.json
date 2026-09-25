@@ -554,5 +554,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-25T23:57:57",
+    "date": "2026-09-25",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.44,
+        "price_change_pct": 12.3
+      },
+      {
+        "ticker": "RMBS",
+        "volume_ratio": 1.31,
+        "price_change_pct": 30.8
+      },
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.23,
+        "price_change_pct": 13.9
+      }
+    ],
+    "error": null
   }
 ]
