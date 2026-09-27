@@ -11,7 +11,7 @@ on:
   # delay tolerance before the next session opens, so even a badly delayed
   # run still reads a complete daily bar.
   schedule:
-    - cron: '15 21 * * 1-5'
+    - cron: '0 22 * * 1-5'
 
 # Needed so the workflow can commit alerts_history.json back to the repo.
 permissions:
