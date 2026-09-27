@@ -49,7 +49,7 @@ def load_run_log():
 
 def save_run_log(entries):
     """Truncate to the cap and write. Returns what was actually saved."""
-    entries = _clean(entries)
+    entries = _clean(entries[-MAX_LOG_ENTRIES:])
     with open(RUN_LOG_FILE, "w", encoding="utf-8") as f:
         json.dump(entries, f, indent=2, allow_nan=False)
     return entries
@@ -78,7 +78,7 @@ def record_run(status, tickers_screened=0, matches=None,
     entries.append({
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "date": run_date,
-        "status": status,                       # "ok" | "error"
+        "status": status,                       # "ok" | "stale" | "error"
         "tickers_screened": tickers_screened,
         "match_count": len(matches or []),
         "matches": [m["ticker"] for m in (matches or [])],
