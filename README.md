@@ -1,6 +1,6 @@
 # Stocks Analysis Alert System
 
-An automated daily stock screener for AI-infrastructure equities, and eight
+An automated daily stock screener for AI-infrastructure equities, and nine
 studies testing whether its logic works.
 
 **It does not.** No metric tested — volume, momentum, volatility, trend position
@@ -18,7 +18,7 @@ it was built to test does not hold.
 - [The original hypothesis](#the-original-hypothesis)
 - [Phase 1 — Build and validate](#phase-1--build-and-validate)
 - [Phase 2 — Metric search](#phase-2--metric-search)
-- [All eight studies](#all-eight-studies)
+- [All nine studies](#all-nine-studies)
 - [What was learned](#what-was-learned)
 - [The live system](#the-live-system)
 - [Repository layout](#repository-layout)
@@ -321,5 +321,5 @@ needs time rather than work.
 
 This is a research and screening tool. It identifies where trading volume has
 concentrated within a specific sector. It does not constitute investment advice,
-does not predict future prices, and — as eight studies establish — has no
+does not predict future prices, and — as nine studies establish — has no
 demonstrated ability to select stocks that outperform.
