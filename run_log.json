@@ -158,5 +158,430 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-09-07T23:30:27",
+    "date": "2026-09-07",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.24,
+        "price_change_pct": 10.5
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.91,
+        "price_change_pct": 12.2
+      },
+      {
+        "ticker": "SNDK",
+        "volume_ratio": 0.82,
+        "price_change_pct": 16.5
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-08T23:24:05",
+    "date": "2026-09-08",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVT",
+        "volume_ratio": 1.28,
+        "price_change_pct": 7.3
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.24,
+        "price_change_pct": 6.0
+      },
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.46,
+        "price_change_pct": 4.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-09T23:14:23",
+    "date": "2026-09-09",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.56,
+        "price_change_pct": 6.6
+      },
+      {
+        "ticker": "NVDA",
+        "volume_ratio": 1.22,
+        "price_change_pct": 6.7
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.98,
+        "price_change_pct": 14.6
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-10T23:09:53",
+    "date": "2026-09-10",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.98,
+        "price_change_pct": 7.7
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.93,
+        "price_change_pct": 18.7
+      },
+      {
+        "ticker": "SNDK",
+        "volume_ratio": 0.84,
+        "price_change_pct": 14.0
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-11T23:16:10",
+    "date": "2026-09-11",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "DELL",
+      "HPE"
+    ],
+    "near_misses": [
+      {
+        "ticker": "NVT",
+        "volume_ratio": 1.3,
+        "price_change_pct": 9.4
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.12,
+        "price_change_pct": 6.6
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.96,
+        "price_change_pct": 30.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-14T23:52:41",
+    "date": "2026-09-14",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.82,
+        "price_change_pct": 6.1
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 0.99,
+        "price_change_pct": 24.6
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.87,
+        "price_change_pct": 16.3
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-15T23:32:42",
+    "date": "2026-09-15",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "DELL",
+      "HPE"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.01,
+        "price_change_pct": 21.4
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.96,
+        "price_change_pct": 8.3
+      },
+      {
+        "ticker": "IREN",
+        "volume_ratio": 0.86,
+        "price_change_pct": 12.9
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-16T23:40:21",
+    "date": "2026-09-16",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "DELL",
+      "HPE"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.05,
+        "price_change_pct": 24.3
+      },
+      {
+        "ticker": "CLS",
+        "volume_ratio": 0.98,
+        "price_change_pct": 16.6
+      },
+      {
+        "ticker": "COHR",
+        "volume_ratio": 0.91,
+        "price_change_pct": 7.9
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-17T23:34:09",
+    "date": "2026-09-17",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "HPE",
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "GNRC",
+        "volume_ratio": 1.2,
+        "price_change_pct": 13.2
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.11,
+        "price_change_pct": 8.4
+      },
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.1,
+        "price_change_pct": 19.2
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-18T23:18:31",
+    "date": "2026-09-18",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "DELL"
+    ],
+    "near_misses": [
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.48,
+        "price_change_pct": 17.1
+      },
+      {
+        "ticker": "GNRC",
+        "volume_ratio": 1.36,
+        "price_change_pct": 10.7
+      },
+      {
+        "ticker": "COHR",
+        "volume_ratio": 1.06,
+        "price_change_pct": 12.6
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-22T00:05:33",
+    "date": "2026-09-22",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "ANET",
+        "volume_ratio": 0.82,
+        "price_change_pct": NaN
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 1.12,
+        "price_change_pct": NaN
+      },
+      {
+        "ticker": "MRVL",
+        "volume_ratio": 0.76,
+        "price_change_pct": NaN
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-22T23:37:12",
+    "date": "2026-09-22",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AMD",
+        "volume_ratio": 1.09,
+        "price_change_pct": 19.7
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.04,
+        "price_change_pct": 9.0
+      },
+      {
+        "ticker": "RMBS",
+        "volume_ratio": 1.04,
+        "price_change_pct": 20.1
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-23T23:41:13",
+    "date": "2026-09-23",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 1,
+    "matches": [
+      "P"
+    ],
+    "near_misses": [
+      {
+        "ticker": "DELL",
+        "volume_ratio": 1.5,
+        "price_change_pct": 8.5
+      },
+      {
+        "ticker": "GNRC",
+        "volume_ratio": 1.49,
+        "price_change_pct": 6.9
+      },
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.33,
+        "price_change_pct": 13.2
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-24T23:53:44",
+    "date": "2026-09-24",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AMD",
+        "volume_ratio": 1.14,
+        "price_change_pct": 21.9
+      },
+      {
+        "ticker": "ETN",
+        "volume_ratio": 1.08,
+        "price_change_pct": 7.5
+      },
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.03,
+        "price_change_pct": 7.1
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-09-25T23:57:57",
+    "date": "2026-09-25",
+    "status": "ok",
+    "tickers_screened": 60,
+    "match_count": 2,
+    "matches": [
+      "P",
+      "GNRC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BE",
+        "volume_ratio": 1.44,
+        "price_change_pct": 12.3
+      },
+      {
+        "ticker": "RMBS",
+        "volume_ratio": 1.31,
+        "price_change_pct": 30.8
+      },
+      {
+        "ticker": "HPE",
+        "volume_ratio": 1.23,
+        "price_change_pct": 13.9
+      }
+    ],
+    "error": null
   }
 ]
