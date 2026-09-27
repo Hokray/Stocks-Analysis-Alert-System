@@ -306,7 +306,7 @@ def main():
                 f"\n{r['ticker']} - {r['company']} ({r['category']})\n"
                 f"  Price ${r['price']}, up {r['price_change_pct']}% "
                 f"over {config.RECENT_WINDOW_DAYS} days\n"
-                f"  Dollar volume {r['volume_ratio']}x its 3-month normal "
+                f"  Dollar volume {r['volume_ratio']}x its recent normal "
                 f"(${r['recent_dollar_vol_musd']}M/day)\n"
                 f"  Market cap ${r['market_cap_busd']}B, TTM CFO ${r['ttm_cfo_musd']}M"
             )
