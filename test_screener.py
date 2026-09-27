@@ -84,8 +84,10 @@ class TestPriceAndVolume:
 
         result = screener.compute_price_and_volume(df)
 
-        # Recent window is 2x; baseline includes those days, so the ratio lands
-        # between 1 and 2 rather than exactly at 2.
+        # Recent window trades at double the baseline window, and the two no
+        # longer overlap, so the ratio is exactly 2.0. Before the baseline was
+        # separated this came out lower, because the doubled days were inflating
+        # their own baseline.
         assert result["volume_ratio"] == pytest.approx(2.0)
         assert result["volume_ratio"] > config.VOLUME_SURGE_THRESHOLD
 

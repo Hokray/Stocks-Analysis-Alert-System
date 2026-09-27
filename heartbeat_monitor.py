@@ -17,6 +17,7 @@ the screener actually executed, which means the persistence counts in
 alerts_history.json have unknown gaps.
 """
 
+import math
 import json
 import os
 import smtplib
@@ -48,9 +49,9 @@ def load_run_log():
 
 def save_run_log(entries):
     """Truncate to the cap and write. Returns what was actually saved."""
-    entries = entries[-MAX_LOG_ENTRIES:]
+    entries = _clean(entries)
     with open(RUN_LOG_FILE, "w", encoding="utf-8") as f:
-        json.dump(entries, f, indent=2)
+        json.dump(entries, f, indent=2, allow_nan=False)
     return entries
 
 
@@ -194,6 +195,21 @@ Check the Actions tab for the full log.
     env_key = "FAILURE_EMAIL_TO" if os.environ.get("FAILURE_EMAIL_TO") else "EMAIL_TO"
     return _send(f"[SCREENER FAILED] {type(error).__name__}", body,
                  recipients_env=env_key)
+
+def _clean(obj):
+    """Replace NaN with None so the log is valid JSON.
+
+    NaN is not part of the JSON spec. Python writes and reads it happily,
+    but nothing else does, and this file is meant to outlive the script
+    that wrote it.
+    """
+    if isinstance(obj, dict):
+        return {k: _clean(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_clean(v) for v in obj]
+    if isinstance(obj, float) and math.isnan(obj):
+        return None
+    return obj
 
 
 # ---------------------------------------------------------------------------
