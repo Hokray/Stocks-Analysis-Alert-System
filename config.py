@@ -7,7 +7,7 @@ Every threshold lives here so you can tune the screener without touching logic.
 # ---------------------------------------------------------------------------
 # Universe
 # ---------------------------------------------------------------------------
-TICKER_FILE = "data/tickers.csv"
+TICKER_FILE = "data/tickers_universe.csv"   # was data/tickers.csv (60), now increase to 178!
 FUNDAMENTALS_CACHE_FILE = "cache/fundamentals.json"
 
 # Set to a number to only process the first N tickers (for testing).
