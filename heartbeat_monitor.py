@@ -55,7 +55,7 @@ def save_run_log(entries):
 
 
 def record_run(status, tickers_screened=0, matches=None,
-               error=None, near_misses=None):
+               error=None, near_misses=None, bar_date=None):
     """
     Append one entry describing this run.
 
