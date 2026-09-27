@@ -113,6 +113,8 @@ def compute_price_and_volume(history):
         "recent_avg_dollar_volume": recent_avg,
         "baseline_avg_dollar_volume": baseline_avg,
         "price_now": price_now,
+        "bar_date": history.index[-1].date().isoformat(),  
+
     }
 
 
@@ -238,6 +240,7 @@ def screen_ticker(row, cache):
         "pass_cfo": passed_cfo,
         "pass_cap": passed_cap,
         "MATCH": passed_volume and passed_price and passed_cfo and passed_cap,
+        "bar_date": metrics["bar_date"],
     }
 
 
@@ -308,6 +311,9 @@ def main():
     df.to_csv("last_run_results.csv", index=False)
     print("\nFull results written to last_run_results.csv")
 
+    bar_date = max((r["bar_date"] for r in results if r.get("bar_date")),
+                   default=None)
+    
     # Log every run, whether or not anything matched and whether or not
     # email is enabled. This is what makes a skipped run distinguishable
     # from a quiet market.
@@ -316,6 +322,7 @@ def main():
         tickers_screened=len(results),
         matches=matches.to_dict("records"),
         near_misses=monitor.find_near_misses(df),
+        bar_date=bar_date,
     )
     
     if config.SEND_EMAIL:
