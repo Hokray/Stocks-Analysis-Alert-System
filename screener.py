@@ -93,13 +93,16 @@ def compute_price_and_volume(history):
     recent_n = config.RECENT_WINDOW_DAYS
     baseline_n = config.BASELINE_WINDOW_DAYS
 
-    if len(history) < baseline_n + 1:
+    if len(history) < recent_n + baseline_n + 1:
         return None  # not enough history to judge what "normal" looks like
 
     dollar_volume = history["Close"] * history["Volume"]
 
     recent_avg = dollar_volume.tail(recent_n).mean()
-    baseline_avg = dollar_volume.tail(baseline_n).mean()
+    if getattr(config, "BASELINE_EXCLUDES_RECENT", False):
+        baseline_avg = dollar_volume.iloc[-(recent_n + baseline_n):-recent_n].mean()
+    else:
+        baseline_avg = dollar_volume.tail(baseline_n).mean()
 
     if baseline_avg <= 0:
         return None
