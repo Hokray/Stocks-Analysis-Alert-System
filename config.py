@@ -23,8 +23,9 @@ EXCHANGE_FILTER = []          # e.g. ["NASDAQ"] to go NASDAQ-only
 
 # 1. Dollar-volume surge
 RECENT_WINDOW_DAYS = 10       # "recent" period, in trading days
-BASELINE_WINDOW_DAYS = 63     # "normal" period (~3 months of trading days)
-VOLUME_SURGE_THRESHOLD = 1.50 # recent avg $ volume must be >= 150% of baseline
+BASELINE_WINDOW_DAYS = 30        # was 63 (changed to 30 days)
+BASELINE_EXCLUDES_RECENT = True  # new -- baseline ends where recent begins
+VOLUME_SURGE_THRESHOLD = 1.75 # recent avg $ volume must be >= 175% of baseline (changed from 1.50)
 
 # 2. Price momentum
 PRICE_CHANGE_THRESHOLD = 0.07 # +7% over RECENT_WINDOW_DAYS
