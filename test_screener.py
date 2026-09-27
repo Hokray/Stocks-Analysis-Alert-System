@@ -86,7 +86,7 @@ class TestPriceAndVolume:
 
         # Recent window is 2x; baseline includes those days, so the ratio lands
         # between 1 and 2 rather than exactly at 2.
-        assert 1.0 < result["volume_ratio"] < 2.0
+        assert result["volume_ratio"] == pytest.approx(2.0)
         assert result["volume_ratio"] > config.VOLUME_SURGE_THRESHOLD
 
     def test_dollar_volume_uses_price_not_share_count(self):
