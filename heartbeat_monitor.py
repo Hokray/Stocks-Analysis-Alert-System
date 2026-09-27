@@ -64,9 +64,19 @@ def record_run(status, tickers_screened=0, matches=None,
     """
     entries = load_run_log()
 
+    run_date = bar_date or datetime.now().date().isoformat()
+
+    # A run whose newest bar is not newer than the previous run's screened
+    # nothing new -- the data provider had not published the session yet.
+    # Recording it as "ok" makes a silent no-op look like a healthy run.
+    if status == "ok" and entries:
+        prev = entries[-1].get("date")
+        if prev and run_date <= prev:
+            status = "stale"
+
     entries.append({
         "timestamp": datetime.now().isoformat(timespec="seconds"),
-        "date": datetime.now().date().isoformat(),
+        "date": run_date,
         "status": status,                       # "ok" | "error"
         "tickers_screened": tickers_screened,
         "match_count": len(matches or []),
@@ -229,6 +239,7 @@ def build_weekly_summary(days_back=7):
     weekday_runs = [e for e in recent if _is_weekday(e)]
     ok_runs = [e for e in weekday_runs if e.get("status") == "ok"]
     failed = [e for e in weekday_runs if e.get("status") == "error"]
+    stale = [e for e in weekday_runs if e.get("status") == "stale"]
     ran_dates = {e["date"] for e in weekday_runs}
 
     missing = []
@@ -274,6 +285,7 @@ def build_weekly_summary(days_back=7):
         "actual_runs": len(ran_dates),
         "ok_runs": len(ok_runs),
         "failed_runs": len(failed),
+        "stale_runs": len(stale),
         "missing_dates": missing,
         "match_counts": match_counts,
         "persistent": persistent,
@@ -292,6 +304,10 @@ def format_weekly_plaintext(s):
 
     if s["failed_runs"]:
         lines.append(f"Runs FAILED:     {s['failed_runs']}")
+
+    if s.get("stale_runs"):
+        lines.append(f"Runs STALE:      {s['stale_runs']} "
+                f"(ran, but the data provider had no new bar)")
     if s["missing_dates"]:
         lines.append(f"Missing days:    {', '.join(s['missing_dates'])}")
         lines.append("                 (GitHub scheduled runs are best-effort"
