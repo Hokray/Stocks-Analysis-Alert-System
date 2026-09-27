@@ -38,13 +38,15 @@ Three conditions, all required:
 
 | # | Condition | Threshold |
 |---|---|---|
-| 1 | Dollar volume: 10-day average ÷ 63-day average | ≥ 1.50× |
+| 1 | Dollar volume: 10-day average ÷ preceding 30-day average | ≥ 1.75× |
 | 2 | Price change over 10 trading days | ≥ +7% |
 | 3 | TTM cash from operations | > 0 |
 
-Universe: 60 tickers across six categories — Networking and Optics, Memory and
+Universe: 178 tickers across six categories — Networking and Optics, Memory and
 Storage, Servers and Compute, Data Center Cooling, Data Center Power Supply, and
-Neo Cloud.
+Neo Cloud. Sixty were hand-picked in 2026 (`in_original` in the universe file);
+the other 118 were added neutrally by category after Study 4 showed the original
+selection was biased.
 
 ---
 
@@ -98,11 +100,11 @@ A separate event study explains *why* volume never worked, in two parts. The
 screener's 10-day averaging window cannot detect a spike that lasts two days —
 around real 10% moves, its own metric peaks at **1.13** against a trigger of
 **1.50**. And correcting the window would not help: volume elevation before a
-10% **fall** is three times larger than before a 10% rise.
+10% **fall** is three times larger than before a 10% rise. (Both figures predate Study 9, which found the baseline window included the recent window and understated every ratio in this project.)
 
 ---
 
-## All eight studies
+## All nine studies
 
 | # | Study | Question | Answer |
 |---|---|---|---|
@@ -114,6 +116,7 @@ around real 10% moves, its own metric peaks at **1.13** against a trigger of
 | 6 | [Volume timing](research/phase2_metric_search/VOLUME_TIMING.md) | Does volume lead or lag the move? | Leads by ~2 days; precedes falls more |
 | 7 | [Multi-period](research/phase2_metric_search/MULTI_PERIOD_TEST.md) | Do those eight hold in other quarters? | **No — zero of thirty-one** |
 | 8 | [Cross-asset](research/phase2_metric_search/MARKETS_ANALYSIS.md) | Does market regime explain the failures? | No (+0.05) |
+| 9 | [Volume windows](research/phase2_metric_search/VOLUME_WINDOW_VALIDATION.md) | Are the window lengths themselves wrong? | **Partly — and the baseline overlapped** |
 
 ---
 
@@ -142,6 +145,8 @@ around real 10% moves, its own metric peaks at **1.13** against a trigger of
 - **Universe construction** can create an effect that survives every other test
 - **A finding tested on one slice has not been tested** — one universe, one
   season, one regime
+- The baseline window included the recent window, capping the ratio at
+  base_n/recent_n and understating every volume figure in Studies 1–8
 
 **Two bugs worth recording**
 
@@ -196,13 +201,13 @@ complete daily bar. A morning slot had under five.
 ├── heartbeat_monitor.py         Run log, failure alerts, weekly summary
 ├── test_screener.py             55 unit tests
 ├── data/
-│   ├── tickers.csv              60 — the live screener's universe
+│   ├── tickers.csv              60 — the original hand-picked set, kept for Study 4
 │   ├── tickers_control.csv      124 — Study 4, includes deliberate laggards
-│   └── tickers_universe.csv     178 — Phase 2
+│   └── tickers_universe.csv     178 — the live screener and the snapshot archive
 ├── docs/MONITORING.md
 ├── research/
 │   ├── phase1_validation/       Studies 1–4
-│   └── phase2_metric_search/    Studies 5–8
+│   └── phase2_metric_search/    Studies 5–9
 └── results/                     Generated output (gitignored)
 ```
 
@@ -286,8 +291,16 @@ constituents would be the correct instrument.
 
 **Phase 1: complete.** Four studies, a clear negative conclusion.
 
-**Phase 2: paused.** Eight studies total. The metric search reached the same
-dead end from a different direction.
+**Phase 2: paused.** Nine studies total. The metric search reached the same dead
+end from a different direction. Study 9 then found a measurement bug in the
+volume ratio — the baseline window contained the recent window — and produced
+the project's first configuration change supported by a threshold fixed before
+the test was run.
+
+On 2026-09-27 the screener moved to a 30-day preceding baseline at 1.75x and
+its universe expanded from 60 to 178. Both configurations remain measurable
+against the snapshot archive, which stores raw close and volume independently
+of the screener's settings.
 
 **The live system continues running**, accumulating out-of-sample data — signals
 on dates no analysis has seen. That is the only clean test remaining, and it
