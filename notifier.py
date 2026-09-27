@@ -183,7 +183,7 @@ def build_plaintext(matches):
             f"  Category:      {m['category']} ({m['exchange']})",
             f"  Price:         ${m['price']}  ({m['price_change_pct']:+.1f}% over "
             f"{config.RECENT_WINDOW_DAYS} days)",
-            f"  Dollar volume: {m['volume_ratio']}x its 3-month normal "
+            f"  Dollar volume: {m['volume_ratio']}x its recent normal "
             f"(${m['recent_dollar_vol_musd']:,.0f}M/day)",
             f"  Market cap:    ${m['market_cap_busd']}B",
             f"  TTM cash ops:  ${m['ttm_cfo_musd']:,.0f}M",
@@ -262,7 +262,9 @@ def build_html(matches):
         {config.PERSISTENT_STREAK_MIN}+ qualifying days in the window.
       </p>
       <p style="color:#999;font-size:11px;margin-top:20px;border-top:1px solid #eee;padding-top:12px;">
-        Conditions: dollar volume &ge; {config.VOLUME_SURGE_THRESHOLD}x its 3-month average,
+        Conditions: dollar volume &ge; {config.VOLUME_SURGE_THRESHOLD}x its
+        {config.BASELINE_WINDOW_DAYS}-day average (excluding the most recent
+        {config.RECENT_WINDOW_DAYS} days),
         price &ge; +{config.PRICE_CHANGE_THRESHOLD*100:.0f}% over {config.RECENT_WINDOW_DAYS} days,
         positive TTM cash from operations.<br>
         Research screener, not investment advice.
