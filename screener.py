@@ -329,7 +329,7 @@ def main():
     )
     
     if config.SEND_EMAIL:
-        notifier.notify(matches.to_dict("records"))
+        notifier.notify(matches.to_dict("records"), bar_date = bar_date)
 
     # Archive all metrics for all tickers. Slowest step, so it runs last --
     # a failure here must never delay or block the alert email.
