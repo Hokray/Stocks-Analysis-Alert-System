@@ -320,17 +320,22 @@ def main():
     # Log every run, whether or not anything matched and whether or not
     # email is enabled. This is what makes a skipped run distinguishable
     # from a quiet market.
-    monitor.record_run(
+    entries = monitor.record_run(
         "ok",
         tickers_screened=len(results),
         matches=matches.to_dict("records"),
         near_misses=monitor.find_near_misses(df),
         bar_date=bar_date,
     )
-    
-    if config.SEND_EMAIL:
-        notifier.notify(matches.to_dict("records"), bar_date = bar_date)
+    is_stale = bool(entries) and entries[-1]["status"] == "stale"
 
+    if is_stale:
+        print(f"Stale run: newest bar is still {bar_date}. "
+              f"Recorded, no email sent.")
+    elif config.SEND_EMAIL:
+        notifier.notify(matches.to_dict("records"), bar_date=bar_date)
+
+    
     # Archive all metrics for all tickers. Slowest step, so it runs last --
     # a failure here must never delay or block the alert email.
     try:
