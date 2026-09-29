@@ -17,7 +17,7 @@ Credentials come from environment variables, never from code:
 import json
 import os
 import smtplib
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from email.message import EmailMessage
 
 import config
@@ -48,15 +48,31 @@ def load_history():
     except (json.JSONDecodeError, OSError):
         return {}
 
+from datetime import date, datetime, timedelta   # add `date`
+
+
+def _as_of(bar_date=None):
+    """The trading session this run describes, not the clock on the runner.
+
+    Runs regularly execute after midnight UTC, so datetime.now() names the
+    wrong day. bar_date is the last bar the screener actually read.
+    """
+    if bar_date:
+        try:
+            return date.fromisoformat(bar_date)
+        except ValueError:
+            pass
+    return datetime.now().date()
+
 
 def save_history(history):
     with open(config.ALERTS_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2, sort_keys=True)
 
 
-def prune_old_dates(dates, window_days=90):
+def prune_old_dates(dates, window_days=90, bar_date = None):
     """Drop qualifying dates older than the tracking window."""
-    cutoff = datetime.now().date() - timedelta(days=window_days)
+    cutoff = _as_of(bar_date) - timedelta(days=window_days)
     kept = []
     for d in dates:
         try:
@@ -67,14 +83,14 @@ def prune_old_dates(dates, window_days=90):
     return sorted(set(kept))
 
 
-def current_streak(dates):
+def current_streak(dates, bar_date = None):
     """
     How many days within the streak window this ticker qualified.
 
     Returns (count_in_window, calendar_days_spanned).
     """
     window = config.STREAK_WINDOW_DAYS
-    cutoff = datetime.now().date() - timedelta(days=window)
+    cutoff = _as_of(bar_date) - timedelta(days=window)
 
     in_window = []
     for d in dates:
@@ -89,7 +105,7 @@ def current_streak(dates):
         return 0, 0
 
     in_window.sort()
-    span = (datetime.now().date() - in_window[0]).days + 1
+    span = (_as_of(bar_date) - in_window[0]).days + 1
     return len(in_window), span
 
 
@@ -106,7 +122,7 @@ def describe_streak(count, span):
 # Recording and filtering
 # ---------------------------------------------------------------------------
 
-def record_and_filter(matches, history):
+def record_and_filter(matches, history, bar_date = None):
     """
     Record today's qualifiers, then decide which ones get emailed.
 
@@ -115,7 +131,7 @@ def record_and_filter(matches, history):
     show how persistent it has been.
     """
     now = datetime.now()
-    today = now.date().isoformat()
+    today = _as_of(bar_date).isoformat() #changed! using bar_date instead of datetime
     cooldown = timedelta(days=config.ALERT_COOLDOWN_DAYS)
     to_send = []
 
@@ -124,11 +140,12 @@ def record_and_filter(matches, history):
         entry = history.get(ticker, {})
 
         # --- always record that it qualified today ---
-        dates = prune_old_dates(entry.get("qualifying_dates", []) + [today])
+        dates = prune_old_dates(entry.get("qualifying_dates", []) + [today],
+                              bar_date=bar_date)
         entry["qualifying_dates"] = dates
         entry.setdefault("first_seen", today)
 
-        count, span = current_streak(dates)
+        count, span = current_streak(dates, bar_date=bar_date)
         match["streak_count"] = count
         match["streak_span"] = span
         match["streak_label"], match["streak_level"] = describe_streak(count, span)
@@ -168,9 +185,9 @@ def record_and_filter(matches, history):
 # Email formatting
 # ---------------------------------------------------------------------------
 
-def build_plaintext(matches):
+def build_plaintext(matches, bar_date = None):
     lines = [
-        f"Stock screener alert - {datetime.now().strftime('%A %d %B %Y')}",
+        f"Stock screener alert - {_as_of(bar_date).strftime('%A %d %B %Y')}",
         "",
         f"{len(matches)} name(s) tripped all screening conditions.",
         "",
@@ -207,7 +224,7 @@ STREAK_COLOURS = {
 }
 
 
-def build_html(matches):
+def build_html(matches, bar_date = None):
     rows = ""
     for m in matches:
         bg, fg = STREAK_COLOURS.get(m.get("streak_level", "new"),
@@ -243,7 +260,7 @@ def build_html(matches):
                        max-width:760px;margin:0 auto;color:#222;">
       <h2 style="margin-bottom:4px;">Screener alert</h2>
       <p style="color:#666;margin-top:0;font-size:13px;">
-        {datetime.now().strftime('%A %d %B %Y')} &middot;
+        {_as_of(bar_date).strftime('%A %d %B %Y')} &middot;
         {len(matches)} name(s) tripped all conditions
       </p>
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
@@ -276,7 +293,7 @@ def build_html(matches):
 # Sending
 # ---------------------------------------------------------------------------
 
-def send_email(matches):
+def send_email(matches, bar_date = None):
     sender = os.environ.get("EMAIL_ADDRESS")
     password = os.environ.get("EMAIL_APP_PASSWORD")
     recipients = os.environ.get("EMAIL_TO", "")
@@ -287,6 +304,7 @@ def send_email(matches):
         return False
 
     recipient_list = [r.strip() for r in recipients.split(",") if r.strip()]
+    
 
     msg = EmailMessage()
     tickers = ", ".join(m["ticker"] for m in matches)
@@ -301,8 +319,8 @@ def send_email(matches):
     msg["From"] = sender
     msg["To"] = ", ".join(recipient_list)
 
-    msg.set_content(build_plaintext(matches))
-    msg.add_alternative(build_html(matches), subtype="html")
+    msg.set_content(build_plaintext(matches, bar_date=bar_date))
+    msg.add_alternative(build_html(matches, bar_date=bar_date), subtype="html")
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
@@ -315,7 +333,7 @@ def send_email(matches):
         return False
 
 
-def notify(matches):
+def notify(matches, bar_date = None):
     """
     Entry point. Records every qualifying ticker (so streaks build even on days
     no email goes out), then emails whatever is due.
@@ -327,7 +345,7 @@ def notify(matches):
         save_history(history)
         return
 
-    to_send, history = record_and_filter(matches, history)
+    to_send, history = record_and_filter(matches, history, bar_date=bar_date)
 
     # Always save -- the streak record must persist even with no email.
     save_history(history)
@@ -336,4 +354,4 @@ def notify(matches):
         print("All matches recorded, none due for email.")
         return
 
-    send_email(to_send)
+    send_email(to_send, bar_date = bar_date)
