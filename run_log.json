@@ -666,5 +666,31 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-02T01:21:51",
+    "date": "2026-10-01",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "HUBB",
+        "volume_ratio": 1.08,
+        "price_change_pct": 4.5
+      },
+      {
+        "ticker": "ANET",
+        "volume_ratio": 0.94,
+        "price_change_pct": null
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 0.97,
+        "price_change_pct": null
+      }
+    ],
+    "error": null
   }
 ]
