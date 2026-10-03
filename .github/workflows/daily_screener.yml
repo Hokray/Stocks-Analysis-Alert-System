@@ -5,13 +5,13 @@ on:
   # Keep this forever; it's how you test without waiting a day.
   workflow_dispatch:
 
-      # 21:15 UTC = 5:15pm ET, about an hour after the US close.
-  # Chosen over a morning slot because GitHub scheduled runs have been
-  # observed 10+ hours late. Running after the close leaves ~16 hours of
-  # delay tolerance before the next session opens, so even a badly delayed
-  # run still reads a complete daily bar.
+  # 21:15 UTC. The cron is an anchor, not the real start time -- GitHub
+  # scheduled runs here land 2-3.5h late, so this executes around 23:20-00:00
+  # UTC. That window produced complete bars for two weeks; moving to 22:00
+  # pushed execution to ~01:20 UTC, where the provider returned trailing rows
+  # with no close and the screener silently matched nothing for four days.
   schedule:
-    - cron: '0 22 * * 1-5'
+    - cron: '15 21 * * 1-5'
 
 # Needed so the workflow can commit alerts_history.json back to the repo.
 permissions:
