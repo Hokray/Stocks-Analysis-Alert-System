@@ -109,6 +109,12 @@ def find_near_misses(results_df, top_n=3):
         if candidates.empty:
             return []
 
+         # A ticker with no price change has no measurable distance from the
+        # threshold -- that is missing data, not a near miss.
+        candidates = candidates[candidates["price_change_pct"].notna()]
+        if candidates.empty:
+            return []
+
         # Distance from qualifying, as a fraction of each threshold
         vol_gap = ((config.VOLUME_SURGE_THRESHOLD - candidates["volume_ratio"])
                    / config.VOLUME_SURGE_THRESHOLD).clip(lower=0)
@@ -352,8 +358,10 @@ def format_weekly_plaintext(s):
     if s["near_misses"]:
         lines.append("Closest to qualifying on the most recent run:")
         for nm in s["near_misses"]:
+            pct = nm.get("price_change_pct")
+            pct_text = f"{pct:+.1f}%" if pct is not None else "n/a"
             lines.append(f"  {nm['ticker']:<6} volume {nm['volume_ratio']}x, "
-                         f"price {nm['price_change_pct']:+.1f}%")
+                         f"price {pct_text}")
         lines.append("")
 
     lines += [
