@@ -93,6 +93,10 @@ def compute_price_and_volume(history):
     recent_n = config.RECENT_WINDOW_DAYS
     baseline_n = config.BASELINE_WINDOW_DAYS
 
+    # Drop incomplete bars. The provider sometimes returns a trailing row with
+    # no close, which makes price_now NaN and silently disqualifies the ticker.
+    history = history.dropna(subset=["Close", "Volume"])
+
     if len(history) < recent_n + baseline_n + 1:
         return None  # not enough history to judge what "normal" looks like
 
@@ -316,6 +320,20 @@ def main():
 
     bar_date = max((r["bar_date"] for r in results if r.get("bar_date")),
                    default=None)
+
+    bad = sum(1 for r in results
+              if r["price_change_pct"] is None or pd.isna(r["price_change_pct"]))
+
+    if bad > len(results) * 0.1:
+        # Archive before failing. snapshot.py drops incomplete bars itself, so
+        # it stays correct even when the screener's data is unusable -- and a
+        # broken screening run must not also cost a day of research data.
+        try:
+            snapshot.take_snapshot()
+        except Exception as e:
+            print(f"Snapshot failed (non-fatal): {e}")
+        raise RuntimeError(
+            f"{bad}/{len(results)} tickers have no usable price change")
     
     # Log every run, whether or not anything matched and whether or not
     # email is enabled. This is what makes a skipped run distinguishable
@@ -350,6 +368,9 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
+        # No bar_date in scope here, so an error entry is dated by the clock
+        # rather than by the session. Tolerated: an error is a point in time,
+        # not a statement about a trading day.
         monitor.record_run("error", error=e)
         monitor.send_failure_alert(e)
         raise
