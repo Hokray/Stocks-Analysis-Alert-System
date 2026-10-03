@@ -692,5 +692,57 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-03T00:59:48",
+    "date": "2026-10-02",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "ANET",
+        "volume_ratio": 0.79,
+        "price_change_pct": null
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 0.84,
+        "price_change_pct": null
+      },
+      {
+        "ticker": "MRVL",
+        "volume_ratio": 0.82,
+        "price_change_pct": null
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-03T09:39:24",
+    "date": "2026-10-02",
+    "status": "stale",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "BHE",
+        "volume_ratio": 1.66,
+        "price_change_pct": 13.5
+      },
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.52,
+        "price_change_pct": 30.1
+      },
+      {
+        "ticker": "SANM",
+        "volume_ratio": 1.3,
+        "price_change_pct": 9.3
+      }
+    ],
+    "error": null
   }
 ]
