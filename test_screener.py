@@ -459,6 +459,26 @@ class TestRunLog:
         entries = monitor.record_run("ok", tickers_screened=60)
         assert len(entries) == 2
 
+    def test_incomplete_trailing_bar_is_ignored(self):
+        """
+        The provider sometimes returns a row for the newest session with no
+        close. Before this was handled, price_now came back NaN, pass_price
+        was False for every ticker, and the screener reported 0 matches while
+        being unable to match anything. 2026-09-29 to 2026-10-02.
+        """
+        idx = pd.bdate_range("2026-01-01", periods=60)
+        history = pd.DataFrame(
+            {"Close": [100.0] * 60, "Volume": [1_000_000] * 60},
+            index=idx,
+        )
+        history.iloc[-1, history.columns.get_loc("Close")] = float("nan")
+
+        result = screener.compute_price_and_volume(history)
+
+        assert result is not None
+        assert not pd.isna(result["price_change"])
+        assert result["bar_date"] == idx[-2].date().isoformat()
+
     def test_log_is_capped(self, temp_run_log, monkeypatch):
         monkeypatch.setattr(monitor, "MAX_LOG_ENTRIES", 5)
         for _ in range(10):
