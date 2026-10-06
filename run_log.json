@@ -770,5 +770,31 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-06T01:50:37",
+    "date": "2026-10-05",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.6,
+        "price_change_pct": 28.9
+      },
+      {
+        "ticker": "TT",
+        "volume_ratio": 1.31,
+        "price_change_pct": 7.5
+      },
+      {
+        "ticker": "LSCC",
+        "volume_ratio": 1.25,
+        "price_change_pct": 8.4
+      }
+    ],
+    "error": null
   }
 ]
