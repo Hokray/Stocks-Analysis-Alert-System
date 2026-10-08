@@ -822,5 +822,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-08T01:06:15",
+    "date": "2026-10-07",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "VST"
+    ],
+    "near_misses": [
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.63,
+        "price_change_pct": 32.1
+      },
+      {
+        "ticker": "TLN",
+        "volume_ratio": 1.52,
+        "price_change_pct": 24.2
+      },
+      {
+        "ticker": "CEG",
+        "volume_ratio": 1.45,
+        "price_change_pct": 13.8
+      }
+    ],
+    "error": null
   }
 ]
