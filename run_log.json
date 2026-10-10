@@ -878,5 +878,35 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-10T00:57:20",
+    "date": "2026-10-09",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 3,
+    "matches": [
+      "VST",
+      "CEG",
+      "TLN"
+    ],
+    "near_misses": [
+      {
+        "ticker": "DXC",
+        "volume_ratio": 1.69,
+        "price_change_pct": 16.2
+      },
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.57,
+        "price_change_pct": 8.4
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.35,
+        "price_change_pct": 14.9
+      }
+    ],
+    "error": null
   }
 ]
