@@ -908,5 +908,36 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-13T02:40:31",
+    "date": "2026-10-12",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 4,
+    "matches": [
+      "VST",
+      "TLN",
+      "CEG",
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.56,
+        "price_change_pct": 14.1
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.39,
+        "price_change_pct": 14.6
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.31,
+        "price_change_pct": 11.8
+      }
+    ],
+    "error": null
   }
 ]
