@@ -52,6 +52,7 @@ import config
 warnings.filterwarnings("ignore")
 
 SNAPSHOT_DIR = "data/snapshots"
+BACKFILL_SESSIONS = 5    # how many recent sessions to consider writing
 UNIVERSE_FILE = "data/tickers_universe.csv"   # the 178, not the live 60
 HISTORY_PERIOD = "2y"                          # enough for a 252-day lookback
 REQUEST_DELAY = 0.0                            # bulk download, no per-ticker delay
@@ -178,6 +179,10 @@ def load_universe():
 def snapshot_path(date):
     return os.path.join(SNAPSHOT_DIR, f"{date}.csv.gz")
 
+def existing_snapshot_dates():
+    if not os.path.isdir(SNAPSHOT_DIR):
+        return set()
+    return {f[:-7] for f in os.listdir(SNAPSHOT_DIR) if f.endswith(".csv.gz")}
 
 def take_snapshot(force=False):
     """
