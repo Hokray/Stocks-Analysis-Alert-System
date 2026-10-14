@@ -184,11 +184,19 @@ def existing_snapshot_dates():
         return set()
     return {f[:-7] for f in os.listdir(SNAPSHOT_DIR) if f.endswith(".csv.gz")}
 
-def take_snapshot(force=False):
-    """
-    Fetch the universe, compute all metrics, write the latest row per ticker.
 
-    Returns the path written, or None if skipped.
+def take_snapshot(force=False, sessions=BACKFILL_SESSIONS):
+    """
+    Archive every recent session not already on disk.
+
+    Earlier versions wrote only the newest bar. When the provider's lag
+    changed between two runs -- one seeing Thursday as newest, the next
+    seeing Monday -- the sessions in between were never written and were
+    lost permanently. 2026-10-09 went this way.
+
+    A row written for a session older than the newest one is a
+    recomputation, not a point-in-time capture, and is marked
+    backfilled=True.
     """
     os.makedirs(SNAPSHOT_DIR, exist_ok=True)
 
@@ -201,8 +209,8 @@ def take_snapshot(force=False):
                        auto_adjust=True, group_by="ticker",
                        progress=False, threads=True)
 
-    rows, skipped = [], []
-    as_of = None
+    existing = set() if force else existing_snapshot_dates()
+    rows_by_date, skipped, newest = {}, [], None
 
     for t in tickers:
         m = compute_metrics(data, t)
@@ -210,47 +218,46 @@ def take_snapshot(force=False):
             skipped.append(t)
             continue
 
-        last_date = m.index[-1]
-        if as_of is None:
-            as_of = last_date.date().isoformat()
+        last = m.index[-1].date().isoformat()
+        if newest is None or last > newest:
+            newest = last
 
-        row = {
-            "as_of": last_date.date().isoformat(),
-            "ticker": t,
-            "category": meta[t].get("category", ""),
-            "exchange": meta[t].get("exchange", ""),
-            "in_original_60": meta[t].get("in_original", ""),
-        }
-        row.update({k: (None if pd.isna(val) else float(val))
-                    for k, val in m.iloc[-1].items()})
-        rows.append(row)
+        for ts in m.index[-sessions:]:
+            d = ts.date().isoformat()
+            if d in existing:
+                continue
+            row = {
+                "as_of": d,
+                "ticker": t,
+                "category": meta[t].get("category", ""),
+                "exchange": meta[t].get("exchange", ""),
+                "in_original_60": meta[t].get("in_original", ""),
+            }
+            row.update({k: (None if pd.isna(v) else float(v))
+                        for k, v in m.loc[ts].items()})
+            rows_by_date.setdefault(d, []).append(row)
 
-    if not rows:
-        print("Snapshot: no usable data, nothing written.")
-        return None
+    if not rows_by_date:
+        print(f"Snapshot: nothing new to write (newest bar {newest}).")
+        return []
 
-    df = pd.DataFrame(rows)
+    written = []
+    for d in sorted(rows_by_date):
+        df = pd.DataFrame(rows_by_date[d])
+        df["backfilled"] = (d != newest)
+        path = snapshot_path(d)
+        with gzip.open(path, "wt", newline="", encoding="utf-8") as f:
+            df.to_csv(f, index=False)
+        tag = "" if d == newest else "  [backfilled]"
+        print(f"Snapshot: wrote {len(df)} rows to {path} "
+              f"({os.path.getsize(path)/1024:.0f} KB){tag}")
+        written.append(path)
 
-    # File is named for the latest bar, not the run date. A run delayed past
-    # midnight UTC would otherwise create a file dated a day after the data it
-    # contains -- and scheduled runs here have been observed 10 hours late.
-    path = snapshot_path(as_of)
-
-    if os.path.exists(path) and not force:
-        print(f"Snapshot: {path} already exists, skipping "
-              f"(bar date {as_of} unchanged since last run).")
-        return None
-
-    with gzip.open(path, "wt", newline="", encoding="utf-8") as f:
-        df.to_csv(f, index=False)
-
-    size_kb = os.path.getsize(path) / 1024
-    print(f"Snapshot: wrote {len(df)} rows to {path} ({size_kb:.0f} KB)")
     if skipped:
         print(f"Snapshot: no data for {len(skipped)} tickers "
               f"({', '.join(skipped[:8])}{'...' if len(skipped) > 8 else ''})")
 
-    return path
+    return written
 
 
 # ---------------------------------------------------------------------------
