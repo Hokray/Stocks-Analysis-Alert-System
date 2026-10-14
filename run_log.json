@@ -770,5 +770,205 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-06T01:50:37",
+    "date": "2026-10-05",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.6,
+        "price_change_pct": 28.9
+      },
+      {
+        "ticker": "TT",
+        "volume_ratio": 1.31,
+        "price_change_pct": 7.5
+      },
+      {
+        "ticker": "LSCC",
+        "volume_ratio": 1.25,
+        "price_change_pct": 8.4
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-07T00:48:20",
+    "date": "2026-10-06",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.63,
+        "price_change_pct": 32.1
+      },
+      {
+        "ticker": "TT",
+        "volume_ratio": 1.37,
+        "price_change_pct": 9.0
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.26,
+        "price_change_pct": 16.4
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-08T01:06:15",
+    "date": "2026-10-07",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "VST"
+    ],
+    "near_misses": [
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.63,
+        "price_change_pct": 32.1
+      },
+      {
+        "ticker": "TLN",
+        "volume_ratio": 1.52,
+        "price_change_pct": 24.2
+      },
+      {
+        "ticker": "CEG",
+        "volume_ratio": 1.45,
+        "price_change_pct": 13.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-09T01:18:52",
+    "date": "2026-10-08",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "VST"
+    ],
+    "near_misses": [
+      {
+        "ticker": "TLN",
+        "volume_ratio": 1.64,
+        "price_change_pct": 26.1
+      },
+      {
+        "ticker": "CEG",
+        "volume_ratio": 1.63,
+        "price_change_pct": 14.5
+      },
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.53,
+        "price_change_pct": 24.3
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-10T00:57:20",
+    "date": "2026-10-09",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 3,
+    "matches": [
+      "VST",
+      "CEG",
+      "TLN"
+    ],
+    "near_misses": [
+      {
+        "ticker": "DXC",
+        "volume_ratio": 1.69,
+        "price_change_pct": 16.2
+      },
+      {
+        "ticker": "VIAV",
+        "volume_ratio": 1.57,
+        "price_change_pct": 8.4
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.35,
+        "price_change_pct": 14.9
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-13T02:40:31",
+    "date": "2026-10-12",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 4,
+    "matches": [
+      "VST",
+      "TLN",
+      "CEG",
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.56,
+        "price_change_pct": 14.1
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.39,
+        "price_change_pct": 14.6
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.31,
+        "price_change_pct": 11.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-14T00:23:38",
+    "date": "2026-10-12",
+    "status": "stale",
+    "tickers_screened": 172,
+    "match_count": 4,
+    "matches": [
+      "VST",
+      "TLN",
+      "CEG",
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "CIEN",
+        "volume_ratio": 1.56,
+        "price_change_pct": 14.1
+      },
+      {
+        "ticker": "NTAP",
+        "volume_ratio": 1.39,
+        "price_change_pct": 14.6
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.31,
+        "price_change_pct": 11.8
+      }
+    ],
+    "error": null
   }
 ]
