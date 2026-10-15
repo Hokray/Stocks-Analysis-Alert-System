@@ -1001,5 +1001,35 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-15T23:47:05",
+    "date": "2026-10-15",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 3,
+    "matches": [
+      "VST",
+      "DXC",
+      "TLN"
+    ],
+    "near_misses": [
+      {
+        "ticker": "ALLT",
+        "volume_ratio": 1.71,
+        "price_change_pct": 7.2
+      },
+      {
+        "ticker": "CEG",
+        "volume_ratio": 1.97,
+        "price_change_pct": 6.8
+      },
+      {
+        "ticker": "ERIC",
+        "volume_ratio": 1.64,
+        "price_change_pct": 15.3
+      }
+    ],
+    "error": null
   }
 ]
