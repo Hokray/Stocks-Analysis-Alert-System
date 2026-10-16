@@ -425,6 +425,43 @@ class TestCooldownAndRecording:
         assert len(to_send) == 1
 
 
+class TestAlertCooldown:
+
+    def test_same_session_is_not_emailed_twice(self):
+        history = {}
+        first, history = notifier.record_and_filter(
+            [{"ticker": "VST"}], history, bar_date="2026-10-15")
+        second, history = notifier.record_and_filter(
+            [{"ticker": "VST"}], history, bar_date="2026-10-15")
+
+        assert [m["ticker"] for m in first] == ["VST"]
+        assert second == []
+
+    def test_consecutive_sessions_are_both_emailed(self):
+        """
+        The cooldown used to compare wall-clock time. Runs land at a
+        different hour each night, so two sessions can be under 24h apart:
+        2026-10-15 was suppressed because its run started 13 minutes earlier
+        than the previous one. These two calls happen milliseconds apart and
+        must both send, because they are different sessions.
+        """
+        history = {}
+        wed, history = notifier.record_and_filter(
+            [{"ticker": "VST"}], history, bar_date="2026-10-14")
+        thu, history = notifier.record_and_filter(
+            [{"ticker": "VST"}], history, bar_date="2026-10-15")
+
+        assert [m["ticker"] for m in wed] == ["VST"]
+        assert [m["ticker"] for m in thu] == ["VST"]
+
+    def test_emailed_date_is_the_session_not_the_clock(self):
+        history = {}
+        _, history = notifier.record_and_filter(
+            [{"ticker": "VST"}], history, bar_date="2026-10-15")
+
+        assert history["VST"]["last_emailed_date"] == "2026-10-15"
+
+
 # ===========================================================================
 # Monitoring
 # ===========================================================================
