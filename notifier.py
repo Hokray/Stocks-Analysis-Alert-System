@@ -151,12 +151,18 @@ def record_and_filter(matches, history, bar_date = None):
         match["streak_label"], match["streak_level"] = describe_streak(count, span)
 
         # --- decide whether to email ---
-        last_emailed = entry.get("last_emailed")
+
+        # Gate on trading sessions, not elapsed hours. Runs land at a
+        # different hour each night, so two consecutive sessions can be under
+        # 24h apart -- 2026-10-15 was suppressed by 13 minutes.
+        last_date = entry.get("last_emailed_date")
         should_email = True
 
-        if last_emailed:
+        if last_date:
             try:
-                if now - datetime.fromisoformat(last_emailed) < cooldown:
+                gap = (date.fromisoformat(today)
+                       - date.fromisoformat(last_date)).days
+                if gap < config.ALERT_COOLDOWN_DAYS:
                     should_email = False
             except ValueError:
                 pass
@@ -171,6 +177,7 @@ def record_and_filter(matches, history, bar_date = None):
 
         if should_email:
             entry["last_emailed"] = now.isoformat()
+            entry["last_emailed_date"] = today
             to_send.append(match)
         else:
             print(f"  {ticker}: qualified again (streak {count}), "
