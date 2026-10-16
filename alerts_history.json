@@ -1,4 +1,12 @@
 {
+  "ALLT": {
+    "first_seen": "2026-10-16",
+    "last_emailed": "2026-10-16T23:41:46.022264",
+    "last_emailed_date": "2026-10-16",
+    "qualifying_dates": [
+      "2026-10-16"
+    ]
+  },
   "ARM": {
     "first_seen": "2026-09-29",
     "last_emailed": "2026-09-29T01:32:26.808014",
@@ -36,11 +44,21 @@
   },
   "DXC": {
     "first_seen": "2026-10-12",
-    "last_emailed": "2026-10-15T00:00:30.425169",
+    "last_emailed": "2026-10-16T23:41:46.022264",
+    "last_emailed_date": "2026-10-16",
     "qualifying_dates": [
       "2026-10-12",
       "2026-10-14",
-      "2026-10-15"
+      "2026-10-15",
+      "2026-10-16"
+    ]
+  },
+  "ERIC": {
+    "first_seen": "2026-10-16",
+    "last_emailed": "2026-10-16T23:41:46.022264",
+    "last_emailed_date": "2026-10-16",
+    "qualifying_dates": [
+      "2026-10-16"
     ]
   },
   "GNRC": {
