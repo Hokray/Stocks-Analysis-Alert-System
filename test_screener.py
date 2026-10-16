@@ -350,7 +350,7 @@ class TestCooldownAndRecording:
         """
         history = {"NBIS": {
             "qualifying_dates": [],
-            "last_emailed": datetime.now().isoformat(),   # just emailed
+            "last_emailed_date": datetime.now().date().isoformat(),   # just emailed
         }}
 
         to_send, history = notifier.record_and_filter([a_match()], history)
@@ -378,7 +378,7 @@ class TestCooldownAndRecording:
         ]
         history = {"NBIS": {
             "qualifying_dates": prior,
-            "last_emailed": datetime.now().isoformat(),
+            "last_emailed_date": datetime.now().date().isoformat(),
         }}
 
         to_send, history = notifier.record_and_filter([a_match()], history)
@@ -395,7 +395,7 @@ class TestCooldownAndRecording:
         ]
         history = {"NBIS": {
             "qualifying_dates": prior,
-            "last_emailed": datetime.now().isoformat(),
+            "last_emailed_date": datetime.now().date().isoformat(),
             "persistence_notified": True,
         }}
 
@@ -406,7 +406,7 @@ class TestCooldownAndRecording:
         """A new ticker must alert even if another was just emailed."""
         history = {"NBIS": {
             "qualifying_dates": [],
-            "last_emailed": datetime.now().isoformat(),
+            "last_emailed_date": datetime.now().date().isoformat(),
         }}
 
         to_send, _ = notifier.record_and_filter(
@@ -415,10 +415,11 @@ class TestCooldownAndRecording:
         assert [m["ticker"] for m in to_send] == ["IREN"]
 
     def test_expired_cooldown_allows_a_new_email(self, temp_history):
-        old = datetime.now() - timedelta(days=config.ALERT_COOLDOWN_DAYS + 1)
+        old = (datetime.now().date()
+               - timedelta(days=config.ALERT_COOLDOWN_DAYS + 1)).isoformat()
         history = {"NBIS": {
             "qualifying_dates": [],
-            "last_emailed": old.isoformat(),
+            "last_emailed_date": old,
         }}
 
         to_send, _ = notifier.record_and_filter([a_match()], history)
