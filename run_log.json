@@ -1061,5 +1061,35 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-20T00:26:46",
+    "date": "2026-10-19",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 3,
+    "matches": [
+      "ALLT",
+      "DXC",
+      "ERIC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "TLN",
+        "volume_ratio": 2.01,
+        "price_change_pct": 6.9
+      },
+      {
+        "ticker": "CMTL",
+        "volume_ratio": 1.27,
+        "price_change_pct": 11.2
+      },
+      {
+        "ticker": "VST",
+        "volume_ratio": 2.09,
+        "price_change_pct": 4.9
+      }
+    ],
+    "error": null
   }
 ]
