@@ -1239,5 +1239,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-28T00:36:26",
+    "date": "2026-10-27",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 2,
+    "matches": [
+      "ERIC",
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BOX",
+        "volume_ratio": 1.49,
+        "price_change_pct": 15.1
+      },
+      {
+        "ticker": "CDW",
+        "volume_ratio": 1.22,
+        "price_change_pct": 7.4
+      },
+      {
+        "ticker": "IBM",
+        "volume_ratio": 1.21,
+        "price_change_pct": 9.8
+      }
+    ],
+    "error": null
   }
 ]
