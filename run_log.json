@@ -1268,5 +1268,35 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-29T01:02:58",
+    "date": "2026-10-28",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 3,
+    "matches": [
+      "ALLT",
+      "ERIC",
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "BOX",
+        "volume_ratio": 1.6,
+        "price_change_pct": 11.7
+      },
+      {
+        "ticker": "RDWR",
+        "volume_ratio": 1.34,
+        "price_change_pct": 23.6
+      },
+      {
+        "ticker": "LII",
+        "volume_ratio": 1.37,
+        "price_change_pct": 6.7
+      }
+    ],
+    "error": null
   }
 ]
