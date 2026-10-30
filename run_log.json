@@ -1298,5 +1298,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-10-30T01:05:21",
+    "date": "2026-10-29",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "DXC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "RDWR",
+        "volume_ratio": 1.65,
+        "price_change_pct": 31.0
+      },
+      {
+        "ticker": "BOX",
+        "volume_ratio": 1.63,
+        "price_change_pct": 8.4
+      },
+      {
+        "ticker": "VRT",
+        "volume_ratio": 1.47,
+        "price_change_pct": 13.1
+      }
+    ],
+    "error": null
   }
 ]
