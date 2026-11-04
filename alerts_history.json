@@ -124,10 +124,11 @@
   },
   "RDWR": {
     "first_seen": "2026-11-02",
-    "last_emailed": "2026-11-03T03:00:30.801650",
-    "last_emailed_date": "2026-11-02",
+    "last_emailed": "2026-11-04T01:27:55.295538",
+    "last_emailed_date": "2026-11-03",
     "qualifying_dates": [
-      "2026-11-02"
+      "2026-11-02",
+      "2026-11-03"
     ]
   },
   "RMBS": {

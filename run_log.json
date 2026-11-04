@@ -1382,5 +1382,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-04T01:27:55",
+    "date": "2026-11-03",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "RDWR"
+    ],
+    "near_misses": [
+      {
+        "ticker": "VRT",
+        "volume_ratio": 1.41,
+        "price_change_pct": 10.2
+      },
+      {
+        "ticker": "AOS",
+        "volume_ratio": 1.32,
+        "price_change_pct": 10.5
+      },
+      {
+        "ticker": "FLS",
+        "volume_ratio": 1.24,
+        "price_change_pct": 14.8
+      }
+    ],
+    "error": null
   }
 ]
