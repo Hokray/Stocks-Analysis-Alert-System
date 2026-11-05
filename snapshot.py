@@ -223,7 +223,7 @@ def take_snapshot(force=False, sessions=BACKFILL_SESSIONS):
                        auto_adjust=True, group_by="ticker",
                        progress=False, threads=True)
 
-    existing = set() if force else existing_snapshot_dates()
+    existing = set() if force else existing_snapshot_dates(len(tickers))
     rows_by_date, skipped, newest = {}, [], None
 
     for t in tickers:
