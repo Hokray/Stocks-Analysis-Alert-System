@@ -56,7 +56,7 @@ BACKFILL_SESSIONS = 5    # how many recent sessions to consider writing
 UNIVERSE_FILE = "data/tickers_universe.csv"   # the 178, not the live 60
 HISTORY_PERIOD = "2y"                          # enough for a 252-day lookback
 REQUEST_DELAY = 0.0                            # bulk download, no per-ticker delay
-
+MIN_COVERAGE = 0.9
 
 # ---------------------------------------------------------------------------
 # Metric library
@@ -179,10 +179,24 @@ def load_universe():
 def snapshot_path(date):
     return os.path.join(SNAPSHOT_DIR, f"{date}.csv.gz")
 
-def existing_snapshot_dates():
+def existing_snapshot_dates(expected):
+    """Dates already archived with adequate coverage.
+
+    A file written while the provider was mid-update can hold a handful of
+    tickers. Treating it as done blocks the date forever, so a sparse file
+    counts as missing and gets rewritten.
+    """
+    done = set()
     if not os.path.isdir(SNAPSHOT_DIR):
-        return set()
-    return {f[:-7] for f in os.listdir(SNAPSHOT_DIR) if f.endswith(".csv.gz")}
+        return done
+    for fn in os.listdir(SNAPSHOT_DIR):
+        if not fn.endswith(".csv.gz"):
+            continue
+        with gzip.open(os.path.join(SNAPSHOT_DIR, fn), "rt", encoding="utf-8") as f:
+            n = sum(1 for _ in f) - 1
+        if n >= expected * MIN_COVERAGE:
+            done.add(fn[:-7])
+    return done
 
 
 def take_snapshot(force=False, sessions=BACKFILL_SESSIONS):
