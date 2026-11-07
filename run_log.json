@@ -1467,5 +1467,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-07T01:02:00",
+    "date": "2026-11-06",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 1,
+    "matches": [
+      "MSI"
+    ],
+    "near_misses": [
+      {
+        "ticker": "CR",
+        "volume_ratio": 1.62,
+        "price_change_pct": 8.1
+      },
+      {
+        "ticker": "KD",
+        "volume_ratio": 1.58,
+        "price_change_pct": 11.0
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.77,
+        "price_change_pct": 5.9
+      }
+    ],
+    "error": null
   }
 ]
