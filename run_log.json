@@ -1581,5 +1581,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-13T01:55:24",
+    "date": "2026-11-12",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 2,
+    "matches": [
+      "MSI",
+      "LSCC"
+    ],
+    "near_misses": [
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.68,
+        "price_change_pct": 13.1
+      },
+      {
+        "ticker": "ANET",
+        "volume_ratio": 1.72,
+        "price_change_pct": 6.8
+      },
+      {
+        "ticker": "KD",
+        "volume_ratio": 1.61,
+        "price_change_pct": 22.9
+      }
+    ],
+    "error": null
   }
 ]
