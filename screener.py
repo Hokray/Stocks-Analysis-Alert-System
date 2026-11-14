@@ -16,6 +16,8 @@ import json
 import os
 import time
 from datetime import datetime, timedelta
+from collections import Counter
+
 
 import pandas as pd
 import yfinance as yf
@@ -318,8 +320,8 @@ def main():
     df.to_csv("last_run_results.csv", index=False)
     print("\nFull results written to last_run_results.csv")
 
-    bar_date = max((r["bar_date"] for r in results if r.get("bar_date")),
-                   default=None)
+    dates = [r["bar_date"] for r in results if r.get("bar_date")]
+    bar_date = Counter(dates).most_common(1)[0][0] if dates else None
 
     bad = sum(1 for r in results
               if r["price_change_pct"] is None or pd.isna(r["price_change_pct"]))
