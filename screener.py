@@ -114,7 +114,7 @@ def compute_price_and_volume(history):
         return None
 
     price_now = history["Close"].iloc[-1]
-    price_then = history["Close"].iloc[-recent_n]
+    price_then = history["Close"].iloc[-(recent_n + 1)]
 
     return {
         "volume_ratio": recent_avg / baseline_avg,
