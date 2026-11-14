@@ -1610,5 +1610,36 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-14T01:31:56",
+    "date": "2026-11-13",
+    "status": "ok",
+    "tickers_screened": 172,
+    "match_count": 4,
+    "matches": [
+      "AMD",
+      "LSCC",
+      "MSI",
+      "ANET"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.66,
+        "price_change_pct": 16.9
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.62,
+        "price_change_pct": 20.2
+      },
+      {
+        "ticker": "KD",
+        "volume_ratio": 1.57,
+        "price_change_pct": 23.4
+      }
+    ],
+    "error": null
   }
 ]
