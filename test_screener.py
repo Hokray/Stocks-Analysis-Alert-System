@@ -402,6 +402,74 @@ class TestCooldownAndRecording:
         to_send, _ = notifier.record_and_filter([a_match()], history)
         assert to_send == []
 
+    def test_falling_below_the_threshold_clears_the_crossing_flag(
+            self, temp_history):
+        """
+        The flag must not be permanent. It was set once and never unset, so a
+        ticker only ever announced its first crossing for the lifetime of the
+        history file.
+        """
+        today = datetime.now().date()
+        history = {"NBIS": {
+            "qualifying_dates": [(today - timedelta(days=1)).isoformat()],
+            "last_emailed_date": today.isoformat(),
+            "persistence_notified": True,          # went persistent long ago
+        }}
+
+        _, history = notifier.record_and_filter([a_match()], history)
+
+        assert "persistence_notified" not in history["NBIS"]
+
+    def test_a_second_crossing_alerts_again(self, temp_history):
+        """
+        Go persistent, fade, climb back: the second crossing is as much a
+        signal as the first and must break the cooldown the same way.
+        """
+        today = datetime.now().date()
+
+        # Faded -- one qualifying day in the window, flag still set from the
+        # first crossing months ago.
+        history = {"NBIS": {
+            "qualifying_dates": [(today - timedelta(days=9)).isoformat()],
+            "last_emailed_date": today.isoformat(),
+            "persistence_notified": True,
+        }}
+        _, history = notifier.record_and_filter(
+            [a_match()], history, bar_date=(today - timedelta(days=8)).isoformat())
+
+        # Now climb back to the threshold.
+        history["NBIS"]["qualifying_dates"] = [
+            (today - timedelta(days=i)).isoformat()
+            for i in range(1, config.PERSISTENT_STREAK_MIN)
+        ]
+        history["NBIS"]["last_emailed_date"] = today.isoformat()
+
+        to_send, history = notifier.record_and_filter([a_match()], history)
+
+        assert len(to_send) == 1                               # cooldown broken
+        assert to_send[0]["streak_level"] == "strong"
+        assert history["NBIS"]["persistence_notified"] is True
+
+    def test_staying_persistent_still_does_not_repeat(self, temp_history):
+        """
+        The reset must not reopen the door on consecutive persistent days --
+        the count stays above the threshold, so the flag stays set.
+        """
+        today = datetime.now().date()
+        history = {"NBIS": {
+            "qualifying_dates": [
+                (today - timedelta(days=i)).isoformat()
+                for i in range(1, config.PERSISTENT_STREAK_MIN + 3)
+            ],
+            "last_emailed_date": today.isoformat(),
+            "persistence_notified": True,
+        }}
+
+        to_send, history = notifier.record_and_filter([a_match()], history)
+
+        assert to_send == []
+        assert history["NBIS"]["persistence_notified"] is True
+
     def test_each_ticker_has_its_own_cooldown(self, temp_history):
         """A new ticker must alert even if another was just emailed."""
         history = {"NBIS": {
