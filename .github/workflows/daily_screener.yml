@@ -4,6 +4,12 @@ on:
   # Manual trigger - gives you a "Run workflow" button in the Actions tab.
   # Keep this forever; it's how you test without waiting a day.
   workflow_dispatch:
+    inputs:
+      send_email:
+        description: 'Send the alert email'
+        type: choice
+        options: ['true', 'false']
+        default: 'true'
 
   # 21:15 UTC. The cron is an anchor, not the real start time -- GitHub
   # scheduled runs here land 2-3.5h late, so this executes around 23:20-00:00
@@ -44,7 +50,10 @@ jobs:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          SEND_EMAIL: 'true'
+          # Read by config.SEND_EMAIL. On a scheduled run the input is empty,
+          # which falls through to 'true' -- the default must stay on the
+          # sending side, or a silent run would look like a quiet market.
+          SEND_EMAIL: ${{ inputs.send_email || 'true' }}
         run: python screener.py
 
       # The runner is wiped after every run, so both the dedup file and the
