@@ -22,7 +22,7 @@ import json
 import os
 import smtplib
 import traceback
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from email.message import EmailMessage
 
 import config
@@ -30,6 +30,12 @@ import config
 
 RUN_LOG_FILE = "run_log.json"
 MAX_LOG_ENTRIES = 400          # roughly 18 months of weekdays
+
+# How far the newest archived session may trail the calendar before the
+# heartbeat treats it as a problem rather than ordinary provider lag. The
+# heartbeat fires Friday 22:00 UTC and can itself be hours late, so a lag of
+# one or two days is normal; beyond that the screener has stopped keeping up.
+MAX_BAR_LAG_DAYS = 3
 
 
 # ---------------------------------------------------------------------------
@@ -232,22 +238,47 @@ def _expected_weekdays(start_date, end_date):
     return days
 
 
+def _newest_bar_date(entries):
+    """The most recent trading session the run log actually covers."""
+    dates = []
+    for e in entries:
+        try:
+            dates.append(date.fromisoformat(e["date"]))
+        except (ValueError, KeyError, TypeError):
+            continue
+    return max(dates) if dates else None
+
+
 def build_weekly_summary(days_back=7):
-    """Assemble the heartbeat from the run log and the alert history."""
+    """Assemble the heartbeat from the run log and the alert history.
+
+    The window is anchored on the newest session in the log, not on the clock.
+    Entries are keyed by bar_date -- the session the screener read -- so when
+    the provider runs a day behind, the run that did happen is filed under an
+    earlier date. Anchoring on datetime.now() then reported that weekday as a
+    skipped run and blamed GitHub for a gap that never occurred.
+
+    Anchoring alone would hide a real outage, because a log that stopped
+    updating a week ago would slide the whole window back into healthy
+    territory. days_since_last_bar is the guard: it measures the anchor
+    against the clock, so a stalled screener shows up as lag rather than as
+    missing days.
+    """
     entries = load_run_log()
-    today = datetime.now().date()
-    start = today - timedelta(days=days_back - 1)
+    clock_today = datetime.now().date()
+    anchor = _newest_bar_date(entries) or clock_today
+    start = anchor - timedelta(days=days_back - 1)
 
     recent = []
     for e in entries:
         try:
             d = datetime.fromisoformat(e["date"]).date()
-            if start <= d <= today:
+            if start <= d <= anchor:
                 recent.append(e)
         except (ValueError, KeyError):
             continue
 
-    expected = _expected_weekdays(start, today)
+    expected = _expected_weekdays(start, anchor)
 
     # Count weekday runs only, so this figure and missing_dates agree.
     # A manual weekend run would otherwise inflate the count while the
@@ -266,7 +297,7 @@ def build_weekly_summary(days_back=7):
 
     missing = []
     d = start
-    while d <= today:
+    while d <= anchor:
         if d.weekday() < 5 and d.isoformat() not in ran_dates:
             missing.append(d.isoformat())
         d += timedelta(days=1)
@@ -285,7 +316,9 @@ def build_weekly_summary(days_back=7):
         with open(config.ALERTS_HISTORY_FILE, encoding="utf-8") as f:
             history = json.load(f)
 
-        cutoff = today - timedelta(days=config.STREAK_WINDOW_DAYS)
+        # qualifying_dates are bar dates too, so the cutoff is measured from
+        # the anchor rather than the clock.
+        cutoff = anchor - timedelta(days=config.STREAK_WINDOW_DAYS)
         for ticker, entry in history.items():
             dates = entry.get("qualifying_dates", [])
             in_window = [
@@ -302,7 +335,9 @@ def build_weekly_summary(days_back=7):
 
     return {
         "start": start.isoformat(),
-        "end": today.isoformat(),
+        "end": anchor.isoformat(),
+        "as_of": anchor.isoformat(),
+        "days_since_last_bar": (clock_today - anchor).days,
         "expected_runs": expected,
         "actual_runs": len(ran_dates),
         "ok_runs": len(ok_runs),
@@ -334,6 +369,18 @@ def format_weekly_plaintext(s):
         lines.append(f"Missing days:    {', '.join(s['missing_dates'])}")
         lines.append("                 (GitHub scheduled runs are best-effort"
                      " and are sometimes skipped)")
+
+    # The window above is measured in trading sessions. This line is the only
+    # one measured against the calendar, and it is what distinguishes "caught
+    # up to Thursday because Friday has not published yet" from "stopped".
+    lag = s.get("days_since_last_bar")
+    if lag is not None:
+        lines.append(f"Newest session:  {s.get('as_of', s['end'])}"
+                     f" ({lag} day(s) behind today)")
+        if lag > MAX_BAR_LAG_DAYS:
+            lines.append("                 WARNING: no new session archived in"
+                         f" over {MAX_BAR_LAG_DAYS} days -- the screener has"
+                         " likely stopped running")
 
     lines += ["", f"Last run: {s['last_run'] or 'none recorded'}", ""]
 
@@ -378,6 +425,10 @@ def send_weekly_summary():
     health = "OK"
     if s["failed_runs"]:
         health = "ERRORS"
+    elif s.get("days_since_last_bar", 0) > MAX_BAR_LAG_DAYS:
+        # Checked before GAPS: a log that stopped updating has a window full
+        # of healthy-looking runs, so lag is the only symptom left.
+        health = "STALLED"
     elif s["actual_runs"] < s["expected_runs"]:
         health = "GAPS"
 
