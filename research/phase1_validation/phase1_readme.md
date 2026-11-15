@@ -4,7 +4,10 @@ The screener was built, deployed, and then tested against three years of
 historical data. This directory contains the four validation studies and the
 scripts that produced them.
 
-**Read [FINAL_FINDINGS.md](FINAL_FINDINGS.md) first.** It summarises all four.
+**Read [PHASE1_FINDINGS.md](PHASE1_FINDINGS.md) first.** It summarises all four.
+
+For all nine studies across both phases, see
+[../FINDINGS.md](../FINDINGS.md).
 
 ---
 

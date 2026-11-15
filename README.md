@@ -28,6 +28,11 @@ The system runs unattended and is useful as an attention filter: it narrows the
 universe to where unusual money moved, and flags where movement is likely —
 not which way.
 
+**→ [research/FINDINGS.md](research/FINDINGS.md) is the full record**: all nine
+studies with their methods, numbers and what each one changed, plus the
+configuration history and what has deliberately not been tested. The sections
+below are the overview.
+
 ---
 
 ## Contents
@@ -82,7 +87,7 @@ in 2026 *because* they had performed well over the period being tested. On a
 universe selected without hindsight, the effect **inverted** — persistent signals
 underperformed by 8.48pp with a confidence interval entirely below zero.
 
-**[FINAL_FINDINGS.md](research/phase1_validation/FINAL_FINDINGS.md) summarises all four.**
+**[PHASE1_FINDINGS.md](research/phase1_validation/PHASE1_FINDINGS.md) summarises all four.**
 
 > **The methodological lesson:** consistency across analyses of the same flawed
 > sample is not corroboration. It only shows the flaw is stable. Three analyses
@@ -140,6 +145,9 @@ likely to shrink on better data.
 ---
 
 ## All nine studies
+
+Full write-up of all nine, with the numbers:
+**[research/FINDINGS.md](research/FINDINGS.md)**.
 
 | # | Study | Question | Answer |
 |---|---|---|---|

@@ -1,7 +1,15 @@
-# Findings
+# Phase 1 Findings
 
 Summary of the four validation studies run against the screener, and what they
 collectively establish.
+
+> **Scope: Phase 1 only (Studies 1–4).** Phase 2 added five more studies, and
+> the live configuration has changed since this was written — the volume
+> condition described below as `10/63 @ 1.50` over 60 tickers is now
+> `10/30 @ 1.75` with a non-overlapping baseline over 178 tickers, changed
+> 2026-09-27. For all nine studies and the current configuration, see
+> [../FINDINGS.md](../FINDINGS.md). This document is kept as the Phase 1
+> record, as written.
 
 **Conclusion: the screener has no demonstrated ability to select stocks that
 outperform their sector.** Its most promising result — that stocks qualifying

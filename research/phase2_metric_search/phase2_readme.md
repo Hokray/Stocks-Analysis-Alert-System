@@ -3,8 +3,13 @@
 Phase 1 established that the original three conditions do not work. Phase 2 asks
 what might.
 
-**Status: ongoing.** Nothing here has been confirmed, and no changes to the live
-screener follow from it.
+**Status: paused.** Studies 5–8 confirmed nothing and changed nothing. Study 9
+is the exception: it found a measurement bug in the volume ratio and produced
+the project's first configuration change backed by a pre-registered test —
+`BASELINE_WINDOW_DAYS` 63 → 30, `BASELINE_EXCLUDES_RECENT` → `True`,
+`VOLUME_SURGE_THRESHOLD` 1.50 → 1.75, on 2026-09-27.
+
+For all nine studies across both phases, see [../FINDINGS.md](../FINDINGS.md).
 
 ---
 
