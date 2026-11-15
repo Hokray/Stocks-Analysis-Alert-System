@@ -131,8 +131,7 @@ def record_and_filter(matches, history, bar_date = None):
     show how persistent it has been.
     """
     now = datetime.now()
-    today = _as_of(bar_date).isoformat() #changed! using bar_date instead of datetime
-    cooldown = timedelta(days=config.ALERT_COOLDOWN_DAYS)
+    today = _as_of(bar_date).isoformat()   # the session, not the clock
     to_send = []
 
     for match in matches:
@@ -149,6 +148,17 @@ def record_and_filter(matches, history, bar_date = None):
         match["streak_count"] = count
         match["streak_span"] = span
         match["streak_label"], match["streak_level"] = describe_streak(count, span)
+
+        # Clear the crossing flag on the way down. Without this it is set once
+        # and never unset, so a ticker that goes persistent, fades for months
+        # and climbs back gets no alert for the second crossing -- even though
+        # that crossing is exactly what the override below exists to catch.
+        #
+        # Only tickers matching today reach this loop, which is sufficient: a
+        # ticker cannot re-cross the threshold without qualifying again, and
+        # every climb back up passes through runs where the count is below it.
+        if count < config.PERSISTENT_STREAK_MIN:
+            entry.pop("persistence_notified", None)
 
         # --- decide whether to email ---
 
