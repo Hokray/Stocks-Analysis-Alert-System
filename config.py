@@ -4,6 +4,33 @@ Configuration for the AI-infrastructure stock screener.
 Every threshold lives here so you can tune the screener without touching logic.
 """
 
+import os
+
+
+def _env_flag(name, default):
+    """Read a boolean setting from the environment, else return `default`.
+
+    Accepts the spellings a workflow file or .env realistically contains --
+    true/false, 1/0, yes/no, on/off -- ignoring case and surrounding space.
+
+    An unrecognised value is a typo rather than a request to change
+    behaviour, so it keeps the default and says so. Reading "True "
+    as False would silently disable alerts.
+    """
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+
+    value = raw.strip().lower()
+    if value in ("1", "true", "yes", "on"):
+        return True
+    if value in ("0", "false", "no", "off"):
+        return False
+
+    print(f"config: ignoring unrecognised {name}={raw!r}, using {default}")
+    return default
+
+
 # ---------------------------------------------------------------------------
 # Universe
 # ---------------------------------------------------------------------------
@@ -49,7 +76,12 @@ FUNDAMENTALS_CACHE_DAYS = 7   # cash flow changes quarterly; no need to refetch 
 # ---------------------------------------------------------------------------
 ALERTS_HISTORY_FILE = "alerts_history.json"
 ALERT_COOLDOWN_DAYS = 1    # don't re-alert the same ticker within this window
-SEND_EMAIL = True         # flip to True once you've added credentials
+
+# On by default. The daily workflow sets SEND_EMAIL explicitly, so a run can
+# be made silent from the Actions tab -- or locally via .env -- without a
+# commit. Credentials still come from the environment either way; missing
+# ones make notifier.send_email bail with a message rather than crash.
+SEND_EMAIL = _env_flag("SEND_EMAIL", True)
 
 
 #Stock Streak Alert System
