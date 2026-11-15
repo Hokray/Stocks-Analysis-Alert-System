@@ -210,7 +210,8 @@ crashed and never appeared in a log.
 
 ## The live system
 
-Runs unattended and is unchanged by the research findings.
+Runs unattended. The research changed its configuration once — Study 9, on
+2026-09-27 — but never its design.
 
 | Component | Behaviour |
 |---|---|
@@ -231,6 +232,23 @@ money moved recently. A legitimate attention filter.
 
 The persistence tag is **descriptive** — it reports how often a stock qualified.
 Study 4 showed it should not be read as signal strength.
+
+### Who uses it
+
+Built with my father, an equity analyst who reviews the market daily to decide
+what to buy and sell. He uses the screener as one input into that decision.
+
+That is also where the design came from. The six categories, dollar volume
+rather than share volume, and the persistence tag were requirements from someone
+who does this professionally — not ideas of mine that happened to survive.
+
+It earns its place as a **filter**, which is precisely the claim the nine studies
+support: every weekday it reduces 178 names to the few where unusual money
+moved, unsupervised, and it reports when it fails rather than going quiet. The
+research from there is a person's job.
+
+It is not used as a buy signal, and the studies are why. The screener narrows
+where to look. It does not say the names it surfaces will outperform.
 
 **Why the evening schedule:** scheduled GitHub workflows are best-effort. One
 run arrived 10 hours 37 minutes late. An evening slot leaves ~16 hours of
