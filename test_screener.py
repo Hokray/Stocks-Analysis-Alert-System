@@ -621,6 +621,126 @@ class TestWeeklySummary:
         assert d.isoformat() not in s["missing_dates"]
 
 
+class TestSummaryWindowAnchor:
+    """
+    The window is measured in trading sessions, not calendar days.
+
+    Run-log entries are keyed by bar_date. When the provider publishes late,
+    the run that happened is filed under an earlier session, and a window
+    anchored on datetime.now() reported the intervening weekday as a skipped
+    run -- the heartbeat blaming GitHub for a gap that never occurred.
+    """
+
+    def _entry(self, d, status="ok"):
+        return {
+            "timestamp": f"{d.isoformat()}T23:40:00",
+            "date": d.isoformat(),
+            "status": status, "tickers_screened": 172,
+            "match_count": 0, "matches": [], "near_misses": [],
+            "error": None,
+        }
+
+    def _weekdays_ending(self, last, n):
+        """The n most recent weekdays, oldest first, ending on `last`."""
+        out, d = [], last
+        while len(out) < n:
+            if d.weekday() < 5:
+                out.append(d)
+            d -= timedelta(days=1)
+        return list(reversed(out))
+
+    def test_lagging_provider_does_not_invent_a_missing_day(
+            self, temp_run_log, tmp_path, monkeypatch):
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE",
+                            str(tmp_path / "none.json"))
+
+        # Every weekday screened up to Thursday; Friday's bar not published,
+        # so Friday's run recorded Thursday again and is filed as stale.
+        thursday = datetime.now().date()
+        while thursday.weekday() != 3:
+            thursday -= timedelta(days=1)
+
+        days = self._weekdays_ending(thursday, 5)
+        entries = [self._entry(d) for d in days]
+        entries.append(self._entry(thursday, status="stale"))
+        monitor.save_run_log(entries)
+
+        s = monitor.build_weekly_summary()
+
+        assert s["end"] == thursday.isoformat()
+        assert s["missing_dates"] == []
+        assert s["actual_runs"] == s["expected_runs"]
+
+    def test_window_still_reconciles_when_anchored(self, temp_run_log,
+                                                   tmp_path, monkeypatch):
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE",
+                            str(tmp_path / "none.json"))
+
+        anchor = datetime.now().date() - timedelta(days=2)
+        monitor.save_run_log([self._entry(d)
+                              for d in self._weekdays_ending(anchor, 3)])
+
+        s = monitor.build_weekly_summary()
+        assert s["actual_runs"] + len(s["missing_dates"]) == s["expected_runs"]
+
+    def test_a_stalled_screener_is_reported_as_lag(self, temp_run_log,
+                                                   tmp_path, monkeypatch):
+        """
+        Anchoring must not hide an outage. A log that stopped updating weeks
+        ago slides the window back into healthy territory, so the lag against
+        the calendar is the only remaining symptom.
+        """
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE",
+                            str(tmp_path / "none.json"))
+
+        stopped = datetime.now().date() - timedelta(days=21)
+        monitor.save_run_log([self._entry(d)
+                              for d in self._weekdays_ending(stopped, 5)])
+
+        s = monitor.build_weekly_summary()
+
+        assert s["missing_dates"] == []          # the window itself looks fine
+        assert s["days_since_last_bar"] >= 21    # this is what gives it away
+        assert s["days_since_last_bar"] > monitor.MAX_BAR_LAG_DAYS
+
+        text = monitor.format_weekly_plaintext(s)
+        assert "WARNING" in text
+
+    def test_empty_log_falls_back_to_the_clock(self, temp_run_log, tmp_path,
+                                               monkeypatch):
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE",
+                            str(tmp_path / "none.json"))
+
+        s = monitor.build_weekly_summary()
+
+        assert s["end"] == datetime.now().date().isoformat()
+        assert s["days_since_last_bar"] == 0
+
+    def test_persistence_cutoff_uses_the_anchor(self, temp_run_log, tmp_path,
+                                                monkeypatch):
+        """
+        qualifying_dates are bar dates. Measuring their window from the clock
+        dropped the oldest days of a streak whenever the provider lagged, so a
+        persistent name could silently fall out of the summary.
+        """
+        history_path = tmp_path / "alerts.json"
+        monkeypatch.setattr(config, "ALERTS_HISTORY_FILE", str(history_path))
+
+        anchor = datetime.now().date() - timedelta(days=3)
+        monitor.save_run_log([self._entry(anchor)])
+
+        qualifying = [
+            (anchor - timedelta(days=i)).isoformat()
+            for i in range(config.PERSISTENT_STREAK_MIN)
+        ]
+        history_path.write_text(json.dumps(
+            {"NBIS": {"qualifying_dates": qualifying}}))
+
+        s = monitor.build_weekly_summary()
+
+        assert ("NBIS", config.PERSISTENT_STREAK_MIN) in s["persistent"]
+
+
 class TestNearMisses:
 
     def _results(self):
