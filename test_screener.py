@@ -494,6 +494,63 @@ class TestCooldownAndRecording:
         assert len(to_send) == 1
 
 
+class TestEmailFormatting:
+    """
+    The templates must not depend on which screening gates are enabled.
+
+    market_cap and ttm_cfo are None whenever yfinance cannot resolve them, and
+    MIN_MARKET_CAP = 0 lets a missing market cap pass the size gate
+    ((None or 0) >= 0 is True). Unguarded, that printed "$NoneB" in a real
+    alert; the cash-flow field next to it raised TypeError on its format spec,
+    reachable by turning off REQUIRE_POSITIVE_TTM_CFO.
+    """
+
+    def test_missing_values_render_as_not_available(self):
+        assert notifier._fmt(None) == "n/a"
+        assert notifier._fmt(None, suffix="B") == "n/a"
+        assert notifier._fmt(None, suffix="M", spec=",.0f") == "n/a"
+
+    def test_present_values_keep_their_formatting(self):
+        assert notifier._fmt(10.0, suffix="B") == "$10.0B"
+        assert notifier._fmt(1234.5, suffix="M", spec=",.0f") == "$1,234M"
+        assert notifier._fmt(0, suffix="B") == "$0B"      # zero is not missing
+
+    def test_plaintext_survives_a_match_with_no_market_cap(self):
+        m = a_match()
+        m.update({"market_cap_busd": None, "streak_label": "First alert",
+                  "streak_level": "new"})
+
+        text = notifier.build_plaintext([m])
+
+        assert "None" not in text
+        assert "Market cap:    n/a" in text
+
+    def test_html_survives_a_match_with_no_market_cap(self):
+        m = a_match()
+        m.update({"market_cap_busd": None, "streak_label": "First alert",
+                  "streak_level": "new"})
+
+        html = notifier.build_html([m])
+
+        assert "NoneB" not in html
+        assert "n/a" in html
+
+    def test_missing_cash_flow_does_not_raise(self):
+        """
+        This one crashes rather than printing badly, and only after the entire
+        screening run has completed.
+        """
+        m = a_match()
+        m.update({"ttm_cfo_musd": None, "streak_label": "First alert",
+                  "streak_level": "new"})
+
+        text = notifier.build_plaintext([m])
+        html = notifier.build_html([m])
+
+        assert "TTM cash ops:  n/a" in text
+        assert "CFO n/a" in html
+
+
 class TestAlertCooldown:
 
     def test_same_session_is_not_emailed_twice(self):

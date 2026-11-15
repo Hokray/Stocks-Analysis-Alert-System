@@ -200,6 +200,22 @@ def record_and_filter(matches, history, bar_date = None):
 # Email formatting
 # ---------------------------------------------------------------------------
 
+def _fmt(value, suffix="", spec="", prefix="$"):
+    """Render a numeric field the screener may not have been able to resolve.
+
+    market_cap and ttm_cfo come back as None whenever yfinance cannot supply
+    them. Whether such a ticker can reach an email depends on which gates are
+    switched on: MIN_MARKET_CAP = 0 passes a missing market cap straight
+    through, and turning off REQUIRE_POSITIVE_TTM_CFO would do the same for
+    cash flow. The templates must not silently depend on that -- unguarded,
+    a missing market cap prints "$NoneB" and a missing cash flow raises
+    TypeError on the format spec, after the whole screening run has completed.
+    """
+    if value is None:
+        return "n/a"
+    return f"{prefix}{value:{spec}}{suffix}"
+
+
 def build_plaintext(matches, bar_date = None):
     lines = [
         f"Stock screener alert - {_as_of(bar_date).strftime('%A %d %B %Y')}",
@@ -217,8 +233,8 @@ def build_plaintext(matches, bar_date = None):
             f"{config.RECENT_WINDOW_DAYS} days)",
             f"  Dollar volume: {m['volume_ratio']}x its recent normal "
             f"(${m['recent_dollar_vol_musd']:,.0f}M/day)",
-            f"  Market cap:    ${m['market_cap_busd']}B",
-            f"  TTM cash ops:  ${m['ttm_cfo_musd']:,.0f}M",
+            f"  Market cap:    {_fmt(m['market_cap_busd'], suffix='B')}",
+            f"  TTM cash ops:  {_fmt(m['ttm_cfo_musd'], suffix='M', spec=',.0f')}",
             "",
         ]
 
@@ -265,8 +281,8 @@ def build_html(matches, bar_date = None):
             <span style="color:#666;font-size:12px;">${m['recent_dollar_vol_musd']:,.0f}M/day</span>
           </td>
           <td style="padding:12px 10px;border-bottom:1px solid #eee;text-align:right;font-size:13px;">
-            ${m['market_cap_busd']}B<br>
-            <span style="color:#666;font-size:12px;">CFO ${m['ttm_cfo_musd']:,.0f}M</span>
+            {_fmt(m['market_cap_busd'], suffix='B')}<br>
+            <span style="color:#666;font-size:12px;">CFO {_fmt(m['ttm_cfo_musd'], suffix='M', spec=',.0f')}</span>
           </td>
         </tr>"""
 
