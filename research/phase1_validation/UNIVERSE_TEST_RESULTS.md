@@ -2,7 +2,7 @@
 
 Fourth and most consequential validation study, after
 [BACKTEST_RESULTS.md](BACKTEST_RESULTS.md),
-[SIGNIFICANCE_TESTING.md](SIGNIFICANCE_TESTING.md) and
+[SIGNIFICANCE_TESTING.md](SIGNIFICANCE_TESTING_RESULTS.md) and
 [EXIT_RULES.md](EXIT_RULES.md).
 
 **Result: the persistence effect does not survive. It reverses.**
@@ -292,13 +292,13 @@ than one that confirms what you already believed.
 ## Reproducing
 
 ```bash
-python backtest/universe_test.py
+python research/phase1_validation/universe_test.py
 ```
 
 | File | Contents |
 |---|---|
 | `data/tickers_control.csv` | 124-ticker control universe with `in_original` flag |
-| `backtest_results/control_signals.csv` | Every signal with excess return and persistence count |
+| `results/phase1/control_signals.csv` | Every signal with excess return and persistence count |
 
 ---
 

@@ -265,11 +265,11 @@ conditions.
 ## Reproducing this
 
 ```bash
-python backtest.py            # downloads history, generates signals
-python backtest_analysis.py   # segments by size and persistence
+python research/phase1_validation/backtest.py            # downloads history, generates signals
+python research/phase1_validation/backtest_analysis.py   # segments by size and persistence
 ```
 
-Outputs land in `backtest_results/`:
+Outputs land in `results/phase1/`:
 
 | File | Contents |
 |---|---|

@@ -1,6 +1,6 @@
 # Metrics Tested
 
-Reference for Study 5 (`backtest/metric_search.py`). Thirty-one metrics were
+Reference for Study 5 (`research/phase2_metric_search/metric_search.py`). Thirty-one metrics were
 tested to find which ones separated stocks that went on to rise 10% from those
 that did not.
 

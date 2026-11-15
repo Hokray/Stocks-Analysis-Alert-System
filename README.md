@@ -65,7 +65,7 @@ in 2026 *because* they had performed well over the period being tested. On a
 universe selected without hindsight, the effect **inverted** — persistent signals
 underperformed by 8.48pp with a confidence interval entirely below zero.
 
-**[FINDINGS.md](research/phase1_validation/FINDINGS.md) summarises all four.**
+**[FINAL_FINDINGS.md](research/phase1_validation/FINAL_FINDINGS.md) summarises all four.**
 
 > **The methodological lesson:** consistency across analyses of the same flawed
 > sample is not corroboration. It only shows the flaw is stable. Three analyses
@@ -173,7 +173,7 @@ Runs unattended and is unchanged by the research findings.
 | Run log | `run_log.json`, every run recorded including failures |
 | Failure alerts | Immediate email with traceback on any exception |
 | Heartbeat | Friday summary of runs completed, failures and gaps |
-| Tests | 55 unit tests, run in CI before every scheduled run |
+| Tests | 82 unit tests, run in CI before every scheduled run |
 
 Details in **[docs/MONITORING.md](docs/MONITORING.md)**.
 
@@ -199,11 +199,13 @@ complete daily bar. A morning slot had under five.
 ├── screener.py                  Fetching, metrics, filtering
 ├── notifier.py                  Email and streak tracking
 ├── heartbeat_monitor.py         Run log, failure alerts, weekly summary
-├── test_screener.py             55 unit tests
+├── snapshot.py                  Daily metric archive, all 31 metrics
+├── test_screener.py             82 unit tests
 ├── data/
 │   ├── tickers.csv              60 — the original hand-picked set, kept for Study 4
 │   ├── tickers_control.csv      124 — Study 4, includes deliberate laggards
-│   └── tickers_universe.csv     178 — the live screener and the snapshot archive
+│   ├── tickers_universe.csv     178 — the live screener and the snapshot archive
+│   └── snapshots/               one gzipped CSV per trading day, committed
 ├── docs/MONITORING.md
 ├── research/
 │   ├── phase1_validation/       Studies 1–4
@@ -221,7 +223,7 @@ python -m venv .venv
 source .venv/bin/activate         # macOS / Linux
 python -m pip install -r requirements.txt
 
-pytest -q                         # 55 tests
+pytest -q                         # 82 tests
 python screener.py                # one screening run
 ```
 
@@ -236,9 +238,9 @@ python research/phase1_validation/exit_rules.py
 python research/phase1_validation/universe_test.py
 
 python research/phase2_metric_search/metric_search.py
-python research/phase2_metric_search/multi_period_test.py
+python research/phase2_metric_search/multi_period_analysis.py
 python research/phase2_metric_search/volume_event_study.py
-python research/phase2_metric_search/regime_analysis.py
+python research/phase2_metric_search/markets_analysis.py
 ```
 
 Downloads are cached under `cache/`, so only the first run of each hits the

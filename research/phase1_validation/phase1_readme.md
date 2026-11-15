@@ -4,7 +4,7 @@ The screener was built, deployed, and then tested against three years of
 historical data. This directory contains the four validation studies and the
 scripts that produced them.
 
-**Read [FINDINGS.md](FINDINGS.md) first.** It summarises all four.
+**Read [FINAL_FINDINGS.md](FINAL_FINDINGS.md) first.** It summarises all four.
 
 ---
 
@@ -13,9 +13,9 @@ scripts that produced them.
 | # | Study | Script | Question | Answer |
 |---|---|---|---|---|
 | 1 | [Backtest](BACKTEST_RESULTS.md) | `backtest.py`, `backtest_analysis.py` | Do signals beat a date-matched baseline? | Marginally; 85% from 3 tickers |
-| 2 | [Significance](SIGNIFICANCE_TESTING.md) | `significance_testing.py` | Is that edge distinguishable from luck? | No |
+| 2 | [Significance](SIGNIFICANCE_TESTING_RESULTS.md) | `significance_testing.py` | Is that edge distinguishable from luck? | No |
 | 3 | [Exit rules](EXIT_RULES.md) | `exit_rules.py` | Does any exit beat a fixed hold? | No |
-| 4 | [Universe bias](UNIVERSE_TEST.md) | `universe_test.py` | Does persistence survive a neutral universe? | **No — it reverses** |
+| 4 | [Universe bias](UNIVERSE_TEST_RESULTS.md) | `universe_test.py` | Does persistence survive a neutral universe? | **No — it reverses** |
 
 They must be read in order. Studies 1–3 build toward a conclusion that Study 4
 overturns, and that sequence is the substance of the work.

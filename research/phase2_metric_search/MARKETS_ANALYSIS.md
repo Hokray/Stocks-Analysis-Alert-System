@@ -217,7 +217,7 @@ they are tradable proxies with their own flows.
 ## Reproducing
 
 ```bash
-python research/phase2_metric_search/regime_analysis.py
+python research/phase2_metric_search/markets_analysis.py
 ```
 
 Outputs: `results/phase2/regime_analysis.csv`,

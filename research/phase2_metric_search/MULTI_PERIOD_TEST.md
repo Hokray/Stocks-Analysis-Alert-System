@@ -221,7 +221,7 @@ survivorship limitation.
 ## Reproducing
 
 ```bash
-python research/phase2_metric_search/multi_period_test.py
+python research/phase2_metric_search/multi_period_analysis.py
 ```
 
 Output: `results/phase2/multi_period_test.csv`

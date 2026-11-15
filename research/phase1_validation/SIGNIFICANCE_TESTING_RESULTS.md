@@ -1,6 +1,6 @@
 # Significance Testing
 
-Follow-up to [results.md](results.md). That analysis produced
+Follow-up to [BACKTEST_RESULTS.md](BACKTEST_RESULTS.md). That analysis produced
 a mean excess return of +2.54pp and a persistence effect that looked promising.
 Neither number came with any measure of uncertainty.
 
@@ -257,17 +257,17 @@ Two things no amount of resampling can fix:
 ## Reproducing
 
 ```bash
-python backtest/backtest.py            # generate signals
-python backtest/backtest_analysis.py   # add size and persistence buckets
-python backtest/significance_testing.py
+python research/phase1_validation/backtest.py            # generate signals
+python research/phase1_validation/backtest_analysis.py   # add size and persistence buckets
+python research/phase1_validation/significance_testing.py
 ```
 
 Outputs:
 
 | File | Contents |
 |---|---|
-| `backtest_results/persistence_sweep.csv` | Full threshold sweep |
-| `backtest_results/significance.csv` | Confidence intervals |
+| `results/phase1/persistence_sweep.csv` | Full threshold sweep |
+| `results/phase1/significance.csv` | Confidence intervals |
 
 ---
 

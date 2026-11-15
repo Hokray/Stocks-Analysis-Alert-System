@@ -10,7 +10,7 @@ screener follow from it.
 
 ## What has been done
 
-**[METRICS_TESTED.md](METRICS_TESTED.md)** — 31 metrics across five families
+**[METRICS_TESTED.md](METRICS_TESTED_RESULTS.md)** — 31 metrics across five families
 (volume, momentum, position in range, volatility, trend quality), tested against
 a 178-ticker universe over Sep–Nov 2024 and Sep–Nov 2025.
 
@@ -110,7 +110,6 @@ better.
 From the repository root:
 
 ```bash
-python research/phase2_metric_search/winner_profile.py   # 5 metrics, first pass
 python research/phase2_metric_search/metric_search.py    # 31 metrics + controls
 ```
 

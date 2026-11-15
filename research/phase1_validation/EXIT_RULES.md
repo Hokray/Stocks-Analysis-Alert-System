@@ -1,7 +1,7 @@
 # Exit Rules
 
 Third validation study, after [BACKTEST_RESULTS.md](BACKTEST_RESULTS.md) and
-[SIGNIFICANCE_TESTING.md](SIGNIFICANCE_TESTING.md).
+[SIGNIFICANCE_TESTING.md](SIGNIFICANCE_TESTING_RESULTS.md).
 
 The screener identifies when to *look* at a stock. It says nothing about when to
 stop. Ten exit rules were tested against historical signals to find out whether
@@ -246,15 +246,15 @@ a mean.
 ## Reproducing
 
 ```bash
-python backtest/exit_rules.py
+python research/phase1_validation/exit_rules.py
 ```
 
 | Output | Contents |
 |---|---|
-| `backtest_results/exit_summary_all.csv` | Rule comparison, all signals |
-| `backtest_results/exit_summary_persistent.csv` | Rule comparison, persistent only |
-| `backtest_results/exit_trades_all.csv` | Every simulated trade |
-| `backtest_results/exit_trades_persistent.csv` | Every simulated trade, persistent only |
+| `results/phase1/exit_summary_all.csv` | Rule comparison, all signals |
+| `results/phase1/exit_summary_persistent.csv` | Rule comparison, persistent only |
+| `results/phase1/exit_trades_all.csv` | Every simulated trade |
+| `results/phase1/exit_trades_persistent.csv` | Every simulated trade, persistent only |
 
 ---
 

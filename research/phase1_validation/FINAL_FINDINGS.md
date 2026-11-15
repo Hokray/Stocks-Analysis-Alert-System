@@ -52,9 +52,9 @@ Tested across 60 AI-infrastructure tickers over 2023–2026.
 | # | Study | Question | Answer |
 |---|---|---|---|
 | 1 | [Backtest](BACKTEST_RESULTS.md) | Do signals beat a date-matched sector baseline? | Marginally, and driven by 3 tickers |
-| 2 | [Significance testing](SIGNIFICANCE_TESTING.md) | Is the measured edge distinguishable from luck? | No |
+| 2 | [Significance testing](SIGNIFICANCE_TESTING_RESULTS.md) | Is the measured edge distinguishable from luck? | No |
 | 3 | [Exit rules](EXIT_RULES.md) | Does any exit strategy beat a fixed hold? | No |
-| 4 | [Universe bias test](UNIVERSE_TEST.md) | Does the persistence effect survive a neutral universe? | **No — it reverses** |
+| 4 | [Universe bias test](UNIVERSE_TEST_RESULTS.md) | Does the persistence effect survive a neutral universe? | **No — it reverses** |
 
 ---
 
@@ -304,20 +304,22 @@ grounds to know that.
 
 ## Verification
 
-The logic producing these numbers is covered by **55 unit tests** (`pytest -q`),
-run automatically in CI before every scheduled screener run. A failing test
-stops the job, so a broken change cannot reach the alert emails or corrupt the
-persistence history.
+The logic producing these numbers is covered by **82 test cases across 72 test
+functions** (`pytest -q`), run automatically in CI before every scheduled
+screener run. A failing test stops the job, so a broken change cannot reach the
+alert emails or corrupt the persistence history.
 
-| Area | Tests |
+| Area | Test functions |
 |---|---|
 | Dollar volume and price momentum | 8 |
 | TTM cash flow extraction | 8 |
-| Streak counting | 7 |
-| Cooldown and history recording | 7 |
-| Run log | 5 |
-| Streak labels, near-misses, market cap | 12 |
-| Weekly summary, weekday counting, config | 8 |
+| Market cap resolution | 4 |
+| Streak counting and labels | 11 |
+| Cooldown and history recording | 13 |
+| Run log | 6 |
+| Weekly summary, window anchoring, weekday counting | 11 |
+| Near misses | 4 |
+| Config and environment flags | 7 |
 
 Three are worth naming:
 
