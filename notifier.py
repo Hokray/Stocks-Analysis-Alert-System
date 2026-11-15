@@ -48,8 +48,6 @@ def load_history():
     except (json.JSONDecodeError, OSError):
         return {}
 
-from datetime import date, datetime, timedelta   # add `date`
-
 
 def _as_of(bar_date=None):
     """The trading session this run describes, not the clock on the runner.

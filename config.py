@@ -34,8 +34,7 @@ def _env_flag(name, default):
 # ---------------------------------------------------------------------------
 # Universe
 # ---------------------------------------------------------------------------
-TICKER_FILE = "data/tickers_universe.csv"   # was data/tickers.csv (60), now increase to 178!
-FUNDAMENTALS_CACHE_FILE = "cache/fundamentals.json"
+TICKER_FILE = "data/tickers_universe.csv"   # 178 tickers; was data/tickers.csv (60)
 
 # Set to a number to only process the first N tickers (for testing).
 # Set to None to run the full universe.
