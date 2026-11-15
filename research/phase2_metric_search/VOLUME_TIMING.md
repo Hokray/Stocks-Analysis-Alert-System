@@ -12,6 +12,18 @@ measurement window is roughly five times longer than the phenomenon. And even a
 corrected metric would not help, because volume spikes precede 10% *falls*
 three times more strongly than 10% rises.
 
+> **Superseded in part by Study 9.** This document's recommendation — remove
+> volume from the screening logic — was based on `vol_ratio_10_63` as it was
+> then computed, with the baseline window *containing* the recent window.
+> [VOLUME_WINDOW_VALIDATION.md](VOLUME_WINDOW_VALIDATION.md) later showed that
+> overlap caps the ratio at `base_n / recent_n`, so every figure here
+> understates it. Recomputed with a separate baseline, `10/30 @ 1.75` returned
+> a positive edge in all six quarters against a pre-registered threshold, and
+> volume was kept in the screener in that form. The mechanism described below
+> still holds — the spike is two days long, and it precedes falls more strongly
+> than rises — but the conclusion drawn from it did not survive measuring the
+> metric correctly.
+
 ---
 
 ## Contents
@@ -281,6 +293,16 @@ that precede movement in either direction.
 **Volume should be removed from the screening logic.** It is not a
 mistuned condition; it is measuring something that does not answer the question
 being asked.
+
+> **This recommendation was not adopted, and Study 9 is why.** The judgement
+> above rests on a metric whose baseline overlapped its recent window, which
+> capped the ratio and understated every number in this document. Measured with
+> a separate baseline the condition was mistuned after all: rewindowed to
+> `10/30 @ 1.75` it produced a positive edge in 6 of 6 quarters against a
+> threshold fixed before the test. What it detects is mostly *impending
+> movement* rather than direction — which is consistent with Result 2 above —
+> and on that narrower claim it was kept.
+> See [VOLUME_WINDOW_VALIDATION.md](VOLUME_WINDOW_VALIDATION.md).
 
 ---
 

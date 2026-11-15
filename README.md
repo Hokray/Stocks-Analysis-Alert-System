@@ -3,13 +3,30 @@
 An automated daily stock screener for AI-infrastructure equities, and nine
 studies testing whether its logic works.
 
-**It does not.** No metric tested — volume, momentum, volatility, trend position
-or any combination — reliably distinguishes stocks that rise from stocks that
-do not, in this universe over this period. Two promising findings were
-discovered, tested, and withdrawn.
+**The founding hypothesis does not hold.** Sustained dollar volume does not
+reveal institutional accumulation, and nothing tested here predicts which
+stocks outperform their sector. Two promising findings were discovered, tested
+and withdrawn — one because the universe had been chosen with hindsight, one
+because it held only in autumn.
 
-The system runs unattended and is useful as an attention filter. The hypothesis
-it was built to test does not hold.
+**One modest positive survived.** Study 9 found the volume ratio had been
+computed with the baseline window overlapping the recent window, capping it
+mathematically at `baseline ÷ recent`. Measured cleanly and rewindowed,
+`10/30 @ 1.75` produced a positive edge in all six quarters tested — worst case
++2.17pp — against a pass threshold fixed before the test ran, the only
+pre-registered result in the project. The decomposition is the important part:
+it is mostly a **volatility** detector. It reliably signals that a large move is
+coming; it calls the *direction* only weakly (≈+5pp on a 65% base rate,
+positive in 4 of 6 quarters).
+
+**The current configuration has never been backtested as a whole.** Study 9
+tested the rewindowed volume condition alone. The live screener ANDs it with
+price momentum and positive TTM cash flow, and that combination has not been
+re-run since the 2026-09-27 change.
+
+The system runs unattended and is useful as an attention filter: it narrows the
+universe to where unusual money moved, and flags where movement is likely —
+not which way.
 
 ---
 
@@ -102,6 +119,24 @@ around real 10% moves, its own metric peaks at **1.13** against a trigger of
 **1.50**. And correcting the window would not help: volume elevation before a
 10% **fall** is three times larger than before a 10% rise. (Both figures predate Study 9, which found the baseline window included the recent window and understated every ratio in this project.)
 
+Study 9 then revisited that conclusion with the measurement bug fixed, and is
+where the project's one surviving positive comes from. With a **separate**
+baseline the ratio is no longer capped, and a sweep of eleven window pairs
+across six quarters put `10/30 @ 1.75` ahead of every alternative — every top
+configuration kept the recent window at 10, contradicting the proposal (and my
+own earlier argument) that a shorter recent window would catch the spike.
+Against a threshold fixed in advance it returned a positive edge in **6 of 6
+quarters**, worst case +2.17pp.
+
+Decomposed, it is **mostly a volatility detector**: firing raises the
+probability of a 10% rise by 1.58× and of a 10% fall by 1.26× — both go up.
+Conditioned on a large move happening at all, it calls the direction right
+69.9% of the time against a 65.0% base rate, a +4.9pp tilt that is positive in
+only 4 of 6 quarters. So the honest claim is that it detects *impending
+movement* reliably and *direction* weakly. That 65/35 rise/fall split is itself
+inflated by survivorship bias, which makes the directional figure the one most
+likely to shrink on better data.
+
 ---
 
 ## All nine studies
@@ -116,7 +151,7 @@ around real 10% moves, its own metric peaks at **1.13** against a trigger of
 | 6 | [Volume timing](research/phase2_metric_search/VOLUME_TIMING.md) | Does volume lead or lag the move? | Leads by ~2 days; precedes falls more |
 | 7 | [Multi-period](research/phase2_metric_search/MULTI_PERIOD_TEST.md) | Do those eight hold in other quarters? | **No — zero of thirty-one** |
 | 8 | [Cross-asset](research/phase2_metric_search/MARKETS_ANALYSIS.md) | Does market regime explain the failures? | No (+0.05) |
-| 9 | [Volume windows](research/phase2_metric_search/VOLUME_WINDOW_VALIDATION.md) | Are the window lengths themselves wrong? | **Partly — and the baseline overlapped** |
+| 9 | [Volume windows](research/phase2_metric_search/VOLUME_WINDOW_VALIDATION.md) | Are the window lengths themselves wrong? | **Yes — baseline overlapped; rewindowed, 6/6 quarters positive** |
 
 ---
 
@@ -124,7 +159,11 @@ around real 10% moves, its own metric peaks at **1.13** against a trigger of
 
 **About the strategy**
 
-- The three conditions have no demonstrated predictive power
+- The three conditions, as originally specified and combined, have no
+  demonstrated ability to pick stocks that outperform. The one exception is
+  narrow: the **rewindowed volume condition on its own** detects impending
+  movement in 6 of 6 quarters. The three-condition combination has not been
+  backtested since the 2026-09-27 config change
 - The apparent edge was ~85% attributable to three tickers
 - Persistence was survivorship bias, and reverses under neutral selection
 - The eight Phase 2 metrics were a two-quarter coincidence
