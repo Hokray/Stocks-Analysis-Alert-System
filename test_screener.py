@@ -863,3 +863,36 @@ class TestConfig:
         """
         approx_trading_days = config.STREAK_WINDOW_DAYS * 5 / 7
         assert config.PERSISTENT_STREAK_MIN <= approx_trading_days
+
+
+class TestEnvFlag:
+    """
+    SEND_EMAIL is set by the workflow, so it has to be read from the
+    environment. It was declared there and hardcoded in config, which made
+    the workflow's setting look live when it did nothing.
+    """
+
+    def test_unset_keeps_the_default(self, monkeypatch):
+        monkeypatch.delenv("SEND_EMAIL", raising=False)
+        assert config._env_flag("SEND_EMAIL", True) is True
+        assert config._env_flag("SEND_EMAIL", False) is False
+
+    @pytest.mark.parametrize("raw", ["true", "TRUE", " True ", "1", "yes", "on"])
+    def test_truthy_spellings(self, monkeypatch, raw):
+        monkeypatch.setenv("SEND_EMAIL", raw)
+        assert config._env_flag("SEND_EMAIL", False) is True
+
+    @pytest.mark.parametrize("raw", ["false", "FALSE", " false ", "0", "no", "off"])
+    def test_falsy_spellings(self, monkeypatch, raw):
+        monkeypatch.setenv("SEND_EMAIL", raw)
+        assert config._env_flag("SEND_EMAIL", True) is False
+
+    def test_a_typo_keeps_the_default_rather_than_silencing_alerts(
+            self, monkeypatch):
+        """
+        Reading an unrecognised value as False would turn off alerts without
+        saying so, and silence is the one failure this project treats as a
+        bug. A typo must not be able to do that.
+        """
+        monkeypatch.setenv("SEND_EMAIL", "ture")
+        assert config._env_flag("SEND_EMAIL", True) is True
