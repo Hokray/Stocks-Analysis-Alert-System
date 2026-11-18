@@ -1671,5 +1671,34 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-18T03:00:20",
+    "date": "2026-11-17",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 2,
+    "matches": [
+      "MSI",
+      "ANET"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.71,
+        "price_change_pct": 13.9
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.57,
+        "price_change_pct": 14.8
+      },
+      {
+        "ticker": "KD",
+        "volume_ratio": 1.53,
+        "price_change_pct": 23.6
+      }
+    ],
+    "error": null
   }
 ]
