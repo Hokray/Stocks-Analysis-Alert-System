@@ -1700,5 +1700,33 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-19T02:39:19",
+    "date": "2026-11-18",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 1,
+    "matches": [
+      "AMD"
+    ],
+    "near_misses": [
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.58,
+        "price_change_pct": 17.5
+      },
+      {
+        "ticker": "SANM",
+        "volume_ratio": 1.54,
+        "price_change_pct": 9.6
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 1.49,
+        "price_change_pct": 8.8
+      }
+    ],
+    "error": null
   }
 ]
