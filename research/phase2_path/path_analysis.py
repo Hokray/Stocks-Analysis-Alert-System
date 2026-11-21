@@ -171,6 +171,21 @@ def _window(closes, recent_n):
     return window[-recent_n:]
 
 
+def spearman(a, b):
+    """
+    Rank correlation, without scipy.
+
+    pandas' own method="spearman" imports scipy, which this repo does not have
+    and which this study is not allowed to add. Spearman is Pearson on ranks,
+    so ranking first and taking the ordinary correlation is the same number.
+    pandas' default ranking averages ties, which is the tie correction
+    Spearman calls for.
+    """
+    ranked_a = pd.Series(np.asarray(a, dtype=float)).rank()
+    ranked_b = pd.Series(np.asarray(b, dtype=float)).rank()
+    return ranked_a.corr(ranked_b)
+
+
 def classify(days):
     """fresh / stale / dropped, per the preregistered cut."""
     if days is None or (isinstance(days, float) and np.isnan(days)):
@@ -548,8 +563,9 @@ def report_buckets(df):
         subset=[f"mean_excess_{CONFIRMATORY_HORIZON}d_pp"]
     )
     if len(table) >= 3:
-        rho = table["days_since_high"].corr(
-            table[f"mean_excess_{CONFIRMATORY_HORIZON}d_pp"], method="spearman"
+        rho = spearman(
+            table["days_since_high"],
+            table[f"mean_excess_{CONFIRMATORY_HORIZON}d_pp"],
         )
         print(f"\nSpearman rank correlation, bucket index vs mean excess: "
               f"{rho:+.2f}")
@@ -572,7 +588,7 @@ def report_drawdown(df):
         print("No usable rows.")
         return
 
-    rho = usable["drawdown_from_high_pct"].corr(usable[col], method="spearman")
+    rho = spearman(usable["drawdown_from_high_pct"], usable[col])
     print(f"Spearman correlation with {CONFIRMATORY_HORIZON}d excess return, "
           f"across all {len(usable)} alerts: {rho:+.3f}")
 
