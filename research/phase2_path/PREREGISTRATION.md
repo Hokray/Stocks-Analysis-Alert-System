@@ -13,8 +13,33 @@ a preregistered claim.
 
 ---
 
+## Correction, 2026-11-21, after the step-5 run
+
+This document stated that the primary run reproduces the 498-alert sample in
+`results/phase1/signals.csv`. **It does not.** At the current live thresholds the
+same cache yields **115 alerts**.
+
+`signals.csv` was generated under an earlier config -- volume surge 1.50 and
+baseline window 63 sessions -- both since changed to 1.75 and 30 (see the
+comments in `config.py`). Its `volume_ratio` column runs down to 1.50, below
+today's threshold; only 161 of those 498 alerts clear 1.75.
+
+The preregistered **sample definition** -- alerts at the live thresholds in
+`config.py` -- is unchanged, and is what was run. Only the claim of equivalence
+to the phase-1 sample was wrong. No threshold, cut, horizon, floor or criterion
+in this document was altered.
+
+The original claim is left in place below rather than edited out, so the error
+stays visible in version history. Its practical consequence is recorded in
+`FINDINGS.md`: the study ran on roughly a quarter of the sample this document
+led the reader to expect, which made an already-marginal design decisively
+underpowered.
+
+---
+
 ## Contents
 
+- [Correction, 2026-11-21, after the step-5 run](#correction-2026-11-21-after-the-step-5-run)
 - [Hypothesis](#hypothesis)
 - [The two path metrics](#the-two-path-metrics)
 - [Fresh versus stale](#fresh-versus-stale)
@@ -141,6 +166,9 @@ Alerts are the trigger rows at the live thresholds (`VOLUME_SURGE_THRESHOLD =
 1.75`, `PRICE_CHANGE_THRESHOLD = 0.07`). On the primary cache this reproduces
 the existing 498-alert sample in `results/phase1/signals.csv`, of which 495 have
 a 10-session excess return.
+
+> **This last sentence is wrong.** See the correction at the top of this
+> document. The sample definition in the sentence before it stands.
 
 The 60-ticker set is primary because every phase-1 finding was measured on it,
 so this study stays comparable to them. Its survivorship bias is real but bites
