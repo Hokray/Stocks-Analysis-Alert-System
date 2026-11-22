@@ -74,6 +74,57 @@ inside the same 2023-2026 regime. More data of this kind does not fix this. A
 different design would be required — event-time sampling that selects on the
 path itself rather than waiting for the alert condition to produce one.
 
+### The base rate is not an artefact of the old baseline geometry
+
+The figures above come from the phase-1/2 alert set, whose volume baseline
+*overlaps* the recent window. The live screener excludes it
+(`config.BASELINE_EXCLUDES_RECENT = True`, Study 9's fix), and fires about 3.6×
+more often as a result. That raised a fair objection: the overlapping ratio is
+capped at `BASELINE / RECENT = 3.0`, so the ceiling restricted *which* days
+could fire, and the 82.6% might have been an artefact of that restriction
+rather than a property of the screener.
+
+It is not. Recomputed under both definitions, counts only, no test:
+
+| | overlapping (this study's set) | **live (baseline excludes recent)** |
+|---|---|---|
+| **60-ticker** | | |
+| episodes | 115 | **407** |
+| fresh (0-2) | 95 (**82.6%**) | 341 (**83.8%**) |
+| dropped (3-4) | 8 (7.0%) | 30 (7.4%) |
+| stale (5-9) | 12 (10.4%) | 36 (**8.8%**) |
+| mean `days_since_high` | 1.34 | 1.19 |
+| **178-ticker** | | |
+| episodes | 368 | **1,096** |
+| fresh (0-2) | 304 (**82.6%**) | 908 (**82.8%**) |
+| dropped (3-4) | 30 (8.2%) | 88 (8.0%) |
+| stale (5-9) | 34 (9.2%) | 100 (**9.1%**) |
+| mean `days_since_high` | 1.27 | 1.23 |
+
+All four combinations — two universes by two baseline geometries — land between
+**82.6% and 83.8% fresh** and between **8.8% and 10.4% stale**, and the live
+178-ticker figure rests on 1,096 episodes rather than 368.
+
+**This localises the base rate to the price condition.** Loosening the volume
+condition by 3.6× barely moves the distribution, so the clustering at the high
+is not produced by the volume filter and not produced by the Study 9 ceiling. It
+is the geometry of the price condition itself: a stock up 7% over ten sessions
+is at or near its ten-session high almost by construction. Finding 1 is a
+property of the momentum filter, and it describes the screener that is running
+today as well as the one this study measured.
+
+One consequence for any future attempt. The live definition yields **exactly
+100 stale episodes** on the 178-ticker cache, which would just clear the
+pre-registered 100-alert floor. The MDE would still be near **8 pp** against a
+2.0 pp threshold — better powered, not adequately powered — and it would need
+its own pre-registration, since the sample definition changes.
+
+**A reconciliation, so the two tables agree.** The bucket table later in this
+document shows bucket 1 at 16 for the 60-ticker cache where the recompute above
+counts 17. That table includes only alerts with a non-NaN 10-session excess
+return, and one bucket-1 alert sits too close to the end of the cached history
+to have one. Group totals agree exactly at 95 fresh.
+
 ---
 
 ## Finding 2: the pre-registered test is underpowered
