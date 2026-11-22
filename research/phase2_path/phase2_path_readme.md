@@ -324,14 +324,33 @@ measure what follows against a date-matched baseline. That makes the two groups
 comparable in size by construction, and it is a new study rather than an
 extension of this one.
 
-Open questions this study raises and does not answer:
+### Answered after the study, by a descriptive recompute
+
+Two of the questions this study left open have since been settled, counts only
+and no test. Tables in [FINDINGS.md](FINDINGS.md).
+
+**Does the live alert definition have the same 82.6% fresh share?** Yes.
+Recomputed with the volume baseline excluding the recent window — the live
+configuration, which fires ~3.6× more often — the split is **83.8% fresh on 407
+episodes** (60-ticker) and **82.8% fresh on 1,096 episodes** (178-ticker). All
+four combinations of universe and baseline geometry land between 82.6% and
+83.8%.
+
+**Which condition produces it?** The **price** condition. Loosening volume by
+3.6× barely moves the distribution, so the clustering at the high is not the
+volume filter's doing and not an artefact of the Study 9 ceiling. A stock up 7%
+over ten sessions is at or near its ten-session high almost by construction.
+
+A side effect worth recording: the live definition yields **exactly 100 stale
+episodes** on the 178-ticker cache, which would just clear the pre-registered
+100-alert floor — but the MDE would still be near 8 pp against a 2.0 pp
+threshold, so it improves the design without making it adequate.
+
+### Still open
 
 - Does the fresh/stale distinction matter for the *entry timing* of an alert
   already issued, rather than for whether to issue it?
 - The alert set here inherits the overlapping volume baseline from
   `backtest.py`, so it is phase-1-comparable but **not** identical to what the
-  live screener fires on today. Would a live-configuration alert set have the
-  same 82.6% fresh share?
-- Which of the two conditions — price or volume — produces that 82.6%? If the
-  price condition alone already selects near-highs, the base rate is a property
-  of the momentum filter and not of the screener as a whole.
+  live screener fires on today. The *shape* of the alerts is now known to be the
+  same; whether the forward returns behave the same way is not.
