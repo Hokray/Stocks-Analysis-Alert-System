@@ -31,9 +31,9 @@ in this document was altered.
 
 The original claim is left in place below rather than edited out, so the error
 stays visible in version history. Its practical consequence is recorded in
-`FINDINGS.md`: the study ran on roughly a quarter of the sample this document
-led the reader to expect, which made an already-marginal design decisively
-underpowered.
+`phase2_path_readme.md`: the study ran on roughly a quarter of the sample this
+document led the reader to expect, which made an already-marginal design
+decisively underpowered.
 
 ---
 

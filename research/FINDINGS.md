@@ -587,7 +587,6 @@ informative phenomenon.
 
 Full write-up: **[phase2_path/phase2_path_readme.md](phase2_path/phase2_path_readme.md)**
 · pre-registration: [phase2_path/PREREGISTRATION.md](phase2_path/PREREGISTRATION.md)
-· results: [phase2_path/FINDINGS.md](phase2_path/FINDINGS.md)
 
 Every metric in Studies 1–9 is endpoint-only. The price condition measures
 `(close_today − close_10_ago) / close_10_ago` and sees nothing in between, so a
@@ -614,6 +613,20 @@ volume surge, and a stock that has done both is nearly always at or near its
 10-session high — that is roughly what the condition means. To be stale, a stock
 must rise sharply, peak, fall back, and *still* be up 7% endpoint-to-endpoint
 with elevated volume. About one alert in ten lands in that corridor.
+
+**And it is not an artefact of the old baseline geometry.** This study's alert
+set uses the overlapping volume baseline, capped at 3.0, so the ceiling might
+have been selecting near-high days. Recomputed under the live definition
+(`BASELINE_EXCLUDES_RECENT`, which fires ~3.6× more often), the split barely
+moves: **83.8% fresh on 407 episodes** (60-ticker) and **82.8% fresh on 1,096
+episodes** (178-ticker), against 82.6% under both overlapping sets. All four
+combinations sit between 82.6% and 83.8%.
+
+That localises the base rate to **the price condition, not the volume
+condition** — loosening volume by 3.6× leaves the shape unchanged. A stock up
+7% over ten sessions is at or near its ten-session high almost by construction.
+The finding therefore describes the screener running today, not only the
+stricter historical one.
 
 **The confirmatory test.** Fresh minus stale, mean 10-session excess return,
 clustered bootstrap by ticker:
