@@ -1,4 +1,4 @@
-# Findings — all nine studies
+# Findings — all ten studies
 
 What was built, what was tested, and what the evidence supports. This is the
 consolidated record across both research phases. Each study has its own
@@ -7,7 +7,7 @@ reasoning that connects them.
 
 **The short version.** The screener was built on the hypothesis that
 institutions accumulate positions over days, and that this is visible as
-sustained unusually high dollar volume while the price rises. Nine studies
+sustained unusually high dollar volume while the price rises. Ten studies
 tested that. The hypothesis does not hold: nothing here predicts which stocks
 outperform their sector. Two promising findings were discovered, tested and
 formally withdrawn — one was survivorship bias, one was a two-quarter
@@ -22,7 +22,7 @@ legitimate attention filter, not a stock picker.
 
 - [What was built](#what-was-built)
 - [How to read the numbers](#how-to-read-the-numbers)
-- [The nine studies](#the-nine-studies)
+- [The ten studies](#the-ten-studies)
 - [Phase 1 — Build and validate](#phase-1--build-and-validate)
   - [Study 1 — Backtest](#study-1--backtest)
   - [Study 2 — Significance testing](#study-2--significance-testing)
@@ -34,6 +34,7 @@ legitimate attention filter, not a stock picker.
   - [Study 7 — Multi-period robustness](#study-7--multi-period-robustness)
   - [Study 8 — Cross-asset regime](#study-8--cross-asset-regime)
   - [Study 9 — Volume windows](#study-9--volume-windows)
+  - [Study 10 — Path study](#study-10--path-study)
 - [The arc](#the-arc)
 - [What was learned](#what-was-learned)
 - [Configuration history](#configuration-history)
@@ -94,7 +95,7 @@ than ten times.
 
 ---
 
-## The nine studies
+## The ten studies
 
 | # | Study | Question | Answer |
 |---|---|---|---|
@@ -579,6 +580,88 @@ measured correctly; the inference from it was wrong. A 2-day window catches the
 spike but also catches every one-day news event that mean-reverts, whereas a
 10-day window measures sustained elevation — a different and apparently more
 informative phenomenon.
+
+---
+
+### Study 10 — Path study
+
+Full write-up: **[phase2_path/phase2_path_readme.md](phase2_path/phase2_path_readme.md)**
+· pre-registration: [phase2_path/PREREGISTRATION.md](phase2_path/PREREGISTRATION.md)
+· results: [phase2_path/FINDINGS.md](phase2_path/FINDINGS.md)
+
+Every metric in Studies 1–9 is endpoint-only. The price condition measures
+`(close_today − close_10_ago) / close_10_ago` and sees nothing in between, so a
+stock that rose 25% and fell back to +10% scores identically to one still
+climbing at +10%. **Hypothesis: alerts whose 10-session high is recent
+outperform alerts whose high is stale.** Two metrics at each alert —
+`days_since_high` (0 = peaked today, 9 = peaked at window start) and
+`drawdown_from_high`.
+
+**The hypothesis is untested, not refuted.** The study was roughly seven times
+too blunt to measure it, and the reason is the finding.
+
+**Alerts fire at or near the 10-session high 82.6% of the time — in both
+universes, to the decimal.**
+
+| group | primary (60) | replication (178) |
+|---|---|---|
+| fresh, `days_since_high` 0–2 | 95 (**82.6%**) | 304 (**82.6%**) |
+| dropped, 3–4 | 8 (7.0%) | 30 (8.2%) |
+| stale, 5–9 | 12 (**10.4%**) | 34 (**9.2%**) |
+
+This is close to mechanical. An alert requires +7% over 10 sessions *with* a
+volume surge, and a stock that has done both is nearly always at or near its
+10-session high — that is roughly what the condition means. To be stale, a stock
+must rise sharply, peak, fall back, and *still* be up 7% endpoint-to-endpoint
+with elevated volume. About one alert in ten lands in that corridor.
+
+**The confirmatory test.** Fresh minus stale, mean 10-session excess return,
+clustered bootstrap by ticker:
+
+| | primary | replication |
+|---|---|---|
+| difference | +1.11 pp | **−2.25 pp** |
+| 95% CI | −8.15 to +11.68 | −16.55 to +8.25 |
+| MDE at 80% power | **17.24 pp** | **14.18 pp** |
+| pass threshold | 2.00 pp | 2.00 pp |
+
+**Outcome 3 of 3: underpowered.** The pre-registration committed in advance to
+three outcomes rather than two, precisely so a null could be told apart from an
+instrument that cannot see. Both MDEs are about seven times the effect worth
+acting on, so this says nothing about whether the effect exists. The sign flips
+between samples, the horizons disagree in four of six cells, and the bucket
+gradient runs weakly *the wrong way* (Spearman +0.04 and +0.18 where the
+hypothesis predicts negative).
+
+**Group imbalance, not aggregate sample size, is what destroyed the power.** The
+`sqrt(1/n₁ + 1/n₂)` term is governed by the smaller group, and the smaller group
+held 12 alerts. More tickers will not fix it: 178 tickers over three years
+yielded 34 stale alerts, so the 100-alert floor needs ~500 tickers and a
+detectable 2.0 pp effect needs several thousand, all in the same regime.
+
+**What the pre-registration prevented.** Replication bucket 9 came back at
+**+66.67 pp mean excess — from 3 alerts across 2 tickers** — beside −10.36 in
+bucket 8. Had "report all ten buckets" been the test rather than a labelled
+exploratory view, a publishable-looking headline was available in the *reverse*
+direction of the hypothesis, from three observations.
+
+**The original suspicion was right in kind and wrong in degree.** The filter is
+path-blind and does admit falling knives — about 9% of the time. Rejecting
+`days_since_high >= 5` would remove only 10.4% / 9.2% of alerts. Cheap cuts both
+ways: a low price on an unmeasured effect is still a real cost for an imagined
+benefit.
+
+**A correction worth carrying forward.** The pre-registration claimed the
+primary run would reproduce the 498-alert sample in `results/phase1/signals.csv`.
+It produced 115. That file was written under the pre-Study-9 config (volume 1.50,
+baseline 63) and only 161 of its rows clear today's 1.75. The sample
+*definition* was unchanged and ran as specified; only the equivalence claim was
+wrong, and it is corrected by a dated note rather than edited out. **A committed
+result file records the config of the day it was written, not the config in
+force now.**
+
+**No configuration change.** `screener.py`, `config.py`, `notifier.py` and
+`snapshot.py` were untouched; this was measurement only.
 
 ---
 
