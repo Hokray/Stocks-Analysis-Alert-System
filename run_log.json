@@ -1641,5 +1641,148 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-17T03:59:34",
+    "date": "2026-11-16",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 3,
+    "matches": [
+      "AMD",
+      "ANET",
+      "MSI"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.66,
+        "price_change_pct": 15.0
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.64,
+        "price_change_pct": 17.1
+      },
+      {
+        "ticker": "LSCC",
+        "volume_ratio": 1.63,
+        "price_change_pct": 13.3
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-11-18T03:00:20",
+    "date": "2026-11-17",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 2,
+    "matches": [
+      "MSI",
+      "ANET"
+    ],
+    "near_misses": [
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.71,
+        "price_change_pct": 13.9
+      },
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.57,
+        "price_change_pct": 14.8
+      },
+      {
+        "ticker": "KD",
+        "volume_ratio": 1.53,
+        "price_change_pct": 23.6
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-11-19T02:39:19",
+    "date": "2026-11-18",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 1,
+    "matches": [
+      "AMD"
+    ],
+    "near_misses": [
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.58,
+        "price_change_pct": 17.5
+      },
+      {
+        "ticker": "SANM",
+        "volume_ratio": 1.54,
+        "price_change_pct": 9.6
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 1.49,
+        "price_change_pct": 8.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-11-20T02:24:14",
+    "date": "2026-11-18",
+    "status": "stale",
+    "tickers_screened": 170,
+    "match_count": 1,
+    "matches": [
+      "AMD"
+    ],
+    "near_misses": [
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.58,
+        "price_change_pct": 17.5
+      },
+      {
+        "ticker": "SANM",
+        "volume_ratio": 1.54,
+        "price_change_pct": 9.6
+      },
+      {
+        "ticker": "AVGO",
+        "volume_ratio": 1.49,
+        "price_change_pct": 8.8
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-11-21T02:21:03",
+    "date": "2026-11-19",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 1,
+    "matches": [
+      "AMD"
+    ],
+    "near_misses": [
+      {
+        "ticker": "EXTR",
+        "volume_ratio": 1.49,
+        "price_change_pct": 26.6
+      },
+      {
+        "ticker": "SANM",
+        "volume_ratio": 1.43,
+        "price_change_pct": 18.8
+      },
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.4,
+        "price_change_pct": 41.6
+      }
+    ],
+    "error": null
   }
 ]
