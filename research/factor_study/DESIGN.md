@@ -33,6 +33,7 @@ revised after seeing results.
 - [Pitfall 1: survivorship bias](#pitfall-1-survivorship-bias)
 - [Pitfall 2: look-ahead bias in fundamentals](#pitfall-2-look-ahead-bias-in-fundamentals)
 - [Pitfall 3: small effect, large noise](#pitfall-3-small-effect-large-noise)
+- [Pitfall 4: the universe is selected on today's market cap](#pitfall-4-the-universe-is-selected-on-todays-market-cap)
 - [Decisions recorded in advance](#decisions-recorded-in-advance)
 - [What this study cannot support](#what-this-study-cannot-support)
 
@@ -119,7 +120,7 @@ Fixed now. Not revised after seeing results.
 | **Quality** | gross profitability (gross profit / total assets) **and** positive free cash flow | higher is better |
 | **Dilution** | 3-year change in shares outstanding | **lower** is better |
 | **Momentum** | 12-month return skipping the most recent month (standard 12-1) | higher is better |
-| **Size** | market capitalisation | tested as reported, not assumed negative |
+| **Size** | market capitalisation at the rebalance date, computed as annual balance-sheet `Ordinary Shares Number` lagged 6 months × that date's close | tested as reported, not assumed negative |
 
 Enterprise value is computed as market cap + total debt − cash and cash
 equivalents, from the same annual statement as the numerator.
@@ -131,6 +132,24 @@ carries any result and invites after-the-fact reweighting.
 **Size has no predicted direction.** The small-cap premium is contested and has
 been weak-to-absent in US data since the 1980s. Predicting a sign and then
 finding it would be unconvincing; this study reports what size does.
+
+**Size uses the historical share count, not today's.** The obvious shortcut —
+today's shares outstanding × that date's close — is rejected. This universe
+contains names diluting 28–72% a year, so today's share count overstates their
+historical market cap several-fold, and because heavy diluters underperform,
+that error would load systematically onto the historical large-cap buckets and
+**manufacture a size effect out of a dilution effect**. Instead the share count
+comes from the annual balance sheet at each rebalance date, lagged 6 months —
+the same source, the same lag and the same statement as the dilution factor, so
+the two cannot disagree about how many shares a company had.
+
+**The cost of that choice, stated in advance.** Size now depends on
+balance-sheet coverage, so it is limited to the periods where statements exist
+— roughly the same ~3 rebalances as the fundamental factors, not the ~48
+monthly ones price alone would allow. **The realised number of size rebalances
+and the per-name balance-sheet coverage are reported as numbers.** If coverage
+is materially worse than for the other fundamental factors, that is reported
+rather than absorbed by silently dropping names.
 
 **Financials are kept.** Banks and insurers have no EBIT, operating income,
 gross profit or capex — verified on JPM, which returns none of the four. So
@@ -172,9 +191,10 @@ Rank correlation is computed by ranking both inputs and taking the ordinary
 correlation, which is the same number; pandas' default ranking averages ties,
 which is the tie correction Spearman calls for.
 
-**Rebalance frequency.** Momentum and size rebalance **monthly** from 5 years
-of price history. Value, quality and dilution rebalance **once per fiscal year
-per ticker**, lagged as described in Pitfall 2.
+**Rebalance frequency.** Momentum rebalances **monthly** from 5 years of price
+history. Value, quality, dilution **and size** rebalance **once per fiscal year
+per ticker**, lagged as described in Pitfall 2 — size joins them because its
+share count now comes from the balance sheet.
 
 **Liquidity is a stored field, not only a filter.** Median daily dollar volume
 is recorded for every name in the final universe. The funnel's floor is
@@ -200,13 +220,43 @@ This split is the single most important thing in this document.
 
 | | factors | why | status |
 |---|---|---|---|
-| **Confirmatory** | momentum, size | price-only, fully backtestable, no fundamental data involved, ~48 monthly rebalances available from 5 years of history | a result here can be believed to the extent the biases below allow |
-| **Exploratory** | value, quality, dilution | yfinance returns 4–5 annual statement periods; with the lag below that is **~3 rebalances** | a result here is a curiosity, not evidence |
+| **Confirmatory** | momentum | price-only, fully backtestable, no fundamental data involved, ~48 monthly rebalances available from 5 years of history | a result here can be believed to the extent the biases below allow |
+| **Exploratory** | value, quality, dilution, **size** | yfinance returns 4–5 annual statement periods; with the lag below that is **~3 rebalances**. Size is additionally compromised by selection — see [Pitfall 4](#pitfall-4-the-universe-is-selected-on-todays-market-cap) | a result here is a curiosity, not evidence |
 
 **Three rebalances cannot support a conclusion.** This is stated now, before any
 number exists, so that a striking exploratory spread cannot later be presented
 as a finding. Dilution is thinner still: a 3-year share change from 4–5 annual
 periods yields one or two non-overlapping observations per ticker.
+
+### Amendment: size demoted from confirmatory to exploratory
+
+Size was pre-registered as confirmatory on the grounds that it is price-only
+and therefore carries no look-ahead. **That reasoning was wrong, and the error
+is structural rather than a matter of how market cap is reconstructed.**
+
+The universe is selected on market cap *as it is today*. Ranking that universe
+on *historical* size then links past size to future return by construction, and
+no reconstruction method repairs it — the full mechanism is set out in
+[Pitfall 4](#pitfall-4-the-universe-is-selected-on-todays-market-cap). Size is
+therefore ineligible to pass, and any spread it shows is reported as a
+selection artefact rather than as evidence about the size premium.
+
+**The clean fix exists and was not taken.** A universe selected on *liquidity
+only*, with no market-cap bound at any point in the funnel, would break the
+link: membership would no longer depend on the variable being ranked. That
+would require rebuilding the universe and rerunning the 43-minute funnel, and
+the decision was made not to rebuild. This is recorded as a deliberate choice,
+not an oversight, so that the limitation cannot later be described as
+unforeseen.
+
+**Momentum is unaffected in direction, and is biased conservatively.** The same
+$10bn ceiling removes the universe's biggest winners — a company that
+compounded from $500m to $40bn over the window is excluded *because* it won.
+Momentum ranks on past return, so those names would have populated the top
+decile. Their absence **understates** any momentum premium. That is the
+opposite direction from the size problem: it makes a positive momentum result
+*more* credible, not less, and makes a null correspondingly harder to
+interpret.
 
 ---
 
@@ -229,10 +279,12 @@ below that range would let ordinary noise qualify as a result; far above it
 would reject real effects. 3.0 pp sits inside the published range and is fixed
 now so it cannot drift toward whatever the data turns out to show.
 
-**Only momentum and size can pass.** Value, quality and dilution are exploratory
-by construction and are **ineligible** regardless of what their spreads look
-like. No criterion may be attached to them after the fact, and doing so would be
-a second shot at a positive on the same data.
+**Only momentum can pass.** Value, quality, dilution and size are exploratory
+and are **ineligible** regardless of what their spreads look like. No criterion
+may be attached to them after the fact, and doing so would be a second shot at a
+positive on the same data. With one confirmatory factor there is also only one
+confirmatory test, which removes the multiple-comparisons problem that two would
+have carried.
 
 ---
 
@@ -243,9 +295,10 @@ a second shot at a positive on the same data.
 
 Both floors are fixed now and are **not** moved after the counts are seen. A
 factor below either floor is reported as **underpowered, not dropped silently**.
-The fundamental factors will have ~3 rebalance dates and so fail the second
-floor by construction — which is why they are labelled exploratory in advance
-rather than after the fact.
+The fundamental factors — value, quality, dilution and now size — will have ~3
+rebalance dates and so fail the second floor by construction, which is why they
+are labelled exploratory in advance rather than after the fact. Size fails on
+power *and* on confounding; either alone would disqualify it.
 
 ---
 
@@ -279,8 +332,9 @@ is, and that is known now, not discovered later.
 
 Even at n = 48 the MDE clears 3.0 pp only if the across-date SD of the spread is
 under about 10 pp. Whether it is cannot be known in advance — it is measured and
-reported. So momentum and size have a *chance* of a powered result; they are not
-guaranteed one.
+reported. So momentum has a *chance* of a powered result; it is not guaranteed
+one. Size, now exploratory and annual, sits in the n = 3 column with the
+fundamental factors and cannot produce an interpretable null either.
 
 The overlapping-window caveat applies: 48 monthly rebalances with 12-month
 forward returns are not 48 independent observations, so the effective `n` is
@@ -337,6 +391,10 @@ is precisely where delisting and bankruptcy rates are highest. A large-cap study
 would suffer less from this bias; this one suffers more. That is an accepted cost
 of the scope, recorded before any result.
 
+The scope carries a *second*, distinct problem — companies that are still
+listed but crossed the band's boundaries — which is set out separately in
+[Pitfall 4](#pitfall-4-the-universe-is-selected-on-todays-market-cap).
+
 ---
 
 ## Pitfall 2: look-ahead bias in fundamentals
@@ -391,6 +449,59 @@ Consequences, binding on every output of this study:
 
 ---
 
+## Pitfall 4: the universe is selected on today's market cap
+
+**Direction: it manufactures a size effect out of nothing. This is not a bias
+that distorts a real effect — it creates an apparent one where none need
+exist.**
+
+The funnel applies the $100m–$10bn band to market cap **as measured on the day
+the universe was built**. Membership is therefore conditional on where a
+company ended up, and that conditioning is not neutral with respect to the
+variable size ranks on:
+
+- A company worth $400m at the start of the window and $40bn today is
+  **excluded** — it grew out of the band. Small-and-rose is removed.
+- A company worth $25bn at the start and $3bn today is **included** — it fell
+  into the band. Large-and-fell is retained.
+
+Now rank the surviving universe on historical size. The historically-small
+bucket has had its winners deleted, and the historically-large bucket has been
+stocked with names that were only large *because they were about to fall*. The
+ranking has been linked to the future return by the selection step itself.
+**A size spread would appear in this data even if the true size premium were
+exactly zero**, and its sign is predictable in advance from the selection
+alone: it will favour the historically-small bucket's survivors being weak and
+the historically-large bucket being weak too, in proportions no analysis here
+can separate.
+
+**No reconstruction method fixes this.** Getting the historical market cap
+exactly right — point-in-time shares, point-in-time price, audited — would
+still leave the universe conditioned on the endpoint. The error is in which
+companies are present, not in what number is attached to them.
+
+**What would fix it, and why it was not done.** A universe selected on
+**liquidity only**, with no market-cap bound at any stage, breaks the link:
+membership would then depend on trading activity rather than on the ranked
+variable. That means rebuilding the universe from stage (a) and rerunning the
+funnel. **The decision was to keep the existing universe and demote size to
+exploratory instead.** Recorded here as a choice made knowingly, before any
+factor was computed.
+
+**Consequence.** Size is exploratory, ineligible to pass, and any spread it
+produces is reported as a selection artefact. This is separate from and
+additional to [Pitfall 1](#pitfall-1-survivorship-bias), which concerns
+companies that left the market entirely; Pitfall 4 concerns companies that are
+still listed but crossed a boundary this study drew.
+
+**The same selection touches momentum, in the opposite direction.** The $10bn
+ceiling removes the window's largest compounders, which are exactly the names
+momentum's top decile would have held. Momentum is therefore **understated**,
+not inflated — a conservative bias, which strengthens a positive result and
+weakens the interpretation of a null.
+
+---
+
 ## Decisions recorded in advance
 
 | decision | choice | why |
@@ -399,6 +510,9 @@ Consequences, binding on every output of this study:
 | scope | market cap $100m–$10bn, mega caps excluded | floor avoids microstructure noise; ceiling stops ~5 names dominating the top size decile |
 | financials | kept, value/quality go NaN | undefined, not missing; keeps the confirmatory sample large; coverage reported |
 | bootstrap unit | rebalance date | within-date dependence dominates in a cross-sectional study |
+| size status | **exploratory, not confirmatory** | the universe is selected on today's market cap, so ranking on historical size links past size to future return by construction — Pitfall 4 |
+| size measurement | balance-sheet `Ordinary Shares Number`, lagged 6 months, × that date's close | today's share count overstates historical cap several-fold for heavy diluters and would manufacture a size effect from a dilution effect; same source and lag as dilution so the two cannot disagree |
+| liquidity-only universe | **considered and declined** | it is the clean fix for Pitfall 4, but requires rebuilding the universe and rerunning the funnel; declined knowingly, recorded so the limitation is not later called unforeseen |
 | confirmatory horizon | 12 months | the horizon factor premia are quoted at |
 | pass threshold | +3.0 pp spread | inside the published 2–5% range |
 | security type | name/symbol filter before pricing | `quoteType` returned EQUITY for closed-end funds and preferreds in the trial |
@@ -417,6 +531,13 @@ Consequences, binding on every output of this study:
 - **Any conclusion from value, quality or dilution.** ~3 rebalances with an MDE
   five to sixteen times the threshold. These are exploratory, ineligible to
   pass, and cannot produce an interpretable null either.
+- **Any claim about the size premium, in either direction.** The universe is
+  selected on today's market cap, which links past size to future return by
+  construction (Pitfall 4). A size spread here is a selection artefact and
+  would appear even if the true premium were zero. This is a stronger
+  disclaimer than the one above: value, quality and dilution are merely
+  underpowered, whereas size is **confounded**, and more data at this design
+  would not help.
 - **Generalisation beyond this period.** One market regime, measured on
   survivors.
 - **A live trading decision of any kind.** Nothing here is a recommendation, and
