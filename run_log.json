@@ -1784,5 +1784,59 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-24T05:24:54",
+    "date": "2026-11-23",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 1,
+    "matches": [
+      "DBX"
+    ],
+    "near_misses": [
+      {
+        "ticker": "MOD",
+        "volume_ratio": 1.46,
+        "price_change_pct": 29.4
+      },
+      {
+        "ticker": "AAON",
+        "volume_ratio": 1.45,
+        "price_change_pct": 27.5
+      },
+      {
+        "ticker": "POWL",
+        "volume_ratio": 1.33,
+        "price_change_pct": 14.4
+      }
+    ],
+    "error": null
+  },
+  {
+    "timestamp": "2026-11-25T04:16:47",
+    "date": "2026-11-24",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "MOD",
+        "volume_ratio": 1.5,
+        "price_change_pct": 27.2
+      },
+      {
+        "ticker": "POWL",
+        "volume_ratio": 1.34,
+        "price_change_pct": 11.4
+      },
+      {
+        "ticker": "DBX",
+        "volume_ratio": 1.15,
+        "price_change_pct": 12.9
+      }
+    ],
+    "error": null
   }
 ]
