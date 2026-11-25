@@ -158,6 +158,49 @@ universe and in momentum and size, which are price-only and perfectly well
 defined for a bank, and they drop out of value and quality by missing data.
 **Coverage per factor is reported as a number, not silently absorbed.**
 
+### Amendment 2026-11-25: the claim above is wrong as a generalisation
+
+The paragraph above is left in place rather than edited, so the error stays
+visible in git. It said financials "drop out of value and quality by missing
+data." **The fetched statements show they largely do not.** Measured across all
+2,477 names:
+
+| sector | n | EBIT present | Gross Profit present | Total Revenue present |
+|---|---|---|---|---|
+| Financial Services | 460 | **149 (32%)** | 80 (17%) | 420 (91%) |
+| Real Estate | 97 | **82 (85%)** | 79 (81%) | 97 (100%) |
+| all other sectors | 1,920 | 95–100% | 61–98% | 95–100% |
+
+JPM was verified correctly but is not representative. The exclusion mechanism
+the design relied on — absence of the line item — therefore fails for 149
+banks and insurers and 82 REITs, which would be ranked on EBIT/EV alongside
+industrials.
+
+**That is worse than their being absent.** A bank's interest expense is its
+principal operating cost, so "earnings before interest" does not mean for a
+bank what it means for a manufacturer, and an enterprise value that treats
+customer deposits as debt compounds the mismatch. These names would be ranked
+*silently*, on a number that is not comparable — the exact failure the design
+intended to prevent, reached through a route it did not anticipate.
+
+**Corrected rule: financials and real estate are excluded from value and
+quality by SECTOR LABEL**, whether or not the line items are present. The
+exclusion is **scoped to value and quality only** — dilution and momentum keep
+financials and REITs in full, because a share count and a past return are
+perfectly well defined for a bank and carry no comparability problem.
+
+| factor | Financial Services + Real Estate |
+|---|---|
+| Value (both measures) | **excluded by sector** |
+| Quality (both measures) | **excluded by sector** |
+| Dilution | kept |
+| Momentum | kept |
+| Size | kept |
+
+Cost: ~230 of the 2,096 EBIT names, leaving ~1,860 rankable on value and ~186
+per decile — still six times the 30-per-decile floor. **The excluded count is
+reported as a number, per factor and per rebalance date.**
+
 ### Negative and undefined values: the pre-registered rule
 
 A loss-making company and a bank are both "no earnings yield", but for
@@ -209,6 +252,28 @@ statement periods.
 | Value | ~1,500 | ~150 | ~75% statement coverage on the ~2,017 non-financials |
 | Quality | ~1,500 | ~150 | same, minus names with no gross profit line |
 
+**Realised, measured 2026-11-25 after the fetch.** The estimates above were too
+pessimistic: they assumed whole sectors would lack the line items, and 93% of
+names returned ≥4 annual periods against the trial's 75%.
+
+| factor | estimated | **realised** | per decile | after the sector exclusion |
+|---|---|---|---|---|
+| Momentum | ~2,477 | **2,477** | ~247 | 2,477 (kept) |
+| Size | ~1,850 | **2,394** | ~239 | 2,394 (kept) |
+| Dilution | ~1,850 | **2,394** | ~239 | 2,394 (kept) |
+| Value (EBIT/EV) | ~1,500 | **2,096** | ~209 | **~1,860** |
+| Value (FCF/EV) | ~1,500 | **2,344** | ~234 | ~1,790 |
+| Quality (GP/assets) | ~1,500 | **1,830** | ~183 | **~1,670** |
+
+83 names returned **zero** statement periods and are excluded from every
+fundamental factor by the undefined rule, needing no special case.
+
+**This does not improve the exploratory factors.** The binding constraint was
+never names per decile — it was rebalance *dates*, and 5 annual periods minus
+the 6-month lag still yields ~3–4. Two hundred names per decile across three
+dates is still three dates, and the pre-registered exploratory verdict stands
+unchanged.
+
 These are **expectations, not commitments** — the realised counts are computed
 and reported per factor *and per rebalance date*, because coverage falls off in
 the earliest years where statements are thinnest. The
@@ -229,6 +294,13 @@ the floor is reported as underpowered, not dropped.
 4. **Report the information coefficient** — the Spearman rank correlation
    between factor rank and forward return, computed per rebalance date and then
    averaged.
+5. **Report the sector composition of every decile, for every factor.** A
+   standard sector-neutrality check, with **no criterion attached**. If a top
+   or bottom decile is dominated by one or two sectors after the exclusions
+   above, the factor is partly a sector bet rather than a factor effect, and
+   `FINDINGS.md` must say so. This is a diagnostic, not a gate: a factor is not
+   disqualified for being sector-concentrated, but a concentrated result may
+   not be described as a factor result without the composition shown beside it.
 
 **Ties and boundaries.** Deciles are assigned by rank with ties broken by
 average rank, so an exact tie cannot land in two deciles. Where the universe is
@@ -377,7 +449,7 @@ MDE at 80% power = 2.80 * SD(spread across dates) / sqrt(n)
 the observed dispersion of per-date spreads; what follows is what the design can
 reach at plausible dispersions, recorded before any data exists.
 
-| SD of 12-month spread across dates | n = 3 (fundamentals) | n = 12 | n = 48 (monthly, 5y) |
+| SD of 12-month spread across dates | n = 3 (fundamentals) | n = 12 | n = 48 (assumed monthly, 5y) |
 |---|---|---|---|
 | 10 pp | 16.2 pp | 8.1 pp | 4.0 pp |
 | 20 pp | 32.3 pp | 16.2 pp | 8.1 pp |
@@ -387,6 +459,25 @@ reach at plausible dispersions, recorded before any data exists.
 threshold — five to sixteen times too blunt. **The exploratory factors cannot
 produce an interpretable null.** Their result will be uninformative whatever it
 is, and that is known now, not discovered later.
+
+**Correction 2026-11-25: momentum has ~36 rebalance dates, not 48.** The
+`n = 48` column assumed 5 years of monthly rebalances. The fetched history
+starts 2021-11-26 for 2,166 of the 2,477 names, and a 12-1 rank needs 13 months
+behind it while the confirmatory test needs 12 months ahead. The usable window
+is therefore **2022-12 to 2025-11 — about 36 monthly rebalances**, at ~220
+names per decile. Both floors are still cleared, but the MDE is ~17% worse than
+the table shows:
+
+| SD of 12-month spread across dates | MDE at n = 36 |
+|---|---|
+| 5 pp | 2.3 pp |
+| 6.4 pp | **3.0 pp — the threshold** |
+| 10 pp | 4.7 pp |
+| 20 pp | 9.3 pp |
+
+So momentum needs an across-date SD **under about 6.4 pp** to produce a powered
+result, where the original table implied 10 pp would do. Whether it is that
+tight is measured, not assumed.
 
 Even at n = 48 the MDE clears 3.0 pp only if the across-date SD of the spread is
 under about 10 pp. Whether it is cannot be known in advance — it is measured and
@@ -572,6 +663,8 @@ weakens the interpretation of a null.
 | universe source | NASDAQ Trader | no contact header required; SEC 403s without one, and no personal contact is transmitted |
 | scope | market cap $100m–$10bn, mega caps excluded | floor avoids microstructure noise; ceiling stops ~5 names dominating the top size decile |
 | financials | kept, value/quality go NaN | undefined, not missing; keeps the confirmatory sample large; coverage reported |
+| financials + REITs in value/quality | **excluded by sector label**, scoped to those two factors only | 32% of financials and 85% of REITs do report EBIT, so exclusion-by-missing-data fails; a bank's EBIT/EV is not comparable to an industrial's. Dilution and momentum keep them — a share count and a past return are well defined for a bank |
+| sector composition per decile | reported for every factor, no criterion | a concentrated decile means the factor is partly a sector bet; it does not disqualify the factor but must be shown beside the result |
 | negative metric values | **kept, ranked at raw value → bottom of the distribution** | a negative earnings yield is a measurement, not a gap; excluding loss-makers would compound the survivorship bias already deleting that same end |
 | undefined metric values | **excluded** from that factor only (EV ≤ 0, assets ≤ 0, absent line item, missing statement) | the ratio inverts or was never measured; keeping them would rank a cash-rich profitable company as the worst name in the universe |
 | negative/undefined robustness | re-rank among positive-metric names only, no criterion attached | if the result depends on where loss-makers sat, that is the finding |
