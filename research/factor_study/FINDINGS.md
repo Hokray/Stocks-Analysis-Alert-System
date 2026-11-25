@@ -72,12 +72,36 @@ The largest 12-month forward return in the panel is **+24,890pp**. The nine
 largest all belong to one ticker, whose monthly closes span $0.088 to $29.22 — a
 330× range. A second name spans 73×.
 
-**This study cannot establish whether those are genuine micro-cap melt-ups or
-defective price adjustments.** The cached adjusted closes are internally
-consistent, no gap or duplicate date appears in any of the 2,477 price files,
-and nothing available here distinguishes a real 330× from a bad adjustment
-factor. Both possibilities leave the pre-registered statistic dominated by a
-few observations.
+**These appear to be genuine moves rather than defective price adjustments.**
+Inspecting the thirty largest forward returns by name gives a coherent and
+recognisable cohort from the 2023–2025 small-cap market — quantum computing
+(`RGTI`, `QBTS`, `QUBT`), AI-datacenter infrastructure (`TSSI`), fintech
+turnarounds (`SEZL`, `DAVE`, `ROOT`), drones (`RCAT`) and a long tail of
+biotech (`WGS`, `DRUG`, `RLMD`, `TNGX`). A contaminated sample would not
+cluster by theme and date the way this one does. The names are listed here as
+data provenance — evidence about where the numbers came from — and not as names
+of interest.
+
+The residual uncertainty is narrower than the original one: the exact
+magnitudes are unverified, and some rebalance dates post-date any independent
+check available here. See
+[defects and open items](#defects-and-open-items).
+
+### The distribution is right-skewed, which is a second and separate problem
+
+Per rebalance date, the share of names returning more than +500% over the
+following 12 months averages **0.63%** — a mean of 14.6 names out of ~2,314,
+ranging from **0.00%** (2023-06-30) to **1.97%** (2025-05-31, 47 of 2,385).
+
+Roughly one name in 160, then, not one in sixteen. **The driver is the
+magnitude of the tail, not its frequency**: ~1.5 such names land in an average
+231-name decile, and returns reaching +24,890pp move a 231-name mean by tens of
+points on their own. That is what the concentration figures above measure
+directly.
+
+So an equal-weighted mean is **the wrong summary statistic for this
+distribution**, independently of which names are present. It is a
+count of lottery tickets, and it will be unstable under any resampling.
 
 ### The information coefficient gives the artefact away
 
@@ -121,7 +145,25 @@ Five factors measuring different things cannot all be wrong in the same
 direction by the same mechanism unless something common to the data is driving
 them. The common thing is which names are present and which few of them moved.
 
-### The mechanism is the one Pitfall 1 predicted
+### Two independent reasons the −56.82pp is not a momentum measurement
+
+These compound rather than substitute, and the write-up keeps both:
+
+1. **The sample is missing the names that delisted.** Decile 1 holds only the
+   catastrophic decliners that survived to November 2026. This is a problem
+   about *which rows exist* — see the mechanism below.
+2. **The equal-weighted mean is the wrong summary for a right-skewed
+   distribution.** This is a problem about *how the existing rows are
+   aggregated*, and it would remain even with a perfect survivorship-free
+   universe.
+
+Fixing either one alone would not rescue the figure. Point-in-time constituent
+data would repair the sample and leave the estimator mismatch untouched; a
+robust estimator would repair the summary and still be computed over a
+survivor-only sample. The −56.82pp spread is not a momentum premium under
+either reading.
+
+### The mechanism behind reason 1 is the one Pitfall 1 predicted
 
 [DESIGN.md Pitfall 1](DESIGN.md#pitfall-1-survivorship-bias) committed in
 advance to the direction: survivorship bias "inflates measured returns, and it
@@ -500,11 +542,31 @@ Run as reported: 2026-11-25. Universe built 2026-11-25, prices through
 
 ## Defects and open items
 
-**Open — the extreme returns are unverified.** Whether the 330× and 73× price
-ranges driving decile 1 are genuine or defective adjustments is not established.
-This is the single most consequential open question, since the headline finding
-rests on their presence rather than their authenticity. Resolving it needs a
-second price source, which would be a new dependency.
+**Substantially resolved — the extreme returns appear genuine.** The original
+concern was that the 330× and 73× price ranges driving decile 1 might be
+defective adjustments. Inspecting the thirty largest forward returns by name
+gives a thematically and temporally coherent cohort — quantum computing,
+AI-datacenter, fintech turnarounds, biotech — which is not what a contaminated
+sample looks like. Of the thirty, **21 of the 23 carrying a momentum value had
+12-month past returns between −38% and −96%**, which confirms the survivorship
+mechanism in
+[Finding 1](#finding-1-the-unattractive-decile-won-everywhere-on-a-handful-of-names)
+from individual rows rather than inferring it from decile means.
+
+**Still open, narrowly:** the exact magnitudes are unverified against a second
+source, and some rebalance dates post-date any independent check available
+here. This no longer threatens the headline finding, which rests on
+concentration and skew rather than on authenticity — and which
+[has a second, independent basis](#two-independent-reasons-the-5682pp-is-not-a-momentum-measurement)
+in the estimator mismatch regardless.
+
+**Corrected during review — an inflated tail statistic.** A first pass reported
+that 6.1% of the universe (151 of 2,477 names) exceeded +500%. That figure is
+`max()` taken over 36 *overlapping* 12-month windows and counts the same name
+at many dates: it overstates the per-date tail by **9.8×**. The correct figure
+is a per-rebalance-date mean of **0.63%**, and it is what Finding 1 reports.
+Recorded here because a document about methodological care should not carry an
+overlap artefact of exactly the kind it warns about elsewhere.
 
 **Open — coverage counting.** The fetch step's coverage report counts period
 *labels*, not populated periods, and therefore overstated fundamental depth
