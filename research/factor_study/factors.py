@@ -240,7 +240,10 @@ def load_fundamentals(symbols):
         for field in FIELDS:
             if field not in df.columns:
                 df[field] = np.nan
-        out[symbol] = df[list(FIELDS)]
+        # The cache stores absent values as JSON null, which arrives as a
+        # Python None and makes the column object-dtype. np.isfinite raises on
+        # object dtype, so coerce here rather than guarding at every use.
+        out[symbol] = df[list(FIELDS)].apply(pd.to_numeric, errors="coerce")
     print(f"  fundamentals: {len(out):,} symbols")
     return out
 

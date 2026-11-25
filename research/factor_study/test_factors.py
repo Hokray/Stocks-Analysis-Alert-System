@@ -35,6 +35,7 @@ error would still produce a plausible-looking number:
      confirmatory should fail a test, not reach FINDINGS.md.
 """
 
+import json
 import os
 import sys
 
@@ -559,6 +560,66 @@ class TestBootstrapAndMDE:
 # ===========================================================================
 # 8. The sector exclusion and the factor specification
 # ===========================================================================
+
+class TestFundamentalLoading:
+    """
+    The cache stores an absent value as JSON null, which arrives as a Python
+    None and makes the whole column object-dtype. np.isfinite RAISES on object
+    dtype rather than returning False, so the loader must coerce.
+
+    The hand-built fixtures above are all clean floats, which is tidier than
+    the real cache -- this class reads an actual file with nulls in it, which
+    is how the real data arrives.
+    """
+
+    def write(self, tmp_path, payload):
+        path = tmp_path / "AAA.json"
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        return path
+
+    def load(self, tmp_path, payload):
+        self.write(tmp_path, payload)
+        original = fx.fundamental_path
+        fx.fundamental_path = lambda s: str(tmp_path / f"{s}.json")
+        try:
+            return fx.load_fundamentals(["AAA"])
+        finally:
+            fx.fundamental_path = original
+
+    def test_json_nulls_become_float_nan_not_none(self, tmp_path):
+        out = self.load(tmp_path, {
+            "symbol": "AAA",
+            "income": {"EBIT": {"2021-03-31": None}},
+            "balance": {"Total Assets": {"2021-03-31": 1000.0}},
+            "cashflow": {},
+        })
+        df = out["AAA"]
+        assert df["ebit"].dtype.kind == "f", "object dtype breaks np.isfinite"
+        assert np.isnan(df.loc[pd.Timestamp("2021-03-31"), "ebit"])
+
+    def test_every_expected_field_exists_even_when_absent(self, tmp_path):
+        out = self.load(tmp_path, {
+            "symbol": "AAA",
+            "income": {"EBIT": {"2021-03-31": 5.0}},
+            "balance": {},
+            "cashflow": {},
+        })
+        assert list(out["AAA"].columns) == list(fx.FIELDS)
+
+    def test_all_columns_are_numeric(self, tmp_path):
+        out = self.load(tmp_path, {
+            "symbol": "AAA",
+            "income": {"EBIT": {"2021-03-31": None, "2020-03-31": 5.0}},
+            "balance": {"Total Debt": {"2021-03-31": None}},
+            "cashflow": {"Free Cash Flow": {"2021-03-31": 1.5}},
+        })
+        assert all(k == "f" for k in out["AAA"].dtypes.map(lambda d: d.kind))
+
+    def test_a_ticker_with_no_statements_is_skipped(self, tmp_path):
+        out = self.load(tmp_path, {"symbol": "AAA", "income": {},
+                                   "balance": {}, "cashflow": {}})
+        assert "AAA" not in out
+
 
 class TestSectorExclusion:
 
