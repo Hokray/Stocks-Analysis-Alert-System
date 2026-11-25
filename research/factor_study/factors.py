@@ -117,8 +117,15 @@ def assign_deciles(values, higher_is_better):
 
     Ties share an average rank and therefore land in ONE decile, never split
     across a boundary. Where n is not divisible by ten the remainder goes to
-    the MIDDLE deciles, so decile 1 and decile 10 are always the same size --
-    they are what the headline spread compares.
+    the MIDDLE deciles ONLY, so decile 1 and decile 10 always hold exactly
+    n // 10 names -- they are what the headline spread compares, and an
+    asymmetry there would bias the spread by construction.
+
+    A remainder of 9 cannot be spread one-per-decile across eight middle
+    deciles, so the surplus wraps for a second pass through the middle rather
+    than falling through to an extreme. At n = 19 that gives
+    [1, 2, 2, 2, 3, 2, 2, 2, 2, 1]: the middles absorb everything and the two
+    ends stay equal.
     """
     s = pd.Series(values).dropna()
     n = len(s)
@@ -126,10 +133,12 @@ def assign_deciles(values, higher_is_better):
         return pd.Series(np.nan, index=pd.Series(values).index)
 
     sizes = [n // N_DECILES] * N_DECILES
-    # Middle-out order: 5, 6, 4, 7, 3, 8, 2, 9, 1, 10 (zero-indexed).
-    middle_first = [4, 5, 3, 6, 2, 7, 1, 8, 0, 9]
+    # Middle-out, and deliberately EXCLUDING deciles 1 and 10 (indices 0 and
+    # 9). Extras cycle through this list, so a remainder above 8 gives some
+    # middle decile a second extra instead of unbalancing the extremes.
+    middle_order = [4, 5, 3, 6, 2, 7, 1, 8]
     for i in range(n % N_DECILES):
-        sizes[middle_first[i]] += 1
+        sizes[middle_order[i % len(middle_order)]] += 1
 
     ranks = s.rank(method="average", ascending=higher_is_better)
     bounds = np.cumsum(sizes)
