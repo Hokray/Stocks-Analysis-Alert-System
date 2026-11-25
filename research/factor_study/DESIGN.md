@@ -158,6 +158,64 @@ universe and in momentum and size, which are price-only and perfectly well
 defined for a bank, and they drop out of value and quality by missing data.
 **Coverage per factor is reported as a number, not silently absorbed.**
 
+### Negative and undefined values: the pre-registered rule
+
+A loss-making company and a bank are both "no earnings yield", but for
+completely different reasons, and treating them the same would be an error.
+The rule turns on **whether a measurement exists**:
+
+| case | treatment | why |
+|---|---|---|
+| EBIT or FCF is **negative**, EV positive | **kept and ranked at its raw value** — which places it below every profitable name | A negative earnings yield is a real measurement, not missing data. The company genuinely sits at the unattractive end of the factor. |
+| Enterprise value **≤ 0** (net cash exceeds market cap) | **excluded** from that factor | The ratio inverts: a profitable company with negative EV produces a large *negative* yield and would be ranked as the worst name in the universe when it is arguably the cheapest. This is an artefact of the arithmetic, not a measurement. |
+| Total assets **≤ 0** | **excluded** from quality | Same inversion, same reason. |
+| Line item **absent** from the statement (financials, and any filer that omits it) | **excluded** from that factor | Nothing was measured. |
+| Statement **missing entirely** for that period | **excluded** from that factor at that rebalance | Nothing was measured. |
+
+**Primary treatment: negatives go to the bottom, by raw-value ranking.** Where
+the denominator is positive the ratio is monotone in the numerator, so ranking
+the raw value sorts negatives below all positives automatically. No separate
+bucket and no special-casing is required — which also means no hidden choice
+about *how far* below they should sit.
+
+**Why bottom-bucket and not exclusion as primary.** Excluding loss-makers
+would delete the distressed end of the distribution — and
+[Pitfall 1](#pitfall-1-survivorship-bias) already deletes part of that same end
+by survivorship. Stacking a second selection on top of the first would
+compound a bias whose direction is already known, and would leave the value
+factor measured on profitable survivors only, which is close to measuring
+nothing. It would also cut hardest in Healthcare, the largest sector here at
+461 names and heavily pre-revenue.
+
+**Robustness check, reported alongside with no criterion attached:** re-rank
+value and quality into deciles among **positive-metric names only** (EBIT > 0
+and FCF > 0 respectively), and report whether the top-minus-bottom spread moves
+materially. If the result depends on where the loss-makers were put, that is
+the finding and it gets said.
+
+### Expected coverage, as counts
+
+Stated in advance so the real per-decile sample size is visible before any
+analysis runs. Basis: 2,477 names in the universe; 460 Financial Services plus
+97 Real Estate as the sectors most likely to lack the needed line items; and
+the timed trial's finding that **18 of 24** sampled names (75%) had ≥4 annual
+statement periods.
+
+| factor | expected names ranked | expected per decile | binding constraint |
+|---|---|---|---|
+| Momentum | ~2,477 | ~248 | none — every name passed the 252-session floor |
+| Size | ~1,850 | ~185 | balance-sheet share count availability (~75%) |
+| Dilution | ~1,850 | ~185 | needs 3 years of share counts, so likely lower in practice |
+| Value | ~1,500 | ~150 | ~75% statement coverage on the ~2,017 non-financials |
+| Quality | ~1,500 | ~150 | same, minus names with no gross profit line |
+
+These are **expectations, not commitments** — the realised counts are computed
+and reported per factor *and per rebalance date*, because coverage falls off in
+the earliest years where statements are thinnest. The
+[30-names-per-decile floor](#minimum-sample-sizes) is checked against the
+realised count at each date, not against these estimates. A factor-date below
+the floor is reported as underpowered, not dropped.
+
 ---
 
 ## Method
@@ -409,7 +467,12 @@ convincing-looking premium out of nothing.
 
 Mitigation, fixed in advance:
 
-- **Momentum and size are price-only.** No fundamental data enters them, so
+- **Momentum is price-only.** No fundamental data enters it, so it carries no
+  look-ahead at all. This is why it is the confirmatory test.
+- **Size is no longer price-only.** Its share count comes from the annual
+  balance sheet, so it is lagged with the fundamental factors and carries the
+  same look-ahead exposure they do. It is exploratory for a separate and
+  stronger reason — see Pitfall 4.
   they carry no look-ahead at all. This is why they are the confirmatory tests.
 - **Value, quality and dilution are lagged at least 6 months from each ticker's
   own fiscal year end**, approximating when the figures were actually public.
@@ -509,6 +572,9 @@ weakens the interpretation of a null.
 | universe source | NASDAQ Trader | no contact header required; SEC 403s without one, and no personal contact is transmitted |
 | scope | market cap $100m–$10bn, mega caps excluded | floor avoids microstructure noise; ceiling stops ~5 names dominating the top size decile |
 | financials | kept, value/quality go NaN | undefined, not missing; keeps the confirmatory sample large; coverage reported |
+| negative metric values | **kept, ranked at raw value → bottom of the distribution** | a negative earnings yield is a measurement, not a gap; excluding loss-makers would compound the survivorship bias already deleting that same end |
+| undefined metric values | **excluded** from that factor only (EV ≤ 0, assets ≤ 0, absent line item, missing statement) | the ratio inverts or was never measured; keeping them would rank a cash-rich profitable company as the worst name in the universe |
+| negative/undefined robustness | re-rank among positive-metric names only, no criterion attached | if the result depends on where loss-makers sat, that is the finding |
 | bootstrap unit | rebalance date | within-date dependence dominates in a cross-sectional study |
 | size status | **exploratory, not confirmatory** | the universe is selected on today's market cap, so ranking on historical size links past size to future return by construction — Pitfall 4 |
 | size measurement | balance-sheet `Ordinary Shares Number`, lagged 6 months, × that date's close | today's share count overstates historical cap several-fold for heavy diluters and would manufacture a size effect from a dilution effect; same source and lag as dilution so the two cannot disagree |
