@@ -49,7 +49,25 @@ crash at ticker 4,000 must not lose the first 3,999.
 | b | batch price download; drop anything without recent trading | yfinance bulk |
 | c | liquidity floor on median daily dollar volume | computed from (b) |
 | d | market cap for survivors only, then apply the scope band below | yfinance |
-| e | exclude ETFs, funds, trusts, non-common stock | NASDAQ `ETF` flag + yfinance `quoteType` |
+| a2 | exclude warrants, units, rights, preferreds, funds, trusts | NASDAQ `Security Name` text + symbol structure |
+| e | secondary net on non-common stock | yfinance `quoteType` + USD currency |
+
+### Amendment: `quoteType` is not sufficient, so the filter moved earlier
+
+A timed trial on 50 random symbols returned warrants (CAIIW, OABIW, RVMDW,
+TLNCW), units (SUMAU), rights (MCAHR), preferreds (WRB$H, HPP$C, DTW, REGCO)
+and closed-end funds (PFD, PMO). **yfinance reported `quoteType == "EQUITY"`
+for all 48 priced names, including the funds and preferreds, and NASDAQ's own
+`ETF` flag caught none of them.**
+
+Ranking a warrant on EBIT/EV is meaningless and closed-end funds would pollute
+every decile, so exclusion is driven by the NASDAQ `Security Name` text and
+symbol structure (`$` or `.` class markers, and the Nasdaq 5th-letter
+convention for W/U/R/P), and it runs **before any price request** rather than
+after. `quoteType` is retained only as a secondary net.
+
+The filter is deliberately strict: a false reject costs one name out of
+thousands, a false accept puts a warrant into a decile.
 
 ### Pre-registered scope: $100m to $10bn, mega caps excluded
 
@@ -157,6 +175,16 @@ which is the tie correction Spearman calls for.
 **Rebalance frequency.** Momentum and size rebalance **monthly** from 5 years
 of price history. Value, quality and dilution rebalance **once per fiscal year
 per ticker**, lagged as described in Pitfall 2.
+
+**Liquidity is a stored field, not only a filter.** Median daily dollar volume
+is recorded for every name in the final universe. The funnel's floor is
+deliberately permissive — $100k/day, enough to remove names that barely trade —
+because the real liquidity question is answered here instead: **every factor
+result is re-run with the bottom liquidity quintile excluded, and whether any
+decile spread moves materially is reported.** A strict floor in the funnel would
+pre-empt that check by discarding the very names it is meant to test. If the
+results depend on the least liquid names, that needs saying rather than hiding
+behind a threshold chosen in advance.
 
 **Overlapping windows.** Monthly rebalances with a 12-month forward return
 overlap by construction, so those observations are not independent. The by-date
@@ -373,6 +401,9 @@ Consequences, binding on every output of this study:
 | bootstrap unit | rebalance date | within-date dependence dominates in a cross-sectional study |
 | confirmatory horizon | 12 months | the horizon factor premia are quoted at |
 | pass threshold | +3.0 pp spread | inside the published 2–5% range |
+| security type | name/symbol filter before pricing | `quoteType` returned EQUITY for closed-end funds and preferreds in the trial |
+| liquidity | permissive $100k floor, value stored, bottom-quintile robustness check | moves the choice out of a hidden threshold and into a reported result |
+| request pacing | adaptive 0.5s–4.0s, escalate on >3 rate errors per 100, relax after 200 clean | a two-hour run that quietly throttled itself should say so in its summary |
 | helper code | copied, not imported | this line shares nothing with phases 1–4, so a later edit there cannot silently change factor results |
 | forward archive | not built | dropped from the plan; consequence recorded in Pitfall 1 |
 
