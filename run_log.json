@@ -1838,5 +1838,31 @@
       }
     ],
     "error": null
+  },
+  {
+    "timestamp": "2026-11-26T03:38:53",
+    "date": "2026-11-25",
+    "status": "ok",
+    "tickers_screened": 171,
+    "match_count": 0,
+    "matches": [],
+    "near_misses": [
+      {
+        "ticker": "MOD",
+        "volume_ratio": 1.54,
+        "price_change_pct": 27.8
+      },
+      {
+        "ticker": "POWL",
+        "volume_ratio": 1.36,
+        "price_change_pct": 6.3
+      },
+      {
+        "ticker": "HPQ",
+        "volume_ratio": 1.17,
+        "price_change_pct": 7.6
+      }
+    ],
+    "error": null
   }
 ]
